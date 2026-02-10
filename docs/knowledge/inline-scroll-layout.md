@@ -126,3 +126,75 @@ container.scrollTo({ top: y, behavior: "smooth" });
   ただし `bottom` の値はフッター高さを考慮して `bottom: フッター高さ + 余白` にする。
 - **モーダル**: `position: fixed; inset: 0` は viewport 基準なので変更不要。
 - **自動スクロール**: コンテナへの `scrollTo` に変更し、サイトヘッダー高さのオフセット計算は不要になる。
+
+---
+
+## 現在時刻スクロール: CSS変数計算 vs DOM offsetTop
+
+### 問題: CSS変数から手動計算するとズレる
+
+```js
+// NG: CSS変数 + trackHeaderHeight を加算していたが誤差が大きかった
+const rowHeight = parseFloat(
+  getComputedStyle(document.documentElement).getPropertyValue("--row-height")
+);
+const scrollTarget = containerPadding + trackHeaderHeight + targetRow * rowHeight - 20;
+```
+
+このアプローチの問題点:
+- `trackHeaderHeight` (sticky header の実高さ) を加算するのは誤り。
+  sticky ヘッダーはスクロール座標系では y=0 にあるため、
+  ターゲット時刻の grid 座標 = `targetRow * rowHeight` がそのままスクロール量になる。
+  (sticky ヘッダー分を加えると 2〜3 時間分ずれる)
+- レスポンシブ対応で `--row-height` が変わる（20px → 16px）が、
+  計算タイミングによっては正しい値を取れない場合がある。
+
+### 解決策: DOM の offsetTop を使う
+
+```js
+// 1. renderTimetable() で時刻ラベルに data-time 属性を付ける
+lbl.dataset.time = time; // e.g. "14:00"
+
+// 2. autoScrollToCurrentTime() で offsetTop を読む
+const targetLabel = timetableEl.querySelector(`[data-time="${targetTime}"]`);
+if (!targetLabel) return;
+const labelTop = targetLabel.offsetTop; // 実際の DOM 上の位置
+timetableContainer.scrollTo({ top: Math.max(0, labelTop - 20), behavior: "smooth" });
+```
+
+`offsetTop` はブラウザが計算した実際のピクセル位置なので、
+CSS変数の値・レスポンシブ変化・padding・行高さすべてを正確に反映する。
+
+---
+
+## 開催中セッションの即時ハイライト
+
+### 問題: setInterval は初回実行しない
+
+```js
+renderTimetable(); // 初期レンダリング時に isSessionCurrent() を呼ぶが、
+                   // タイミングによっては border に変更がない場合がある
+setInterval(updateCurrentSessions, 60000); // 60秒後まで更新されない
+```
+
+### 解決策: renderTimetable 直後に即時実行
+
+```js
+renderTimetable();
+updateCurrentSessions(); // ← ページ読込直後に一度確実に実行
+setInterval(updateCurrentSessions, 60000);
+```
+
+---
+
+## 開催日以外のスクロール動作
+
+開催日以外に特定時刻（10:00）にスクロールすると、意図しない画面位置になる。
+開催日以外は先頭（9:00）を表示するのが自然。
+
+```js
+function autoScrollToCurrentTime() {
+  if (!isEventDay()) return; // 開催日以外はスクロールしない（先頭表示）
+  // ...
+}
+```
