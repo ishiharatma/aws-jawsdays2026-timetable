@@ -29,6 +29,8 @@
   const modalTime = document.getElementById("modal-time");
   const modalTags = document.getElementById("modal-tags");
   const modalTitle = document.getElementById("modal-title");
+  const modalSpeakerArea = document.getElementById("modal-speaker-area");
+  const modalSpeakerAvatar = document.getElementById("modal-speaker-avatar");
   const modalSpeaker = document.getElementById("modal-speaker");
   const modalGcalBtn = document.getElementById("modal-gcal-btn");
   const modalProposalBtn = document.getElementById("modal-proposal-btn");
@@ -176,6 +178,15 @@
     return div.innerHTML;
   }
 
+  // --- Utility: Get CSS class for tag ---
+  function getTagClass(tag) {
+    const t = tag.trim().toLowerCase();
+    if (t === "level 200") return "level-200";
+    if (t === "level 300") return "level-300";
+    if (t === "level 400") return "level-400";
+    return "";
+  }
+
   // --- Render Timetable ---
   function renderTimetable() {
     if (!timetableData) return;
@@ -245,7 +256,7 @@
       cell.style.gridColumn = `${trackIdx + 2}`;
       cell.style.gridRow = `${startRow} / span ${span}`;
 
-      // Non-session check
+      // Non-session check (breaks, registration, etc.)
       const isNonSession =
         !session.proposalUrl &&
         (session.title.includes("休憩") ||
@@ -268,19 +279,36 @@
         cell.classList.add("current");
       }
 
-      // Tags HTML
+      // Tags HTML with level-based CSS classes
       const tagsHtml =
         session.tags && session.tags.length > 0
-          ? `<span class="session-tags">${session.tags.map((t) => `<span class="session-tag">${escapeHtml(t)}</span>`).join("")}</span>`
+          ? `<span class="session-tags">${session.tags.map((t) => {
+              const cls = getTagClass(t);
+              return `<span class="session-tag${cls ? " " + cls : ""}">${escapeHtml(t)}</span>`;
+            }).join("")}</span>`
           : "";
+
+      // Speaker with avatar
+      let speakerHtml = "";
+      if (session.speaker) {
+        const avatarHtml = session.speakerImage
+          ? `<img class="session-speaker-avatar" src="${escapeHtml(session.speakerImage)}" alt="${escapeHtml(session.speaker)}" loading="lazy">`
+          : "";
+        speakerHtml = `<span class="session-speaker">${avatarHtml}${escapeHtml(session.speaker)}</span>`;
+      }
+
+      // Checkbox - only for non-break sessions
+      const checkboxHtml = !isNonSession
+        ? `<input type="checkbox" class="session-check" ${checkedSessions.has(session.id) ? "checked" : ""} data-session-id="${session.id}">`
+        : "";
 
       // Content
       cell.innerHTML = `
         <span class="session-time-label">${session.start}-${session.end}</span>
         <span class="session-title">${escapeHtml(session.title)}</span>
-        ${session.speaker ? `<span class="session-speaker">${escapeHtml(session.speaker)}</span>` : ""}
+        ${speakerHtml}
         ${tagsHtml}
-        <input type="checkbox" class="session-check" ${checkedSessions.has(session.id) ? "checked" : ""} data-session-id="${session.id}">
+        ${checkboxHtml}
       `;
 
       // Click handler
@@ -324,12 +352,23 @@
     modalTitle.textContent = session.title;
     modalSpeaker.textContent = session.speaker || "TBD";
 
-    // Tags
+    // Speaker avatar in modal
+    if (session.speakerImage) {
+      modalSpeakerAvatar.src = session.speakerImage;
+      modalSpeakerAvatar.alt = session.speaker || "";
+      modalSpeakerAvatar.classList.remove("hidden");
+    } else {
+      modalSpeakerAvatar.src = "";
+      modalSpeakerAvatar.classList.add("hidden");
+    }
+
+    // Tags with level-based CSS classes
     modalTags.innerHTML = "";
     if (session.tags && session.tags.length > 0) {
       session.tags.forEach((tag) => {
         const span = document.createElement("span");
-        span.className = "modal-tag";
+        const cls = getTagClass(tag);
+        span.className = "modal-tag" + (cls ? " " + cls : "");
         span.textContent = tag;
         modalTags.appendChild(span);
       });

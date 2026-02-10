@@ -47,3 +47,21 @@
 - `docs/` をドキュメント用ディレクトリに転用
   - 仕様書 (`spec.md`)、開発ガイド (`development.md`)、実装計画 (`plan.md`)
   - `knowledge/` フォルダにカテゴリ別ナレッジを蓄積
+
+### Phase 7: UI/UX 改善 (2026-02-10)
+- **README.md 整備**: GitHub Pages URL、機能説明、Level バッジカラー表、ファイル構成を記載
+- **スピーカー画像表示**: `timetable.json` に `speakerImage` フィールドを追加
+  - fortee.jp の `timetable.html` からスピーカー名→画像 URL のマッピングを抽出 (Python スクリプト)
+  - セッションセル内にアイコン画像（18px 丸形）を表示
+  - モーダル内にアイコン画像（40px 丸形）を表示
+- **Level バッジデザイン**: fortee.jp のデザインに準拠した rounded-pill バッジに変更
+  - Level 200: `#50cd89` (緑) / Level 300: `#7239ea` (紫) / Level 400: `#ff8f00` (オレンジ)
+  - CSS クラス `level-200`, `level-300`, `level-400` で色分け
+- **ボタン名称変更**: 「チェック編集」→「参加予定を編集」に変更
+- **休憩枠のチェック無効化**: 非セッション枠（休憩・受付など）の編集モード時にチェックボックスを非表示
+- **横スクロール対応**: `timetable-container` に `overflow-x: auto` + 左右 24px パディング
+- **縦幅調整**: `--row-height` を 12px → 20px に拡大（セッションテキストが読みやすくなる）
+- **ヘッダ固定修正**:
+  - 時間軸ラベルに `position: sticky; left: 0` を追加（横スクロール時も固定）
+  - 上部トラックヘッダの z-index を調整（サイトヘッダとの重なりを解消）
+  - 下部ヘッダに `position: sticky; bottom: 0` を適用
