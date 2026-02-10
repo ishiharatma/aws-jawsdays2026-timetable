@@ -10,6 +10,7 @@
   const TIME_END = "19:40";
   const SLOT_MINUTES = 5;
   const CURRENT_CHECK_INTERVAL = 60000; // 1 minute
+  const SCROLL_TOP_THRESHOLD = 400; // px scrolled before showing button
 
   // --- State ---
   let timetableData = null;
@@ -26,10 +27,13 @@
   const modalCloseBtn = document.getElementById("modal-close-btn");
   const modalTrack = document.getElementById("modal-track");
   const modalTime = document.getElementById("modal-time");
+  const modalTags = document.getElementById("modal-tags");
   const modalTitle = document.getElementById("modal-title");
   const modalSpeaker = document.getElementById("modal-speaker");
   const modalGcalBtn = document.getElementById("modal-gcal-btn");
   const modalProposalBtn = document.getElementById("modal-proposal-btn");
+  const modalXBtn = document.getElementById("modal-x-btn");
+  const scrollTopBtn = document.getElementById("scroll-top-btn");
 
   // --- Utility: Time ---
   function timeToMinutes(t) {
@@ -93,7 +97,6 @@
     const trackLabel = session.track;
     const calTitle = `【${trackLabel}】${session.title}${session.speaker ? " by " + session.speaker : ""}`;
 
-    // Format dates: 20260307T090000 (local time -> append timezone)
     const dateStr = EVENT_DATE.replace(/-/g, "");
     const startStr = session.start.replace(":", "") + "00";
     const endStr = session.end.replace(":", "") + "00";
@@ -111,10 +114,28 @@
     return `https://www.google.com/calendar/render?${params.toString()}`;
   }
 
+  // --- Utility: X (Twitter) post URL ---
+  function buildXPostUrl(session) {
+    const trackData = timetableData.tracks.find((t) => t.id === session.track);
+    const trackHashtag = trackData ? trackData.hashtag : "";
+    const hashtags = `#jawsdays2026 #jawsug ${trackHashtag}`.trim();
+
+    let text = `${session.title}`;
+    if (session.speaker) {
+      text += ` by ${session.speaker}`;
+    }
+    text += `\n${hashtags}`;
+    if (session.proposalUrl) {
+      text += `\n${session.proposalUrl}`;
+    }
+
+    const params = new URLSearchParams({ text });
+    return `https://x.com/intent/post?${params.toString()}`;
+  }
+
   // --- Utility: Current time check ---
   function isSessionCurrent(session) {
     const now = new Date();
-    const eventDate = new Date(EVENT_DATE + "T00:00:00+09:00");
 
     // Check if today is the event day (in JST)
     const jstNow = new Date(
@@ -124,10 +145,35 @@
 
     if (jstDate !== EVENT_DATE) return false;
 
-    const nowMin =jstNow.getHours() * 60 + jstNow.getMinutes();
+    const nowMin = jstNow.getHours() * 60 + jstNow.getMinutes();
     const startMin = timeToMinutes(session.start);
     const endMin = timeToMinutes(session.end);
     return nowMin >= startMin && nowMin < endMin;
+  }
+
+  // --- Utility: Get current JST time in minutes from midnight ---
+  function getCurrentJSTMinutes() {
+    const now = new Date();
+    const jstNow = new Date(
+      now.toLocaleString("en-US", { timeZone: "Asia/Tokyo" })
+    );
+    return jstNow.getHours() * 60 + jstNow.getMinutes();
+  }
+
+  // --- Utility: Check if today is event day ---
+  function isEventDay() {
+    const now = new Date();
+    const jstNow = new Date(
+      now.toLocaleString("en-US", { timeZone: "Asia/Tokyo" })
+    );
+    const jstDate = `${jstNow.getFullYear()}-${String(jstNow.getMonth() + 1).padStart(2, "0")}-${String(jstNow.getDate()).padStart(2, "0")}`;
+    return jstDate === EVENT_DATE;
+  }
+
+  function escapeHtml(str) {
+    const div = document.createElement("div");
+    div.textContent = str;
+    return div.innerHTML;
   }
 
   // --- Render Timetable ---
@@ -142,13 +188,14 @@
     const numTracks = tracks.length;
 
     // Grid: columns = time-label + tracks
-    // Grid: rows = header + time slots
+    // Grid: rows = top header + time slots + bottom header
     const colTemplate = `var(--time-col-width) repeat(${numTracks}, var(--track-width))`;
-    const rowTemplate = `auto repeat(${totalRows}, var(--row-height))`;
+    const rowTemplate = `auto repeat(${totalRows}, var(--row-height)) auto`;
     timetableEl.style.gridTemplateColumns = colTemplate;
     timetableEl.style.gridTemplateRows = rowTemplate;
 
-    // Corner cell
+    // === Top Header Row ===
+    // Corner cell (top)
     const corner = document.createElement("div");
     corner.className = "track-header";
     corner.style.gridColumn = "1";
@@ -156,7 +203,7 @@
     corner.textContent = "";
     timetableEl.appendChild(corner);
 
-    // Track headers
+    // Track headers (top)
     tracks.forEach((track, i) => {
       const th = document.createElement("div");
       th.className = "track-header";
@@ -176,7 +223,6 @@
       }
       lbl.style.gridColumn = "1";
       lbl.style.gridRow = `${row}`;
-      // Only show label for every 30 min or at session boundaries
       if (time.endsWith(":00") || time.endsWith(":30")) {
         lbl.textContent = time;
       }
@@ -199,14 +245,14 @@
       cell.style.gridColumn = `${trackIdx + 2}`;
       cell.style.gridRow = `${startRow} / span ${span}`;
 
-      // Non-session check (lunch, etc.)
+      // Non-session check
       const isNonSession =
         !session.proposalUrl &&
         (session.title.includes("休憩") ||
-          session.title.includes("ランチ") ||
-          session.title.includes("クロージング") ||
+          session.title.includes("受付") ||
+          session.title.includes("会場レイアウト変更") ||
           session.title.includes("オープニング") ||
-          session.title.includes("スポンサーセッション"));
+          session.title.includes("キーノート"));
 
       if (isNonSession) {
         cell.classList.add("non-session");
@@ -222,11 +268,18 @@
         cell.classList.add("current");
       }
 
+      // Tags HTML
+      const tagsHtml =
+        session.tags && session.tags.length > 0
+          ? `<span class="session-tags">${session.tags.map((t) => `<span class="session-tag">${escapeHtml(t)}</span>`).join("")}</span>`
+          : "";
+
       // Content
       cell.innerHTML = `
         <span class="session-time-label">${session.start}-${session.end}</span>
         <span class="session-title">${escapeHtml(session.title)}</span>
         ${session.speaker ? `<span class="session-speaker">${escapeHtml(session.speaker)}</span>` : ""}
+        ${tagsHtml}
         <input type="checkbox" class="session-check" ${checkedSessions.has(session.id) ? "checked" : ""} data-session-id="${session.id}">
       `;
 
@@ -241,12 +294,27 @@
 
       timetableEl.appendChild(cell);
     });
-  }
 
-  function escapeHtml(str) {
-    const div = document.createElement("div");
-    div.textContent = str;
-    return div.innerHTML;
+    // === Bottom Header Row ===
+    const bottomRow = totalRows + 2; // header row (1) + time slot rows + 1
+
+    // Corner cell (bottom)
+    const cornerBottom = document.createElement("div");
+    cornerBottom.className = "track-header-bottom";
+    cornerBottom.style.gridColumn = "1";
+    cornerBottom.style.gridRow = `${bottomRow}`;
+    cornerBottom.textContent = "";
+    timetableEl.appendChild(cornerBottom);
+
+    // Track headers (bottom)
+    tracks.forEach((track, i) => {
+      const th = document.createElement("div");
+      th.className = "track-header-bottom";
+      th.style.gridColumn = `${i + 2}`;
+      th.style.gridRow = `${bottomRow}`;
+      th.innerHTML = `${track.name}<span class="track-hashtag">${track.hashtag}</span>`;
+      timetableEl.appendChild(th);
+    });
   }
 
   // --- Modal ---
@@ -255,6 +323,17 @@
     modalTime.textContent = `${session.start} - ${session.end} (${session.duration}min)`;
     modalTitle.textContent = session.title;
     modalSpeaker.textContent = session.speaker || "TBD";
+
+    // Tags
+    modalTags.innerHTML = "";
+    if (session.tags && session.tags.length > 0) {
+      session.tags.forEach((tag) => {
+        const span = document.createElement("span");
+        span.className = "modal-tag";
+        span.textContent = tag;
+        modalTags.appendChild(span);
+      });
+    }
 
     // Google Calendar link
     modalGcalBtn.href = buildGoogleCalendarUrl(session);
@@ -266,6 +345,10 @@
     } else {
       modalProposalBtn.classList.add("hidden");
     }
+
+    // X post link
+    modalXBtn.href = buildXPostUrl(session);
+    modalXBtn.classList.remove("hidden");
 
     modalOverlay.classList.remove("hidden");
     document.body.style.overflow = "hidden";
@@ -332,6 +415,60 @@
     });
   }
 
+  // --- Scroll to top button ---
+  function setupScrollTopButton() {
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > SCROLL_TOP_THRESHOLD) {
+        scrollTopBtn.classList.remove("hidden");
+      } else {
+        scrollTopBtn.classList.add("hidden");
+      }
+    });
+
+    scrollTopBtn.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  }
+
+  // --- Auto-scroll to current time on load ---
+  function autoScrollToCurrentTime() {
+    if (!timetableData) return;
+
+    let targetMinutes;
+
+    if (isEventDay()) {
+      // On event day, scroll to current time
+      targetMinutes = getCurrentJSTMinutes();
+    } else {
+      // Before event day, scroll to the start of sessions (10:00)
+      targetMinutes = timeToMinutes("10:00");
+    }
+
+    const startMin = timeToMinutes(TIME_START);
+    const targetRow = Math.max(0, (targetMinutes - startMin) / SLOT_MINUTES);
+
+    // Find the grid row element at the target time
+    const rowHeight = parseFloat(
+      getComputedStyle(document.documentElement).getPropertyValue("--row-height")
+    );
+    const headerHeight = document.querySelector(".site-header")
+      ? document.querySelector(".site-header").offsetHeight
+      : 0;
+    const trackHeaderHeight = document.querySelector(".track-header")
+      ? document.querySelector(".track-header").offsetHeight
+      : 0;
+    const containerPadding = 16;
+
+    // Calculate scroll position: header + track header + (rows * row height) - some offset for context
+    const scrollTarget =
+      containerPadding + trackHeaderHeight + targetRow * rowHeight - 20;
+
+    // Smooth scroll with a short delay to ensure DOM is ready
+    setTimeout(() => {
+      window.scrollTo({ top: scrollTarget, behavior: "smooth" });
+    }, 100);
+  }
+
   // --- Event Listeners ---
   editBtn.addEventListener("click", enterEditMode);
   saveBtn.addEventListener("click", () => exitEditMode(true));
@@ -347,6 +484,7 @@
   // --- Init ---
   async function init() {
     loadCheckedSessions();
+    setupScrollTopButton();
 
     try {
       const resp = await fetch("timetable.json");
@@ -358,6 +496,7 @@
     }
 
     renderTimetable();
+    autoScrollToCurrentTime();
 
     // Periodically check for current sessions
     setInterval(updateCurrentSessions, CURRENT_CHECK_INTERVAL);
