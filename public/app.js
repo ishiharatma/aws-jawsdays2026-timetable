@@ -235,6 +235,7 @@
       }
       lbl.style.gridColumn = "1";
       lbl.style.gridRow = `${row}`;
+      lbl.dataset.time = time;
       if (time.endsWith(":00") || time.endsWith(":30")) {
         lbl.textContent = time;
       }
@@ -474,35 +475,26 @@
   function autoScrollToCurrentTime() {
     if (!timetableData) return;
 
-    let targetMinutes;
+    // On non-event days, don't scroll — show from the top (9:00)
+    if (!isEventDay()) return;
 
-    if (isEventDay()) {
-      // On event day, scroll to current time
-      targetMinutes = getCurrentJSTMinutes();
-    } else {
-      // Before event day, scroll to the start of sessions (10:00)
-      targetMinutes = timeToMinutes("10:00");
-    }
-
+    // On event day, scroll to current time
+    const targetMinutes = getCurrentJSTMinutes();
     const startMin = timeToMinutes(TIME_START);
-    const targetRow = Math.max(0, (targetMinutes - startMin) / SLOT_MINUTES);
+    const endMin = timeToMinutes(TIME_END);
 
-    // Find the grid row element at the target time
-    const rowHeight = parseFloat(
-      getComputedStyle(document.documentElement).getPropertyValue("--row-height")
-    );
-    const trackHeaderHeight = document.querySelector(".track-header")
-      ? document.querySelector(".track-header").offsetHeight
-      : 0;
-    const containerPadding = 16;
+    // Clamp to event time range and round down to nearest slot
+    const clampedMinutes = Math.max(startMin, Math.min(targetMinutes, endMin));
+    const slottedMinutes = Math.floor(clampedMinutes / SLOT_MINUTES) * SLOT_MINUTES;
+    const targetTime = minutesToTime(slottedMinutes);
 
-    // Calculate scroll position: track header + (rows * row height) - some offset for context
-    const scrollTarget =
-      containerPadding + trackHeaderHeight + targetRow * rowHeight - 20;
-
-    // Smooth scroll with a short delay to ensure DOM is ready
+    // Use actual DOM position for accuracy instead of manual calculation
     setTimeout(() => {
-      timetableContainer.scrollTo({ top: scrollTarget, behavior: "smooth" });
+      const targetLabel = timetableEl.querySelector(`[data-time="${targetTime}"]`);
+      if (!targetLabel) return;
+      // offsetTop gives position relative to timetableEl (which is scrolled inside timetableContainer)
+      const labelTop = targetLabel.offsetTop;
+      timetableContainer.scrollTo({ top: Math.max(0, labelTop - 20), behavior: "smooth" });
     }, 100);
   }
 
@@ -533,6 +525,7 @@
     }
 
     renderTimetable();
+    updateCurrentSessions(); // apply current-session highlighting immediately on load
     autoScrollToCurrentTime();
 
     // Periodically check for current sessions
