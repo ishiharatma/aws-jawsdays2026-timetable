@@ -10,7 +10,21 @@
   <header class="site-header">
     <div class="header-content">
       <h1>JAWS DAYS 2026</h1>
-      <p class="event-meta">2026/03/07 (Sat) 09:00-19:40 | 池袋サンシャインシティ | <a href="https://fortee.jp/jawsdays-2026/timetable" target="_blank" rel="noopener">#jawsdays2026</a></p>
+      <p class="event-meta">
+        2026/03/07 (Sat) 09:00-19:40
+        |
+        <a href="https://www.google.com/maps/search/サンシャインシティ+池袋" target="_blank" rel="noopener" class="venue-link">
+          池袋サンシャインシティ
+          <svg class="map-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-label="Google Mapで開く"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </a>
+        |
+        <a href="https://fortee.jp/jawsdays-2026/timetable" target="_blank" rel="noopener">#jawsdays2026</a>
+        |
+        <a href="https://x.com/jawsdays" target="_blank" rel="noopener" class="x-account-link">
+          <svg class="x-icon" width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          @jawsdays
+        </a>
+      </p>
       <div class="header-actions">
         <button id="edit-check-btn" class="btn btn-edit" title="参加したいセッションをチェック">参加予定を編集</button>
         <button id="save-check-btn" class="btn btn-save hidden" title="チェックを保存">保存</button>
@@ -19,9 +33,15 @@
     </div>
   </header>
 
-  <main class="timetable-container">
-    <div id="timetable" class="timetable"></div>
+  <main class="timetable-container" id="timetable-container">
+    <div class="timetable-wrapper">
+      <div id="timetable" class="timetable"></div>
+    </div>
   </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2026 <a href="https://ishiharatma.github.io/" target="_blank" rel="noopener">issy</a>. This is an unofficial timetable viewer for JAWS DAYS 2026.</p>
+  </footer>
 
   <!-- Scroll to top button -->
   <button id="scroll-top-btn" class="scroll-top-btn hidden" aria-label="ページトップへ戻る">

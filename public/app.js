@@ -20,6 +20,7 @@
 
   // --- DOM refs ---
   const timetableEl = document.getElementById("timetable");
+  const timetableContainer = document.getElementById("timetable-container");
   const editBtn = document.getElementById("edit-check-btn");
   const saveBtn = document.getElementById("save-check-btn");
   const cancelBtn = document.getElementById("cancel-check-btn");
@@ -456,8 +457,8 @@
 
   // --- Scroll to top button ---
   function setupScrollTopButton() {
-    window.addEventListener("scroll", () => {
-      if (window.scrollY > SCROLL_TOP_THRESHOLD) {
+    timetableContainer.addEventListener("scroll", () => {
+      if (timetableContainer.scrollTop > SCROLL_TOP_THRESHOLD) {
         scrollTopBtn.classList.remove("hidden");
       } else {
         scrollTopBtn.classList.add("hidden");
@@ -465,7 +466,7 @@
     });
 
     scrollTopBtn.addEventListener("click", () => {
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      timetableContainer.scrollTo({ top: 0, behavior: "smooth" });
     });
   }
 
@@ -490,21 +491,18 @@
     const rowHeight = parseFloat(
       getComputedStyle(document.documentElement).getPropertyValue("--row-height")
     );
-    const headerHeight = document.querySelector(".site-header")
-      ? document.querySelector(".site-header").offsetHeight
-      : 0;
     const trackHeaderHeight = document.querySelector(".track-header")
       ? document.querySelector(".track-header").offsetHeight
       : 0;
     const containerPadding = 16;
 
-    // Calculate scroll position: header + track header + (rows * row height) - some offset for context
+    // Calculate scroll position: track header + (rows * row height) - some offset for context
     const scrollTarget =
       containerPadding + trackHeaderHeight + targetRow * rowHeight - 20;
 
     // Smooth scroll with a short delay to ensure DOM is ready
     setTimeout(() => {
-      window.scrollTo({ top: scrollTarget, behavior: "smooth" });
+      timetableContainer.scrollTo({ top: scrollTarget, behavior: "smooth" });
     }, 100);
   }
 
