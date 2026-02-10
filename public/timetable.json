@@ -59,7 +59,8 @@
       "title": "受付",
       "speaker": "",
       "proposalUrl": "",
-      "tags": []
+      "tags": [],
+      "speakerImage": ""
     },
     {
       "id": 2,
@@ -71,7 +72,8 @@
       "title": "オープニング・会場説明",
       "speaker": "清家史郎",
       "proposalUrl": "",
-      "tags": []
+      "tags": [],
+      "speakerImage": "https://fortee.jp/files/jawsdays-2026/speaker/9893c039-2654-451d-a889-d485c080f074.jpg"
     },
     {
       "id": 3,
@@ -83,7 +85,8 @@
       "title": "キーノート",
       "speaker": "",
       "proposalUrl": "",
-      "tags": []
+      "tags": [],
+      "speakerImage": ""
     },
     {
       "id": 4,
@@ -95,7 +98,8 @@
       "title": "休憩",
       "speaker": "",
       "proposalUrl": "",
-      "tags": []
+      "tags": [],
+      "speakerImage": ""
     },
     {
       "id": 5,
@@ -109,7 +113,8 @@
       "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/a80f2a1f-9472-4572-83e0-7363088456a0",
       "tags": [
         "Level 300"
-      ]
+      ],
+      "speakerImage": "https://fortee.jp/files/jawsdays-2026/speaker/ed1f8810-2fee-4fc6-a6d9-7ade700e3f75.jpg"
     },
     {
       "id": 6,
@@ -121,7 +126,8 @@
       "title": "休憩",
       "speaker": "",
       "proposalUrl": "",
-      "tags": []
+      "tags": [],
+      "speakerImage": ""
     },
     {
       "id": 7,
@@ -135,7 +141,8 @@
       "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/3543e3a1-d825-4b73-9b1c-c0a2fd23f4ef",
       "tags": [
         "Level 300"
-      ]
+      ],
+      "speakerImage": "https://fortee.jp/files/jawsdays-2026/speaker/b362eb18-425d-45f9-9b12-a10a5cd3b8b5.jpg"
     },
     {
       "id": 8,
@@ -147,7 +154,8 @@
       "title": "休憩",
       "speaker": "",
       "proposalUrl": "",
-      "tags": []
+      "tags": [],
+      "speakerImage": ""
     },
     {
       "id": 9,
@@ -159,7 +167,8 @@
       "title": "Jr. Championsとともに歩んだAWSキャリア ― 未経験からの挑戦と、学びの広がり",
       "speaker": "中山 稀斗/髙坂 雄大",
       "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/ff4998f0-95ec-4168-8f6a-e63b913a8535",
-      "tags": []
+      "tags": [],
+      "speakerImage": "https://fortee.jp/files/jawsdays-2026/speaker/b395dcf5-3d66-4e1d-be5a-56e6f3a37913.png"
     },
     {
       "id": 10,
@@ -171,7 +180,8 @@
       "title": "休憩",
       "speaker": "",
       "proposalUrl": "",
-      "tags": []
+      "tags": [],
+      "speakerImage": ""
     },
     {
       "id": 11,
@@ -183,7 +193,8 @@
       "title": "業務（SAP）の中心で、AIを叫ぶ",
       "speaker": "河村 晋弥/浅野 佑貴",
       "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/3e13b5ec-9be8-4616-af64-164fb0614385",
-      "tags": []
+      "tags": [],
+      "speakerImage": "https://fortee.jp/files/jawsdays-2026/speaker/4ff339e5-4e9f-454e-b6d5-a981fdbb1e90.png"
     },
     {
       "id": 12,
@@ -195,7 +206,8 @@
       "title": "休憩",
       "speaker": "",
       "proposalUrl": "",
-      "tags": []
+      "tags": [],
+      "speakerImage": ""
     },
     {
       "id": 13,
@@ -210,7 +222,8 @@
       "tags": [
         "Level 200",
         "サポーター"
-      ]
+      ],
+      "speakerImage": "https://fortee.jp/files/jawsdays-2026/speaker/beba4273-44dc-4b2f-a98f-7b7362c6d359.png"
     },
     {
       "id": 14,
@@ -222,7 +235,8 @@
       "title": "休憩",
       "speaker": "",
       "proposalUrl": "",
-      "tags": []
+      "tags": [],
+      "speakerImage": ""
     },
     {
       "id": 15,
@@ -236,7 +250,8 @@
       "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/59962e25-4761-4d86-81c8-9d6547aa8f9b",
       "tags": [
         "Level 200"
-      ]
+      ],
+      "speakerImage": "https://fortee.jp/files/jawsdays-2026/speaker/bceab030-3b88-4df7-aa92-ea7d79d7339d.jpg"
     },
     {
       "id": 16,
@@ -248,7 +263,8 @@
       "title": "休憩",
       "speaker": "",
       "proposalUrl": "",
-      "tags": []
+      "tags": [],
+      "speakerImage": ""
     },
     {
       "id": 17,
@@ -260,7 +276,8 @@
       "title": "休憩",
       "speaker": "",
       "proposalUrl": "",
-      "tags": []
+      "tags": [],
+      "speakerImage": ""
     },
     {
       "id": 18,
@@ -274,7 +291,8 @@
       "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/3cac8170-ae2f-4d1a-9cc6-32482916c5a1",
       "tags": [
         "Level 300"
-      ]
+      ],
+      "speakerImage": "https://fortee.jp/files/jawsdays-2026/speaker/ffb5dff7-3a19-41c2-9fc0-2878219d3e70.jpg"
     },
     {
       "id": 19,
@@ -286,7 +304,8 @@
       "title": "休憩",
       "speaker": "",
       "proposalUrl": "",
-      "tags": []
+      "tags": [],
+      "speakerImage": ""
     },
     {
       "id": 20,
@@ -300,7 +319,8 @@
       "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/ef8aaf5a-c5cc-49ea-bf4e-7b8a67ce042a",
       "tags": [
         "Level 300"
-      ]
+      ],
+      "speakerImage": "https://fortee.jp/files/jawsdays-2026/speaker/0948d8c1-f439-40d1-a6f8-649e947b7bc6.jpg"
     },
     {
       "id": 21,
@@ -312,7 +332,8 @@
       "title": "休憩",
       "speaker": "",
       "proposalUrl": "",
-      "tags": []
+      "tags": [],
+      "speakerImage": ""
     },
     {
       "id": 22,
@@ -326,7 +347,8 @@
       "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/0de570f8-c2b3-4ed9-a1be-0f7df5b7a726",
       "tags": [
         "Level 300"
-      ]
+      ],
+      "speakerImage": "https://fortee.jp/files/jawsdays-2026/speaker/170ec1d6-a126-483b-a808-6054fb947cec.jpg"
     },
     {
       "id": 23,
@@ -338,7 +360,8 @@
       "title": "会場レイアウト変更",
       "speaker": "",
       "proposalUrl": "",
-      "tags": []
+      "tags": [],
+      "speakerImage": ""
     },
     {
       "id": 24,
@@ -350,7 +373,8 @@
       "title": "懇親会",
       "speaker": "jawsdays2026",
       "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/795b2db8-4144-4834-821a-df6d2c888323",
-      "tags": []
+      "tags": [],
+      "speakerImage": "https://fortee.jp/files/jawsdays-2026/speaker/e6163abe-1c03-4de9-985f-92e877941253.jpg"
     },
     {
       "id": 25,
@@ -362,7 +386,8 @@
       "title": "受付",
       "speaker": "",
       "proposalUrl": "",
-      "tags": []
+      "tags": [],
+      "speakerImage": ""
     },
     {
       "id": 26,
@@ -374,7 +399,8 @@
       "title": "オープニング・会場説明",
       "speaker": "清家史郎",
       "proposalUrl": "",
-      "tags": []
+      "tags": [],
+      "speakerImage": "https://fortee.jp/files/jawsdays-2026/speaker/9893c039-2654-451d-a889-d485c080f074.jpg"
     },
     {
       "id": 27,
@@ -386,7 +412,8 @@
       "title": "キーノート",
       "speaker": "",
       "proposalUrl": "",
-      "tags": []
+      "tags": [],
+      "speakerImage": ""
     },
     {
       "id": 28,
@@ -398,7 +425,8 @@
       "title": "休憩",
       "speaker": "",
       "proposalUrl": "",
-      "tags": []
+      "tags": [],
+      "speakerImage": ""
     },
     {
       "id": 29,
@@ -410,7 +438,8 @@
       "title": "セッション",
       "speaker": "",
       "proposalUrl": "",
-      "tags": []
+      "tags": [],
+      "speakerImage": ""
     },
     {
       "id": 30,
@@ -422,7 +451,8 @@
       "title": "休憩",
       "speaker": "",
       "proposalUrl": "",
-      "tags": []
+      "tags": [],
+      "speakerImage": ""
     },
     {
       "id": 31,
@@ -436,7 +466,8 @@
       "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/cc9dafc9-1598-4000-89a7-3facb4718587",
       "tags": [
         "Level 400"
-      ]
+      ],
+      "speakerImage": "https://fortee.jp/files/jawsdays-2026/speaker/b0c2b9e8-cc40-4700-9939-e1833ac8d72a.jpg"
     },
     {
       "id": 32,
@@ -448,7 +479,8 @@
       "title": "休憩",
       "speaker": "",
       "proposalUrl": "",
-      "tags": []
+      "tags": [],
+      "speakerImage": ""
     },
     {
       "id": 33,
@@ -460,7 +492,8 @@
       "title": "DSQL導入のリアル～実プロジェクトで見えたメリットと落とし穴～",
       "speaker": "佐藤 慎",
       "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/c9b37788-f42d-490c-b06a-f4aab4d4039b",
-      "tags": []
+      "tags": [],
+      "speakerImage": "https://fortee.jp/files/jawsdays-2026/speaker/5c60bffa-08ee-45ef-bb99-f23ebfb8d29a.jpg"
     },
     {
       "id": 34,
@@ -472,7 +505,8 @@
       "title": "休憩",
       "speaker": "",
       "proposalUrl": "",
-      "tags": []
+      "tags": [],
+      "speakerImage": ""
     },
     {
       "id": 35,
@@ -484,7 +518,8 @@
       "title": "MLエンジニアだらけの組織が、AWSアドバンストティアになって変わったこと 〜「理想の育成」と「運用の現実」の両輪で進む組織変革〜",
       "speaker": "堺 勇人/長谷川 裕一",
       "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/33787cb8-987f-4394-aa5b-45f2a7dfe282",
-      "tags": []
+      "tags": [],
+      "speakerImage": "https://fortee.jp/files/jawsdays-2026/speaker/c2a586f3-2553-4c9a-9294-f66d0590cba3.png"
     },
     {
       "id": 36,
@@ -496,7 +531,8 @@
       "title": "休憩",
       "speaker": "",
       "proposalUrl": "",
-      "tags": []
+      "tags": [],
+      "speakerImage": ""
     },
     {
       "id": 37,
@@ -511,7 +547,8 @@
       "tags": [
         "Level 200",
         "サポーター"
-      ]
+      ],
+      "speakerImage": "https://fortee.jp/files/jawsdays-2026/speaker/9c54e7be-03cf-4042-93ee-d52d4714bd19.jpg"
     },
     {
       "id": 38,
@@ -523,7 +560,8 @@
       "title": "休憩",
       "speaker": "",
       "proposalUrl": "",
-      "tags": []
+      "tags": [],
+      "speakerImage": ""
     },
     {
       "id": 39,
@@ -538,7 +576,8 @@
       "tags": [
         "Level 200",
         "Level 300"
-      ]
+      ],
+      "speakerImage": "https://fortee.jp/files/jawsdays-2026/speaker/48985da1-8c46-4550-9f7b-a2f3609665c1.jpg"
     },
     {
       "id": 40,
@@ -550,7 +589,8 @@
       "title": "休憩",
       "speaker": "",
       "proposalUrl": "",
-      "tags": []
+      "tags": [],
+      "speakerImage": ""
     },
     {
       "id": 41,
@@ -562,7 +602,8 @@
       "title": "セッション",
       "speaker": "",
       "proposalUrl": "",
-      "tags": []
+      "tags": [],
+      "speakerImage": ""
     },
     {
       "id": 42,
@@ -574,7 +615,8 @@
       "title": "休憩",
       "speaker": "",
       "proposalUrl": "",
-      "tags": []
+      "tags": [],
+      "speakerImage": ""
     },
     {
       "id": 43,
@@ -586,7 +628,8 @@
       "title": "セッション",
       "speaker": "",
       "proposalUrl": "",
-      "tags": []
+      "tags": [],
+      "speakerImage": ""
     },
     {
       "id": 44,
@@ -598,7 +641,8 @@
       "title": "休憩",
       "speaker": "",
       "proposalUrl": "",
-      "tags": []
+      "tags": [],
+      "speakerImage": ""
     },
     {
       "id": 45,
@@ -610,7 +654,8 @@
       "title": "セッション",
       "speaker": "",
       "proposalUrl": "",
-      "tags": []
+      "tags": [],
+      "speakerImage": ""
     },
     {
       "id": 46,
@@ -622,7 +667,8 @@
       "title": "会場レイアウト変更",
       "speaker": "",
       "proposalUrl": "",
-      "tags": []
+      "tags": [],
+      "speakerImage": ""
     },
     {
       "id": 47,
@@ -634,7 +680,8 @@
       "title": "懇親会",
       "speaker": "",
       "proposalUrl": "",
-      "tags": []
+      "tags": [],
+      "speakerImage": ""
     },
     {
       "id": 48,
@@ -646,7 +693,8 @@
       "title": "受付",
       "speaker": "",
       "proposalUrl": "",
-      "tags": []
+      "tags": [],
+      "speakerImage": ""
     },
     {
       "id": 49,
@@ -658,7 +706,8 @@
       "title": "オープニング・会場説明",
       "speaker": "清家史郎",
       "proposalUrl": "",
-      "tags": []
+      "tags": [],
+      "speakerImage": "https://fortee.jp/files/jawsdays-2026/speaker/9893c039-2654-451d-a889-d485c080f074.jpg"
     },
     {
       "id": 50,
@@ -670,7 +719,8 @@
       "title": "キーノート",
       "speaker": "",
       "proposalUrl": "",
-      "tags": []
+      "tags": [],
+      "speakerImage": ""
     },
     {
       "id": 51,
@@ -682,7 +732,8 @@
       "title": "休憩",
       "speaker": "",
       "proposalUrl": "",
-      "tags": []
+      "tags": [],
+      "speakerImage": ""
     },
     {
       "id": 52,
@@ -696,7 +747,8 @@
       "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/03205c08-e4ed-4c13-9dfc-8bbef8e3992a",
       "tags": [
         "Level 200"
-      ]
+      ],
+      "speakerImage": "https://fortee.jp/files/jawsdays-2026/speaker/67bbc5f4-4ac0-4bb9-9c80-6b6f4da14843.jpg"
     },
     {
       "id": 53,
@@ -708,7 +760,8 @@
       "title": "休憩",
       "speaker": "",
       "proposalUrl": "",
-      "tags": []
+      "tags": [],
+      "speakerImage": ""
     },
     {
       "id": 54,
@@ -722,7 +775,8 @@
       "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/b37fc500-d961-463b-8fbf-e67ae4235594",
       "tags": [
         "Level 200"
-      ]
+      ],
+      "speakerImage": "https://fortee.jp/files/jawsdays-2026/speaker/431e9819-e55b-442a-ac52-2dd5d27bbc0d.jpg"
     },
     {
       "id": 55,
@@ -734,7 +788,8 @@
       "title": "休憩",
       "speaker": "",
       "proposalUrl": "",
-      "tags": []
+      "tags": [],
+      "speakerImage": ""
     },
     {
       "id": 56,
@@ -746,7 +801,8 @@
       "title": "「きっかけ作り」から始めるKiro定着の軌跡",
       "speaker": "菊池 恵悟/岡田 直樹",
       "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/2bc9de4f-ea35-4b72-98eb-3cb1a2fb154e",
-      "tags": []
+      "tags": [],
+      "speakerImage": "https://fortee.jp/files/jawsdays-2026/speaker/92ce16d9-246a-4323-9c8b-daf6142b1554.png"
     },
     {
       "id": 57,
@@ -758,7 +814,8 @@
       "title": "休憩",
       "speaker": "",
       "proposalUrl": "",
-      "tags": []
+      "tags": [],
+      "speakerImage": ""
     },
     {
       "id": 58,
@@ -770,7 +827,8 @@
       "title": "AI で実現する AWS Well-Architected レビューの効率化 ～ ナレッジベースと生成AIを活用した設計レビュー実践 ～",
       "speaker": "小島 陽介/棚橋 誠",
       "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/23ef4e3c-c41c-45be-ace7-715281ff3224",
-      "tags": []
+      "tags": [],
+      "speakerImage": "https://fortee.jp/files/jawsdays-2026/speaker/325245d2-6d67-4347-926e-8aca82802de9.png"
     },
     {
       "id": 59,
@@ -782,7 +840,8 @@
       "title": "休憩",
       "speaker": "",
       "proposalUrl": "",
-      "tags": []
+      "tags": [],
+      "speakerImage": ""
     },
     {
       "id": 60,
@@ -797,7 +856,8 @@
       "tags": [
         "Level 200",
         "サポーター"
-      ]
+      ],
+      "speakerImage": "https://fortee.jp/files/jawsdays-2026/speaker/66a4933a-6b3e-4214-b867-c5182a576f07.png"
     },
     {
       "id": 61,
@@ -809,7 +869,8 @@
       "title": "休憩",
       "speaker": "",
       "proposalUrl": "",
-      "tags": []
+      "tags": [],
+      "speakerImage": ""
     },
     {
       "id": 62,
@@ -823,7 +884,8 @@
       "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/454a0be8-f6e8-4226-b05a-5048d96f8f7e",
       "tags": [
         "Level 200"
-      ]
+      ],
+      "speakerImage": "https://fortee.jp/files/jawsdays-2026/speaker/06edb646-5efa-43a7-90b0-bd4970213ee4.jpg"
     },
     {
       "id": 63,
@@ -835,7 +897,8 @@
       "title": "休憩",
       "speaker": "",
       "proposalUrl": "",
-      "tags": []
+      "tags": [],
+      "speakerImage": ""
     },
     {
       "id": 64,
@@ -847,7 +910,8 @@
       "title": "セッション",
       "speaker": "",
       "proposalUrl": "",
-      "tags": []
+      "tags": [],
+      "speakerImage": ""
     },
     {
       "id": 65,
@@ -859,7 +923,8 @@
       "title": "休憩",
       "speaker": "",
       "proposalUrl": "",
-      "tags": []
+      "tags": [],
+      "speakerImage": ""
     },
     {
       "id": 66,
@@ -873,7 +938,8 @@
       "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/6f6e252c-d19f-4910-9386-594b78770fc0",
       "tags": [
         "Level 200"
-      ]
+      ],
+      "speakerImage": "https://fortee.jp/files/jawsdays-2026/speaker/583b3fb1-7799-499d-8362-f5ab0235c8d6.jpg"
     },
     {
       "id": 67,
@@ -885,7 +951,8 @@
       "title": "休憩",
       "speaker": "",
       "proposalUrl": "",
-      "tags": []
+      "tags": [],
+      "speakerImage": ""
     },
     {
       "id": 68,
@@ -897,7 +964,8 @@
       "title": "楽しく学ぼう！セキュリティ 入門",
       "speaker": "臼田佳祐",
       "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/24bd73e8-a64a-48ec-a7b1-407f85277f4e",
-      "tags": []
+      "tags": [],
+      "speakerImage": "https://fortee.jp/files/jawsdays-2026/speaker/d8380b7b-f0ca-4413-acea-d79b1b369130.png"
     },
     {
       "id": 69,
@@ -909,7 +977,8 @@
       "title": "休憩",
       "speaker": "",
       "proposalUrl": "",
-      "tags": []
+      "tags": [],
+      "speakerImage": ""
     },
     {
       "id": 70,
@@ -923,7 +992,8 @@
       "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/7d509a1b-15ae-488f-9529-938d20f81740",
       "tags": [
         "Level 200"
-      ]
+      ],
+      "speakerImage": "https://fortee.jp/files/jawsdays-2026/speaker/1bb3d0f0-0ccd-4b7b-933b-b1a4a0892c81.png"
     },
     {
       "id": 71,
@@ -935,7 +1005,8 @@
       "title": "休憩",
       "speaker": "",
       "proposalUrl": "",
-      "tags": []
+      "tags": [],
+      "speakerImage": ""
     },
     {
       "id": 72,
@@ -949,7 +1020,8 @@
       "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/f6377e81-fb19-4dd0-827d-1abee0e98362",
       "tags": [
         "Level 200"
-      ]
+      ],
+      "speakerImage": ""
     },
     {
       "id": 73,
@@ -961,7 +1033,8 @@
       "title": "休憩",
       "speaker": "",
       "proposalUrl": "",
-      "tags": []
+      "tags": [],
+      "speakerImage": ""
     },
     {
       "id": 74,
@@ -973,7 +1046,8 @@
       "title": "セッション",
       "speaker": "",
       "proposalUrl": "",
-      "tags": []
+      "tags": [],
+      "speakerImage": ""
     },
     {
       "id": 75,
@@ -985,7 +1059,8 @@
       "title": "休憩",
       "speaker": "",
       "proposalUrl": "",
-      "tags": []
+      "tags": [],
+      "speakerImage": ""
     },
     {
       "id": 76,
@@ -997,7 +1072,8 @@
       "title": "楽しく学ぼう！コミュニティ入門 〜AWSと人がつむいできたストーリー〜",
       "speaker": "Hiromi Ito (AWS Community Hero)",
       "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/33fdc5fc-3d09-48d1-91e5-b304ce3e4df7",
-      "tags": []
+      "tags": [],
+      "speakerImage": "https://fortee.jp/files/jawsdays-2026/speaker/ff7d439a-a699-4084-b73a-90448ac25623.jpg"
     },
     {
       "id": 77,
@@ -1009,7 +1085,8 @@
       "title": "会場レイアウト変更",
       "speaker": "",
       "proposalUrl": "",
-      "tags": []
+      "tags": [],
+      "speakerImage": ""
     },
     {
       "id": 78,
@@ -1021,7 +1098,8 @@
       "title": "懇親会",
       "speaker": "",
       "proposalUrl": "",
-      "tags": []
+      "tags": [],
+      "speakerImage": ""
     },
     {
       "id": 79,
@@ -1033,7 +1111,8 @@
       "title": "受付",
       "speaker": "",
       "proposalUrl": "",
-      "tags": []
+      "tags": [],
+      "speakerImage": ""
     },
     {
       "id": 80,
@@ -1045,7 +1124,8 @@
       "title": "休憩",
       "speaker": "",
       "proposalUrl": "",
-      "tags": []
+      "tags": [],
+      "speakerImage": ""
     },
     {
       "id": 81,
@@ -1057,7 +1137,8 @@
       "title": "休憩",
       "speaker": "",
       "proposalUrl": "",
-      "tags": []
+      "tags": [],
+      "speakerImage": ""
     },
     {
       "id": 82,
@@ -1071,7 +1152,8 @@
       "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/d64bb1ac-cb76-4f3c-9ddb-38c9c622d160",
       "tags": [
         "Level 200"
-      ]
+      ],
+      "speakerImage": "https://fortee.jp/files/jawsdays-2026/speaker/41613447-d166-45bd-b95c-18eb22d009cf.jpg"
     },
     {
       "id": 83,
@@ -1083,7 +1165,8 @@
       "title": "休憩",
       "speaker": "",
       "proposalUrl": "",
-      "tags": []
+      "tags": [],
+      "speakerImage": ""
     },
     {
       "id": 84,
@@ -1097,7 +1180,8 @@
       "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/3b3a803e-a264-4b9f-a3f0-45a085f98b7d",
       "tags": [
         "Level 200"
-      ]
+      ],
+      "speakerImage": "https://fortee.jp/files/jawsdays-2026/speaker/37398989-4afe-4666-9327-f66aed3a7692.jpg"
     },
     {
       "id": 85,
@@ -1109,7 +1193,8 @@
       "title": "休憩",
       "speaker": "",
       "proposalUrl": "",
-      "tags": []
+      "tags": [],
+      "speakerImage": ""
     },
     {
       "id": 86,
@@ -1121,7 +1206,8 @@
       "title": "Amazon Q Developerをクライアントワークで、チームで導入した話",
       "speaker": "松本 祐樹/佐々木 慎也",
       "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/d94c0b9e-a1b0-4043-b684-ac3716fd218d",
-      "tags": []
+      "tags": [],
+      "speakerImage": "https://fortee.jp/files/jawsdays-2026/speaker/3df56489-9760-4bf2-842d-3e7c37e3a369.png"
     },
     {
       "id": 87,
@@ -1133,7 +1219,8 @@
       "title": "休憩",
       "speaker": "",
       "proposalUrl": "",
-      "tags": []
+      "tags": [],
+      "speakerImage": ""
     },
     {
       "id": 88,
@@ -1145,7 +1232,8 @@
       "title": "そのツール、全部使えて大丈夫？　～ランチ15分で学ぶ、Okta × Bedrock AgentCoreの認可制御レシピ～",
       "speaker": "平林 徹",
       "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/0e857de3-64b8-4dd6-bc57-52c4b0150fdc",
-      "tags": []
+      "tags": [],
+      "speakerImage": ""
     },
     {
       "id": 89,
@@ -1157,7 +1245,8 @@
       "title": "休憩",
       "speaker": "",
       "proposalUrl": "",
-      "tags": []
+      "tags": [],
+      "speakerImage": ""
     },
     {
       "id": 90,
@@ -1172,7 +1261,8 @@
       "tags": [
         "Level 300",
         "サポーター"
-      ]
+      ],
+      "speakerImage": "https://fortee.jp/files/jawsdays-2026/speaker/625be476-e8f7-45df-b6bd-462e86f5c27c.jpg"
     },
     {
       "id": 91,
@@ -1184,7 +1274,8 @@
       "title": "休憩",
       "speaker": "",
       "proposalUrl": "",
-      "tags": []
+      "tags": [],
+      "speakerImage": ""
     },
     {
       "id": 92,
@@ -1198,7 +1289,8 @@
       "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/a2377e25-53ee-4461-bb4c-423cf819752f",
       "tags": [
         "Level 300"
-      ]
+      ],
+      "speakerImage": "https://fortee.jp/files/jawsdays-2026/speaker/0a41e1ee-ee7f-4ee3-af31-1f16c1a60f49.jpg"
     },
     {
       "id": 93,
@@ -1210,7 +1302,8 @@
       "title": "休憩",
       "speaker": "",
       "proposalUrl": "",
-      "tags": []
+      "tags": [],
+      "speakerImage": ""
     },
     {
       "id": 94,
@@ -1224,7 +1317,8 @@
       "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/d6a57628-b4ef-4587-8c71-bee73bdb467b",
       "tags": [
         "Level 200"
-      ]
+      ],
+      "speakerImage": "https://fortee.jp/files/jawsdays-2026/speaker/ad556375-d75c-418f-bc5a-dc393fbcbbef.jpg"
     },
     {
       "id": 95,
@@ -1236,7 +1330,8 @@
       "title": "休憩",
       "speaker": "",
       "proposalUrl": "",
-      "tags": []
+      "tags": [],
+      "speakerImage": ""
     },
     {
       "id": 96,
@@ -1250,7 +1345,8 @@
       "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/23de68e2-17df-4b00-a79e-46f5aa284b97",
       "tags": [
         "Level 300"
-      ]
+      ],
+      "speakerImage": "https://fortee.jp/files/jawsdays-2026/speaker/f7e605a8-8fbd-46ee-875e-539c217aba62.jpg"
     },
     {
       "id": 97,
@@ -1262,7 +1358,8 @@
       "title": "休憩",
       "speaker": "",
       "proposalUrl": "",
-      "tags": []
+      "tags": [],
+      "speakerImage": ""
     },
     {
       "id": 98,
@@ -1276,7 +1373,8 @@
       "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/73f0fad0-2b16-4cb8-a10f-7b2674ea3c6d",
       "tags": [
         "Level 300"
-      ]
+      ],
+      "speakerImage": "https://fortee.jp/files/jawsdays-2026/speaker/4546e6ae-39ef-4e5c-92d7-29426a93127c.png"
     },
     {
       "id": 99,
@@ -1288,7 +1386,8 @@
       "title": "休憩",
       "speaker": "",
       "proposalUrl": "",
-      "tags": []
+      "tags": [],
+      "speakerImage": ""
     },
     {
       "id": 100,
@@ -1302,7 +1401,8 @@
       "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/b7c83677-5df9-40e2-9997-2fd05503b952",
       "tags": [
         "Level 200"
-      ]
+      ],
+      "speakerImage": "https://fortee.jp/files/jawsdays-2026/speaker/63576269-9da5-41a4-8815-4190649470c1.jpg"
     },
     {
       "id": 101,
@@ -1314,7 +1414,8 @@
       "title": "休憩",
       "speaker": "",
       "proposalUrl": "",
-      "tags": []
+      "tags": [],
+      "speakerImage": ""
     },
     {
       "id": 102,
@@ -1328,7 +1429,8 @@
       "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/1a0bcae1-6f8d-4646-8de3-f3bf900cf3e6",
       "tags": [
         "Level 300"
-      ]
+      ],
+      "speakerImage": "https://fortee.jp/files/jawsdays-2026/speaker/dc55d065-dbc8-43c9-a4ec-52c26a8bc565.jpg"
     },
     {
       "id": 103,
@@ -1340,7 +1442,8 @@
       "title": "休憩",
       "speaker": "",
       "proposalUrl": "",
-      "tags": []
+      "tags": [],
+      "speakerImage": ""
     },
     {
       "id": 104,
@@ -1354,7 +1457,8 @@
       "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/0e4276a8-24c6-4878-84bd-cfe0f5e1893b",
       "tags": [
         "Level 200"
-      ]
+      ],
+      "speakerImage": "https://fortee.jp/files/jawsdays-2026/speaker/3c813da0-8f44-4f2f-bad4-441acd8429a0.jpg"
     },
     {
       "id": 105,
@@ -1366,7 +1470,8 @@
       "title": "休憩",
       "speaker": "",
       "proposalUrl": "",
-      "tags": []
+      "tags": [],
+      "speakerImage": ""
     },
     {
       "id": 106,
@@ -1380,7 +1485,8 @@
       "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/f290167d-77b8-494e-9c98-8f761f8c8376",
       "tags": [
         "Level 300"
-      ]
+      ],
+      "speakerImage": "https://fortee.jp/files/jawsdays-2026/speaker/81dc94c3-dc78-4d59-9741-29f3c33781c5.jpg"
     },
     {
       "id": 107,
@@ -1392,7 +1498,8 @@
       "title": "会場レイアウト変更",
       "speaker": "",
       "proposalUrl": "",
-      "tags": []
+      "tags": [],
+      "speakerImage": ""
     },
     {
       "id": 108,
@@ -1404,7 +1511,8 @@
       "title": "懇親会",
       "speaker": "",
       "proposalUrl": "",
-      "tags": []
+      "tags": [],
+      "speakerImage": ""
     },
     {
       "id": 109,
@@ -1416,7 +1524,8 @@
       "title": "受付",
       "speaker": "",
       "proposalUrl": "",
-      "tags": []
+      "tags": [],
+      "speakerImage": ""
     },
     {
       "id": 110,
@@ -1428,7 +1537,8 @@
       "title": "休憩",
       "speaker": "",
       "proposalUrl": "",
-      "tags": []
+      "tags": [],
+      "speakerImage": ""
     },
     {
       "id": 111,
@@ -1440,7 +1550,8 @@
       "title": "休憩",
       "speaker": "",
       "proposalUrl": "",
-      "tags": []
+      "tags": [],
+      "speakerImage": ""
     },
     {
       "id": 112,
@@ -1454,7 +1565,8 @@
       "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/965c03e3-380d-4faa-a1af-74b47fc29103",
       "tags": [
         "Level 300"
-      ]
+      ],
+      "speakerImage": ""
     },
     {
       "id": 113,
@@ -1466,7 +1578,8 @@
       "title": "休憩",
       "speaker": "",
       "proposalUrl": "",
-      "tags": []
+      "tags": [],
+      "speakerImage": ""
     },
     {
       "id": 114,
@@ -1480,7 +1593,8 @@
       "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/8f8f1e95-1575-4b0c-b0bf-ead118f44b2d",
       "tags": [
         "Level 300"
-      ]
+      ],
+      "speakerImage": "https://fortee.jp/files/jawsdays-2026/speaker/4528bc58-eef5-4ff4-aa18-59052f597f87.jpg"
     },
     {
       "id": 115,
@@ -1492,7 +1606,8 @@
       "title": "休憩",
       "speaker": "",
       "proposalUrl": "",
-      "tags": []
+      "tags": [],
+      "speakerImage": ""
     },
     {
       "id": 116,
@@ -1504,7 +1619,8 @@
       "title": "CloudWatchカスタムメトリクスで実現するコードカバレッジの継続的モニタリング",
       "speaker": "常盤 匠",
       "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/32c4b9e5-a1ba-403e-9da4-1f02b6170792",
-      "tags": []
+      "tags": [],
+      "speakerImage": "https://fortee.jp/files/jawsdays-2026/speaker/6d564237-85f7-41d1-92e6-1ad503094452.jpg"
     },
     {
       "id": 117,
@@ -1516,7 +1632,8 @@
       "title": "休憩",
       "speaker": "",
       "proposalUrl": "",
-      "tags": []
+      "tags": [],
+      "speakerImage": ""
     },
     {
       "id": 118,
@@ -1528,7 +1645,8 @@
       "title": "Kiro CLI で変わる、AWS運用とコスト管理",
       "speaker": "大嵩 洋喜",
       "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/b4f86a49-2275-4bba-a7ec-87b5e91b6033",
-      "tags": []
+      "tags": [],
+      "speakerImage": "https://fortee.jp/files/jawsdays-2026/speaker/3a26b8a2-fb61-40ae-bf6e-6113ebb7192e.jpg"
     },
     {
       "id": 119,
@@ -1540,7 +1658,8 @@
       "title": "休憩",
       "speaker": "",
       "proposalUrl": "",
-      "tags": []
+      "tags": [],
+      "speakerImage": ""
     },
     {
       "id": 120,
@@ -1555,7 +1674,8 @@
       "tags": [
         "Level 300",
         "サポーター"
-      ]
+      ],
+      "speakerImage": "https://fortee.jp/files/jawsdays-2026/speaker/dbf00709-b15d-4f58-b26e-f12b3e04dde5.png"
     },
     {
       "id": 121,
@@ -1567,7 +1687,8 @@
       "title": "休憩",
       "speaker": "",
       "proposalUrl": "",
-      "tags": []
+      "tags": [],
+      "speakerImage": ""
     },
     {
       "id": 122,
@@ -1581,7 +1702,8 @@
       "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/e7a6519a-abc7-41d2-9b29-93a99d9aeb6a",
       "tags": [
         "Level 400"
-      ]
+      ],
+      "speakerImage": "https://fortee.jp/files/jawsdays-2026/speaker/80d9429f-fbd4-49f5-bd52-9e4a7a2cb85a.jpg"
     },
     {
       "id": 123,
@@ -1593,7 +1715,8 @@
       "title": "休憩",
       "speaker": "",
       "proposalUrl": "",
-      "tags": []
+      "tags": [],
+      "speakerImage": ""
     },
     {
       "id": 124,
@@ -1607,7 +1730,8 @@
       "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/fb768121-8069-4ea2-874e-b9bddec85418",
       "tags": [
         "Level 300"
-      ]
+      ],
+      "speakerImage": "https://fortee.jp/files/jawsdays-2026/speaker/9723d8d0-9334-46be-a5c8-e7cdf83991d5.jpg"
     },
     {
       "id": 125,
@@ -1619,7 +1743,8 @@
       "title": "休憩",
       "speaker": "",
       "proposalUrl": "",
-      "tags": []
+      "tags": [],
+      "speakerImage": ""
     },
     {
       "id": 126,
@@ -1633,7 +1758,8 @@
       "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/80627e84-7f04-4046-bab2-fbd5900eaee2",
       "tags": [
         "Level 300"
-      ]
+      ],
+      "speakerImage": "https://fortee.jp/files/jawsdays-2026/speaker/3b5a24b6-a830-49e1-a000-6ea4f03f10cb.png"
     },
     {
       "id": 127,
@@ -1645,7 +1771,8 @@
       "title": "休憩",
       "speaker": "",
       "proposalUrl": "",
-      "tags": []
+      "tags": [],
+      "speakerImage": ""
     },
     {
       "id": 128,
@@ -1659,7 +1786,8 @@
       "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/01b34643-ecb4-4e01-abb0-03395e87e122",
       "tags": [
         "Level 300"
-      ]
+      ],
+      "speakerImage": "https://fortee.jp/files/jawsdays-2026/speaker/377f2622-7907-4cd8-8670-54a5f8fe6c36.jpg"
     },
     {
       "id": 129,
@@ -1671,7 +1799,8 @@
       "title": "休憩",
       "speaker": "",
       "proposalUrl": "",
-      "tags": []
+      "tags": [],
+      "speakerImage": ""
     },
     {
       "id": 130,
@@ -1686,7 +1815,8 @@
       "tags": [
         "Level 200",
         "ゲームショー"
-      ]
+      ],
+      "speakerImage": "https://fortee.jp/files/jawsdays-2026/speaker/85a1211f-39cd-49a7-b538-6af8a1b15902.jpg"
     },
     {
       "id": 131,
@@ -1698,7 +1828,8 @@
       "title": "休憩",
       "speaker": "",
       "proposalUrl": "",
-      "tags": []
+      "tags": [],
+      "speakerImage": ""
     },
     {
       "id": 132,
@@ -1712,7 +1843,8 @@
       "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/0e4f1434-39bb-43b4-b966-6b67a69f3b29",
       "tags": [
         "Level 300"
-      ]
+      ],
+      "speakerImage": "https://fortee.jp/files/jawsdays-2026/speaker/edc4fdbe-632a-49fd-97c6-e56893f08189.jpg"
     },
     {
       "id": 133,
@@ -1724,7 +1856,8 @@
       "title": "会場レイアウト変更",
       "speaker": "",
       "proposalUrl": "",
-      "tags": []
+      "tags": [],
+      "speakerImage": ""
     },
     {
       "id": 134,
@@ -1736,7 +1869,8 @@
       "title": "懇親会",
       "speaker": "",
       "proposalUrl": "",
-      "tags": []
+      "tags": [],
+      "speakerImage": ""
     },
     {
       "id": 135,
@@ -1748,7 +1882,8 @@
       "title": "受付",
       "speaker": "",
       "proposalUrl": "",
-      "tags": []
+      "tags": [],
+      "speakerImage": ""
     },
     {
       "id": 136,
@@ -1760,7 +1895,8 @@
       "title": "休憩",
       "speaker": "",
       "proposalUrl": "",
-      "tags": []
+      "tags": [],
+      "speakerImage": ""
     },
     {
       "id": 137,
@@ -1775,7 +1911,8 @@
       "tags": [
         "Level 200",
         "コンテスト"
-      ]
+      ],
+      "speakerImage": ""
     },
     {
       "id": 138,
@@ -1787,7 +1924,8 @@
       "title": "休憩",
       "speaker": "",
       "proposalUrl": "",
-      "tags": []
+      "tags": [],
+      "speakerImage": ""
     },
     {
       "id": 139,
@@ -1802,7 +1940,8 @@
       "tags": [
         "Level 300",
         "コンテスト"
-      ]
+      ],
+      "speakerImage": "https://fortee.jp/files/jawsdays-2026/speaker/509aed8c-604a-43b6-b734-f09d7a6a2a5f.jpg"
     },
     {
       "id": 140,
@@ -1814,7 +1953,8 @@
       "title": "休憩",
       "speaker": "",
       "proposalUrl": "",
-      "tags": []
+      "tags": [],
+      "speakerImage": ""
     },
     {
       "id": 141,
@@ -1826,7 +1966,8 @@
       "title": "Dr. Werner Vogels の12年のキーノートから紐解くエンジニアリング組織への処方箋",
       "speaker": "早川 裕志/須賀 功太",
       "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/5f364bd1-1934-4dcc-96ce-7de80e2ae415",
-      "tags": []
+      "tags": [],
+      "speakerImage": "https://fortee.jp/files/jawsdays-2026/speaker/dbacaa9c-a63f-4507-bd36-8ae737615268.png"
     },
     {
       "id": 142,
@@ -1838,7 +1979,8 @@
       "title": "休憩",
       "speaker": "",
       "proposalUrl": "",
-      "tags": []
+      "tags": [],
+      "speakerImage": ""
     },
     {
       "id": 143,
@@ -1850,7 +1992,8 @@
       "title": "IaC実行基盤を観点別に評価〜AWS環境での選択指針〜",
       "speaker": "小山ちひろ",
       "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/352a0c6c-4337-4751-a914-933ca4f5f2aa",
-      "tags": []
+      "tags": [],
+      "speakerImage": "https://fortee.jp/files/jawsdays-2026/speaker/862551d2-5ab1-43f6-8ad1-60cc4dffd940.png"
     },
     {
       "id": 144,
@@ -1862,7 +2005,8 @@
       "title": "休憩",
       "speaker": "",
       "proposalUrl": "",
-      "tags": []
+      "tags": [],
+      "speakerImage": ""
     },
     {
       "id": 145,
@@ -1877,7 +2021,8 @@
       "tags": [
         "Level 300",
         "サポーター"
-      ]
+      ],
+      "speakerImage": "https://fortee.jp/files/jawsdays-2026/speaker/061a5e3b-14c2-4b40-bf01-0328aa47d35a.png"
     },
     {
       "id": 146,
@@ -1889,7 +2034,8 @@
       "title": "会場レイアウト変更",
       "speaker": "",
       "proposalUrl": "",
-      "tags": []
+      "tags": [],
+      "speakerImage": ""
     },
     {
       "id": 147,
@@ -1903,7 +2049,8 @@
       "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/a5731ba7-7d03-42da-bc3b-d504f97cefc6",
       "tags": [
         "Level 300"
-      ]
+      ],
+      "speakerImage": "https://fortee.jp/files/jawsdays-2026/speaker/d8355212-a7f7-44c5-8700-3476c9a81c42.jpg"
     },
     {
       "id": 148,
@@ -1915,7 +2062,8 @@
       "title": "会場レイアウト変更",
       "speaker": "",
       "proposalUrl": "",
-      "tags": []
+      "tags": [],
+      "speakerImage": ""
     },
     {
       "id": 149,
@@ -1927,7 +2075,8 @@
       "title": "懇親会",
       "speaker": "",
       "proposalUrl": "",
-      "tags": []
+      "tags": [],
+      "speakerImage": ""
     },
     {
       "id": 150,
@@ -1939,7 +2088,8 @@
       "title": "受付",
       "speaker": "",
       "proposalUrl": "",
-      "tags": []
+      "tags": [],
+      "speakerImage": ""
     },
     {
       "id": 151,
@@ -1951,7 +2101,8 @@
       "title": "休憩",
       "speaker": "",
       "proposalUrl": "",
-      "tags": []
+      "tags": [],
+      "speakerImage": ""
     },
     {
       "id": 152,
@@ -1966,7 +2117,8 @@
       "tags": [
         "Level 200",
         "ワークショップ"
-      ]
+      ],
+      "speakerImage": "https://fortee.jp/files/jawsdays-2026/speaker/897f6337-965b-482e-8043-1ad17f448935.jpg"
     },
     {
       "id": 153,
@@ -1978,7 +2130,8 @@
       "title": "休憩",
       "speaker": "",
       "proposalUrl": "",
-      "tags": []
+      "tags": [],
+      "speakerImage": ""
     },
     {
       "id": 154,
@@ -1990,7 +2143,8 @@
       "title": "巨大組織で四苦八苦！？ 三菱電機グループで進めるクラウド移行 ～大規模マイグレーションへの挑戦～",
       "speaker": "齊藤 大樹/紅林 俊之",
       "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/1b3f8e59-c815-4dca-9bbf-ce44441c1b2f",
-      "tags": []
+      "tags": [],
+      "speakerImage": "https://fortee.jp/files/jawsdays-2026/speaker/5598ee74-6533-4a16-88be-8b6d1dad700c.png"
     },
     {
       "id": 155,
@@ -2002,7 +2156,8 @@
       "title": "休憩",
       "speaker": "",
       "proposalUrl": "",
-      "tags": []
+      "tags": [],
+      "speakerImage": ""
     },
     {
       "id": 156,
@@ -2014,7 +2169,8 @@
       "title": "データを知らずにインフラを組むな 〜RNA-Seq × Fargate 死亡日記〜",
       "speaker": "一ノ瀬 美帆/井山 学",
       "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/2a806fd3-8acf-4306-8878-65ab2e0e53d1",
-      "tags": []
+      "tags": [],
+      "speakerImage": ""
     },
     {
       "id": 157,
@@ -2026,7 +2182,8 @@
       "title": "休憩",
       "speaker": "",
       "proposalUrl": "",
-      "tags": []
+      "tags": [],
+      "speakerImage": ""
     },
     {
       "id": 158,
@@ -2041,7 +2198,8 @@
       "tags": [
         "Level 200",
         "サポーター"
-      ]
+      ],
+      "speakerImage": "https://fortee.jp/files/jawsdays-2026/speaker/d9ba725d-8c80-42bc-9adb-a18907474134.jpg"
     },
     {
       "id": 159,
@@ -2053,7 +2211,8 @@
       "title": "会場レイアウト変更",
       "speaker": "",
       "proposalUrl": "",
-      "tags": []
+      "tags": [],
+      "speakerImage": ""
     },
     {
       "id": 160,
@@ -2068,7 +2227,8 @@
       "tags": [
         "Level 300",
         "ワークショップ"
-      ]
+      ],
+      "speakerImage": "https://fortee.jp/files/jawsdays-2026/speaker/976a4736-42f1-4e10-8c2a-25c411c0888f.jpg"
     },
     {
       "id": 161,
@@ -2080,7 +2240,8 @@
       "title": "休憩",
       "speaker": "",
       "proposalUrl": "",
-      "tags": []
+      "tags": [],
+      "speakerImage": ""
     },
     {
       "id": 162,
@@ -2095,7 +2256,8 @@
       "tags": [
         "Level 200",
         "ワークショップ"
-      ]
+      ],
+      "speakerImage": ""
     },
     {
       "id": 163,
@@ -2107,7 +2269,8 @@
       "title": "会場レイアウト変更",
       "speaker": "",
       "proposalUrl": "",
-      "tags": []
+      "tags": [],
+      "speakerImage": ""
     },
     {
       "id": 164,
@@ -2119,7 +2282,8 @@
       "title": "懇親会",
       "speaker": "",
       "proposalUrl": "",
-      "tags": []
+      "tags": [],
+      "speakerImage": ""
     },
     {
       "id": 165,
@@ -2131,7 +2295,8 @@
       "title": "受付",
       "speaker": "",
       "proposalUrl": "",
-      "tags": []
+      "tags": [],
+      "speakerImage": ""
     },
     {
       "id": 166,
@@ -2143,7 +2308,8 @@
       "title": "休憩",
       "speaker": "",
       "proposalUrl": "",
-      "tags": []
+      "tags": [],
+      "speakerImage": ""
     },
     {
       "id": 167,
@@ -2155,7 +2321,8 @@
       "title": "親子で Mashup for the Future！しゃべって楽しむ 初手AI駆動でものづくり体験",
       "speaker": "お祭り班",
       "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/fcc45875-6652-4854-bb33-60d7228c799f",
-      "tags": []
+      "tags": [],
+      "speakerImage": "https://fortee.jp/files/jawsdays-2026/speaker/9e35e969-9a4f-48c7-95ed-b935a7dbeeb1.png"
     },
     {
       "id": 168,
@@ -2167,7 +2334,8 @@
       "title": "サポーターブースツアー①",
       "speaker": "お祭り班",
       "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/af07013d-a740-491c-b102-a4b49bb3a1f2",
-      "tags": []
+      "tags": [],
+      "speakerImage": "https://fortee.jp/files/jawsdays-2026/speaker/9e35e969-9a4f-48c7-95ed-b935a7dbeeb1.png"
     },
     {
       "id": 169,
@@ -2179,7 +2347,8 @@
       "title": "AWS BuilderCards バトル in JAWS DAYS 2026",
       "speaker": "お祭り班",
       "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/a3f7e5c4-c98e-4ea2-b4ad-bfa852a47a73",
-      "tags": []
+      "tags": [],
+      "speakerImage": "https://fortee.jp/files/jawsdays-2026/speaker/9e35e969-9a4f-48c7-95ed-b935a7dbeeb1.png"
     },
     {
       "id": 170,
@@ -2191,7 +2360,8 @@
       "title": "サポーターブースツアー②",
       "speaker": "お祭り班",
       "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/c5582930-eac5-4afe-83d4-d74469241f4c",
-      "tags": []
+      "tags": [],
+      "speakerImage": "https://fortee.jp/files/jawsdays-2026/speaker/9e35e969-9a4f-48c7-95ed-b935a7dbeeb1.png"
     },
     {
       "id": 171,
@@ -2203,7 +2373,8 @@
       "title": "JAWS DAYS お茶会テーブル「純喫茶 鮫」",
       "speaker": "お祭り班",
       "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/8c6c2eea-7aad-4336-a393-22dc56578bc5",
-      "tags": []
+      "tags": [],
+      "speakerImage": "https://fortee.jp/files/jawsdays-2026/speaker/9e35e969-9a4f-48c7-95ed-b935a7dbeeb1.png"
     },
     {
       "id": 172,
@@ -2215,7 +2386,8 @@
       "title": "サポーターブースツアー③",
       "speaker": "お祭り班",
       "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/683f2971-06ee-4cff-af83-5b8031c293d2",
-      "tags": []
+      "tags": [],
+      "speakerImage": "https://fortee.jp/files/jawsdays-2026/speaker/9e35e969-9a4f-48c7-95ed-b935a7dbeeb1.png"
     },
     {
       "id": 173,
@@ -2227,7 +2399,8 @@
       "title": "JAWS DAYS2026版！チーム対抗 AWS ウルトラクイズ",
       "speaker": "お祭り班",
       "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/582d5add-caa1-4b62-9a2e-a5c16d0daf69",
-      "tags": []
+      "tags": [],
+      "speakerImage": "https://fortee.jp/files/jawsdays-2026/speaker/9e35e969-9a4f-48c7-95ed-b935a7dbeeb1.png"
     }
   ]
 }
