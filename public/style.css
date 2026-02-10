@@ -23,10 +23,12 @@
   --color-modal-overlay: rgba(0, 0, 0, 0.5);
   --color-gcal: #4285f4;
   --color-proposal: #232f3e;
+  --color-x: #000000;
   --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Hiragino Sans", "Noto Sans JP", sans-serif;
   --row-height: 12px;
   --track-width: 180px;
   --time-col-width: 60px;
+  --site-header-height: 68px;
 }
 
 body {
@@ -144,6 +146,15 @@ body {
   background: #37475a;
 }
 
+.btn-x {
+  background: var(--color-x);
+  color: #fff;
+}
+
+.btn-x:hover {
+  background: #333;
+}
+
 .hidden {
   display: none !important;
 }
@@ -171,7 +182,7 @@ body {
   text-align: center;
   padding: 10px 8px;
   position: sticky;
-  top: 0;
+  top: var(--site-header-height);
   z-index: 10;
   border-right: 1px solid rgba(255, 255, 255, 0.15);
 }
@@ -185,6 +196,34 @@ body {
 }
 
 .track-header .track-hashtag {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 400;
+  color: #a0aab4;
+  margin-top: 2px;
+}
+
+/* Track Headers (bottom row) */
+.track-header-bottom {
+  background: var(--color-track-header);
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-align: center;
+  padding: 10px 8px;
+  z-index: 10;
+  border-right: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.track-header-bottom:first-of-type {
+  border-radius: 0 0 0 8px;
+}
+
+.track-header-bottom:last-of-type {
+  border-radius: 0 0 8px 0;
+}
+
+.track-header-bottom .track-hashtag {
   display: block;
   font-size: 0.7rem;
   font-weight: 400;
@@ -256,6 +295,20 @@ body {
   color: #8899a6;
 }
 
+.session-cell .session-tags {
+  display: flex;
+  gap: 3px;
+  flex-wrap: wrap;
+}
+
+.session-cell .session-tag {
+  font-size: 0.55rem;
+  background: #e8edf2;
+  color: #5a6872;
+  padding: 1px 4px;
+  border-radius: 3px;
+}
+
 /* Checked session (yellow/orange border) */
 .session-cell.checked {
   border: 3px solid var(--color-checked);
@@ -276,7 +329,7 @@ body {
   box-shadow: 0 0 0 1px rgba(255, 153, 0, 0.3), inset 0 0 0 1px rgba(52, 199, 89, 0.3);
 }
 
-/* Non-session cells (lunch, etc.) */
+/* Non-session cells (breaks, etc.) */
 .session-cell.non-session {
   background: #f0f0f0;
   cursor: default;
@@ -316,6 +369,39 @@ body {
 /* Empty grid cells */
 .grid-empty {
   border-bottom: 1px solid #eee;
+}
+
+/* === Scroll to top button === */
+.scroll-top-btn {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--color-header);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  z-index: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: opacity 0.3s, transform 0.3s;
+  opacity: 1;
+}
+
+.scroll-top-btn:hover {
+  background: #37475a;
+  transform: scale(1.1);
+}
+
+.scroll-top-btn.hidden {
+  opacity: 0;
+  pointer-events: none;
+  display: flex !important;
+  transform: translateY(10px);
 }
 
 /* === Modal === */
@@ -392,6 +478,26 @@ body {
   font-weight: 500;
 }
 
+.modal-tags {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+
+.modal-tags:empty {
+  display: none;
+}
+
+.modal-tag {
+  font-size: 0.75rem;
+  background: #e8edf2;
+  color: #5a6872;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
 .modal-title {
   font-size: 1.2rem;
   font-weight: 700;
@@ -432,6 +538,7 @@ body {
     --track-width: 140px;
     --time-col-width: 48px;
     --row-height: 10px;
+    --site-header-height: 90px;
   }
 
   .header-content {
@@ -470,6 +577,13 @@ body {
 
   .modal-actions .btn {
     justify-content: center;
+  }
+
+  .scroll-top-btn {
+    bottom: 16px;
+    right: 16px;
+    width: 40px;
+    height: 40px;
   }
 }
 

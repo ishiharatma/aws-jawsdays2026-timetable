@@ -1,0 +1,2233 @@
+{
+  "event": {
+    "name": "JAWS DAYS 2026",
+    "date": "2026-03-07",
+    "venue": "池袋サンシャインシティ",
+    "hashtag": "#jawsdays2026",
+    "timetableUrl": "https://fortee.jp/jawsdays-2026/timetable"
+  },
+  "tracks": [
+    {
+      "id": "A",
+      "name": "Track A",
+      "hashtag": "#jawsdays2026_a"
+    },
+    {
+      "id": "B",
+      "name": "Track B",
+      "hashtag": "#jawsdays2026_b"
+    },
+    {
+      "id": "C",
+      "name": "Track C",
+      "hashtag": "#jawsdays2026_c"
+    },
+    {
+      "id": "D",
+      "name": "Track D",
+      "hashtag": "#jawsdays2026_d"
+    },
+    {
+      "id": "E",
+      "name": "Track E",
+      "hashtag": "#jawsdays2026_e"
+    },
+    {
+      "id": "F",
+      "name": "Track F",
+      "hashtag": "#jawsdays2026_f"
+    },
+    {
+      "id": "G",
+      "name": "Track G",
+      "hashtag": "#jawsdays2026_g"
+    },
+    {
+      "id": "H",
+      "name": "Track H",
+      "hashtag": "#jawsdays2026_h"
+    }
+  ],
+  "sessions": [
+    {
+      "id": 1,
+      "track": "A",
+      "date": "2026-03-07",
+      "start": "09:00",
+      "end": "09:50",
+      "duration": 50,
+      "title": "受付",
+      "speaker": "",
+      "proposalUrl": "",
+      "tags": []
+    },
+    {
+      "id": 2,
+      "track": "A",
+      "date": "2026-03-07",
+      "start": "09:50",
+      "end": "10:00",
+      "duration": 10,
+      "title": "オープニング・会場説明",
+      "speaker": "清家史郎",
+      "proposalUrl": "",
+      "tags": []
+    },
+    {
+      "id": 3,
+      "track": "A",
+      "date": "2026-03-07",
+      "start": "10:00",
+      "end": "10:50",
+      "duration": 50,
+      "title": "キーノート",
+      "speaker": "",
+      "proposalUrl": "",
+      "tags": []
+    },
+    {
+      "id": 4,
+      "track": "A",
+      "date": "2026-03-07",
+      "start": "10:50",
+      "end": "11:00",
+      "duration": 10,
+      "title": "休憩",
+      "speaker": "",
+      "proposalUrl": "",
+      "tags": []
+    },
+    {
+      "id": 5,
+      "track": "A",
+      "date": "2026-03-07",
+      "start": "11:00",
+      "end": "11:20",
+      "duration": 20,
+      "title": "AWS IAM は誰の責任か？ ~ Cloud Infrastructure チーム が全部守る設計はなぜ失敗するのか",
+      "speaker": "辻 水月",
+      "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/a80f2a1f-9472-4572-83e0-7363088456a0",
+      "tags": [
+        "Level 300"
+      ]
+    },
+    {
+      "id": 6,
+      "track": "A",
+      "date": "2026-03-07",
+      "start": "11:20",
+      "end": "11:30",
+      "duration": 10,
+      "title": "休憩",
+      "speaker": "",
+      "proposalUrl": "",
+      "tags": []
+    },
+    {
+      "id": 7,
+      "track": "A",
+      "date": "2026-03-07",
+      "start": "11:30",
+      "end": "11:50",
+      "duration": 20,
+      "title": "ランサムウエア対策してますか？やられた時の対策は本当にできてますか？AWSでのリスク分析と対応フローの泥臭いお話。",
+      "speaker": "大瀧広宣",
+      "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/3543e3a1-d825-4b73-9b1c-c0a2fd23f4ef",
+      "tags": [
+        "Level 300"
+      ]
+    },
+    {
+      "id": 8,
+      "track": "A",
+      "date": "2026-03-07",
+      "start": "11:50",
+      "end": "12:00",
+      "duration": 10,
+      "title": "休憩",
+      "speaker": "",
+      "proposalUrl": "",
+      "tags": []
+    },
+    {
+      "id": 9,
+      "track": "A",
+      "date": "2026-03-07",
+      "start": "12:00",
+      "end": "12:15",
+      "duration": 15,
+      "title": "Jr. Championsとともに歩んだAWSキャリア ― 未経験からの挑戦と、学びの広がり",
+      "speaker": "中山 稀斗/髙坂 雄大",
+      "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/ff4998f0-95ec-4168-8f6a-e63b913a8535",
+      "tags": []
+    },
+    {
+      "id": 10,
+      "track": "A",
+      "date": "2026-03-07",
+      "start": "12:15",
+      "end": "12:20",
+      "duration": 5,
+      "title": "休憩",
+      "speaker": "",
+      "proposalUrl": "",
+      "tags": []
+    },
+    {
+      "id": 11,
+      "track": "A",
+      "date": "2026-03-07",
+      "start": "12:20",
+      "end": "12:35",
+      "duration": 15,
+      "title": "業務（SAP）の中心で、AIを叫ぶ",
+      "speaker": "河村 晋弥/浅野 佑貴",
+      "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/3e13b5ec-9be8-4616-af64-164fb0614385",
+      "tags": []
+    },
+    {
+      "id": 12,
+      "track": "A",
+      "date": "2026-03-07",
+      "start": "12:35",
+      "end": "12:40",
+      "duration": 5,
+      "title": "休憩",
+      "speaker": "",
+      "proposalUrl": "",
+      "tags": []
+    },
+    {
+      "id": 13,
+      "track": "A",
+      "date": "2026-03-07",
+      "start": "12:40",
+      "end": "13:10",
+      "duration": 30,
+      "title": "現場SEが語る 回せるセキュリティ運用　～設計で可視化、AIで加速する「楽に回る」運用設計のコツ～",
+      "speaker": "畑 彰毅/渡邉 優輔",
+      "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/fbc3deac-4f03-4020-a136-e229eee927da",
+      "tags": [
+        "Level 200",
+        "サポーター"
+      ]
+    },
+    {
+      "id": 14,
+      "track": "A",
+      "date": "2026-03-07",
+      "start": "13:10",
+      "end": "13:20",
+      "duration": 10,
+      "title": "休憩",
+      "speaker": "",
+      "proposalUrl": "",
+      "tags": []
+    },
+    {
+      "id": 15,
+      "track": "A",
+      "date": "2026-03-07",
+      "start": "13:20",
+      "end": "14:10",
+      "duration": 50,
+      "title": "生成AI時代の開発と運用",
+      "speaker": "山口能迪",
+      "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/59962e25-4761-4d86-81c8-9d6547aa8f9b",
+      "tags": [
+        "Level 200"
+      ]
+    },
+    {
+      "id": 16,
+      "track": "A",
+      "date": "2026-03-07",
+      "start": "13:40",
+      "end": "13:50",
+      "duration": 10,
+      "title": "休憩",
+      "speaker": "",
+      "proposalUrl": "",
+      "tags": []
+    },
+    {
+      "id": 17,
+      "track": "A",
+      "date": "2026-03-07",
+      "start": "14:10",
+      "end": "14:20",
+      "duration": 10,
+      "title": "休憩",
+      "speaker": "",
+      "proposalUrl": "",
+      "tags": []
+    },
+    {
+      "id": 18,
+      "track": "A",
+      "date": "2026-03-07",
+      "start": "14:20",
+      "end": "15:10",
+      "duration": 50,
+      "title": "AWS×クラウドネイティブソフトウェア設計――依存を「選ぶ」イベントドリブンアーキテクチャ",
+      "speaker": "nrs / 成瀬允宣",
+      "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/3cac8170-ae2f-4d1a-9cc6-32482916c5a1",
+      "tags": [
+        "Level 300"
+      ]
+    },
+    {
+      "id": 19,
+      "track": "A",
+      "date": "2026-03-07",
+      "start": "15:10",
+      "end": "15:20",
+      "duration": 10,
+      "title": "休憩",
+      "speaker": "",
+      "proposalUrl": "",
+      "tags": []
+    },
+    {
+      "id": 20,
+      "track": "A",
+      "date": "2026-03-07",
+      "start": "15:20",
+      "end": "16:10",
+      "duration": 50,
+      "title": "クラウドネイティブ時代のウェブセキュリティ再考 ～AWS、コンテナ、CI/CDに潜む死角～",
+      "speaker": "徳丸浩",
+      "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/ef8aaf5a-c5cc-49ea-bf4e-7b8a67ce042a",
+      "tags": [
+        "Level 300"
+      ]
+    },
+    {
+      "id": 21,
+      "track": "A",
+      "date": "2026-03-07",
+      "start": "16:10",
+      "end": "16:20",
+      "duration": 10,
+      "title": "休憩",
+      "speaker": "",
+      "proposalUrl": "",
+      "tags": []
+    },
+    {
+      "id": 22,
+      "track": "A",
+      "date": "2026-03-07",
+      "start": "16:20",
+      "end": "17:10",
+      "duration": 50,
+      "title": "初手AIで実現するAIと一緒に働くということ - AIファーストを実現する汎用タスクエージェントの作りかた",
+      "speaker": "西見公宏 / 吉田真吾",
+      "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/0de570f8-c2b3-4ed9-a1be-0f7df5b7a726",
+      "tags": [
+        "Level 300"
+      ]
+    },
+    {
+      "id": 23,
+      "track": "A",
+      "date": "2026-03-07",
+      "start": "17:10",
+      "end": "17:30",
+      "duration": 20,
+      "title": "会場レイアウト変更",
+      "speaker": "",
+      "proposalUrl": "",
+      "tags": []
+    },
+    {
+      "id": 24,
+      "track": "A",
+      "date": "2026-03-07",
+      "start": "17:30",
+      "end": "19:40",
+      "duration": 130,
+      "title": "懇親会",
+      "speaker": "jawsdays2026",
+      "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/795b2db8-4144-4834-821a-df6d2c888323",
+      "tags": []
+    },
+    {
+      "id": 25,
+      "track": "B",
+      "date": "2026-03-07",
+      "start": "09:00",
+      "end": "09:50",
+      "duration": 50,
+      "title": "受付",
+      "speaker": "",
+      "proposalUrl": "",
+      "tags": []
+    },
+    {
+      "id": 26,
+      "track": "B",
+      "date": "2026-03-07",
+      "start": "09:50",
+      "end": "10:00",
+      "duration": 10,
+      "title": "オープニング・会場説明",
+      "speaker": "清家史郎",
+      "proposalUrl": "",
+      "tags": []
+    },
+    {
+      "id": 27,
+      "track": "B",
+      "date": "2026-03-07",
+      "start": "10:00",
+      "end": "10:50",
+      "duration": 50,
+      "title": "キーノート",
+      "speaker": "",
+      "proposalUrl": "",
+      "tags": []
+    },
+    {
+      "id": 28,
+      "track": "B",
+      "date": "2026-03-07",
+      "start": "10:50",
+      "end": "11:00",
+      "duration": 10,
+      "title": "休憩",
+      "speaker": "",
+      "proposalUrl": "",
+      "tags": []
+    },
+    {
+      "id": 29,
+      "track": "B",
+      "date": "2026-03-07",
+      "start": "11:00",
+      "end": "11:20",
+      "duration": 20,
+      "title": "セッション",
+      "speaker": "",
+      "proposalUrl": "",
+      "tags": []
+    },
+    {
+      "id": 30,
+      "track": "B",
+      "date": "2026-03-07",
+      "start": "11:20",
+      "end": "11:30",
+      "duration": 10,
+      "title": "休憩",
+      "speaker": "",
+      "proposalUrl": "",
+      "tags": []
+    },
+    {
+      "id": 31,
+      "track": "B",
+      "date": "2026-03-07",
+      "start": "11:30",
+      "end": "11:50",
+      "duration": 20,
+      "title": "200アカウント規模を見据えた開発・検証・本番の環境分離を成立させる、AWS Transit Gatewayによるネットワーク設計と実践",
+      "speaker": "鶴田諒輔",
+      "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/cc9dafc9-1598-4000-89a7-3facb4718587",
+      "tags": [
+        "Level 400"
+      ]
+    },
+    {
+      "id": 32,
+      "track": "B",
+      "date": "2026-03-07",
+      "start": "11:50",
+      "end": "12:00",
+      "duration": 10,
+      "title": "休憩",
+      "speaker": "",
+      "proposalUrl": "",
+      "tags": []
+    },
+    {
+      "id": 33,
+      "track": "B",
+      "date": "2026-03-07",
+      "start": "12:00",
+      "end": "12:15",
+      "duration": 15,
+      "title": "DSQL導入のリアル～実プロジェクトで見えたメリットと落とし穴～",
+      "speaker": "佐藤 慎",
+      "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/c9b37788-f42d-490c-b06a-f4aab4d4039b",
+      "tags": []
+    },
+    {
+      "id": 34,
+      "track": "B",
+      "date": "2026-03-07",
+      "start": "12:15",
+      "end": "12:20",
+      "duration": 5,
+      "title": "休憩",
+      "speaker": "",
+      "proposalUrl": "",
+      "tags": []
+    },
+    {
+      "id": 35,
+      "track": "B",
+      "date": "2026-03-07",
+      "start": "12:20",
+      "end": "12:35",
+      "duration": 15,
+      "title": "MLエンジニアだらけの組織が、AWSアドバンストティアになって変わったこと 〜「理想の育成」と「運用の現実」の両輪で進む組織変革〜",
+      "speaker": "堺 勇人/長谷川 裕一",
+      "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/33787cb8-987f-4394-aa5b-45f2a7dfe282",
+      "tags": []
+    },
+    {
+      "id": 36,
+      "track": "B",
+      "date": "2026-03-07",
+      "start": "12:35",
+      "end": "12:40",
+      "duration": 5,
+      "title": "休憩",
+      "speaker": "",
+      "proposalUrl": "",
+      "tags": []
+    },
+    {
+      "id": 37,
+      "track": "B",
+      "date": "2026-03-07",
+      "start": "12:40",
+      "end": "13:10",
+      "duration": 30,
+      "title": "AWSコスト分析入門 ― 削減の前に「なぜ高いのか」を理解する",
+      "speaker": "浜崎 春哉",
+      "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/5c49c7bf-3cba-4cfc-aeb0-aa8b02b4bbb9",
+      "tags": [
+        "Level 200",
+        "サポーター"
+      ]
+    },
+    {
+      "id": 38,
+      "track": "B",
+      "date": "2026-03-07",
+      "start": "13:10",
+      "end": "13:20",
+      "duration": 10,
+      "title": "休憩",
+      "speaker": "",
+      "proposalUrl": "",
+      "tags": []
+    },
+    {
+      "id": 39,
+      "track": "B",
+      "date": "2026-03-07",
+      "start": "13:20",
+      "end": "14:10",
+      "duration": 50,
+      "title": "クラウド × シリコンの Mashup - AWS チップ開発で広がる AI 基盤の選択肢",
+      "speaker": "常世大史",
+      "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/edc33865-2417-47e2-9774-19d6945fd58f",
+      "tags": [
+        "Level 200",
+        "Level 300"
+      ]
+    },
+    {
+      "id": 40,
+      "track": "B",
+      "date": "2026-03-07",
+      "start": "14:10",
+      "end": "14:20",
+      "duration": 10,
+      "title": "休憩",
+      "speaker": "",
+      "proposalUrl": "",
+      "tags": []
+    },
+    {
+      "id": 41,
+      "track": "B",
+      "date": "2026-03-07",
+      "start": "14:20",
+      "end": "15:10",
+      "duration": 50,
+      "title": "セッション",
+      "speaker": "",
+      "proposalUrl": "",
+      "tags": []
+    },
+    {
+      "id": 42,
+      "track": "B",
+      "date": "2026-03-07",
+      "start": "15:10",
+      "end": "15:20",
+      "duration": 10,
+      "title": "休憩",
+      "speaker": "",
+      "proposalUrl": "",
+      "tags": []
+    },
+    {
+      "id": 43,
+      "track": "B",
+      "date": "2026-03-07",
+      "start": "15:20",
+      "end": "16:10",
+      "duration": 50,
+      "title": "セッション",
+      "speaker": "",
+      "proposalUrl": "",
+      "tags": []
+    },
+    {
+      "id": 44,
+      "track": "B",
+      "date": "2026-03-07",
+      "start": "16:10",
+      "end": "16:20",
+      "duration": 10,
+      "title": "休憩",
+      "speaker": "",
+      "proposalUrl": "",
+      "tags": []
+    },
+    {
+      "id": 45,
+      "track": "B",
+      "date": "2026-03-07",
+      "start": "16:20",
+      "end": "17:10",
+      "duration": 50,
+      "title": "セッション",
+      "speaker": "",
+      "proposalUrl": "",
+      "tags": []
+    },
+    {
+      "id": 46,
+      "track": "B",
+      "date": "2026-03-07",
+      "start": "17:10",
+      "end": "17:30",
+      "duration": 20,
+      "title": "会場レイアウト変更",
+      "speaker": "",
+      "proposalUrl": "",
+      "tags": []
+    },
+    {
+      "id": 47,
+      "track": "B",
+      "date": "2026-03-07",
+      "start": "17:30",
+      "end": "19:40",
+      "duration": 130,
+      "title": "懇親会",
+      "speaker": "",
+      "proposalUrl": "",
+      "tags": []
+    },
+    {
+      "id": 48,
+      "track": "C",
+      "date": "2026-03-07",
+      "start": "09:00",
+      "end": "09:50",
+      "duration": 50,
+      "title": "受付",
+      "speaker": "",
+      "proposalUrl": "",
+      "tags": []
+    },
+    {
+      "id": 49,
+      "track": "C",
+      "date": "2026-03-07",
+      "start": "09:50",
+      "end": "10:00",
+      "duration": 10,
+      "title": "オープニング・会場説明",
+      "speaker": "清家史郎",
+      "proposalUrl": "",
+      "tags": []
+    },
+    {
+      "id": 50,
+      "track": "C",
+      "date": "2026-03-07",
+      "start": "10:00",
+      "end": "10:50",
+      "duration": 50,
+      "title": "キーノート",
+      "speaker": "",
+      "proposalUrl": "",
+      "tags": []
+    },
+    {
+      "id": 51,
+      "track": "C",
+      "date": "2026-03-07",
+      "start": "10:50",
+      "end": "11:00",
+      "duration": 10,
+      "title": "休憩",
+      "speaker": "",
+      "proposalUrl": "",
+      "tags": []
+    },
+    {
+      "id": 52,
+      "track": "C",
+      "date": "2026-03-07",
+      "start": "11:00",
+      "end": "11:20",
+      "duration": 20,
+      "title": "楽しく学ぼう！AWSとは？AWSの歴史 入門",
+      "speaker": "AWS Academy 平賀博司",
+      "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/03205c08-e4ed-4c13-9dfc-8bbef8e3992a",
+      "tags": [
+        "Level 200"
+      ]
+    },
+    {
+      "id": 53,
+      "track": "C",
+      "date": "2026-03-07",
+      "start": "11:20",
+      "end": "11:30",
+      "duration": 10,
+      "title": "休憩",
+      "speaker": "",
+      "proposalUrl": "",
+      "tags": []
+    },
+    {
+      "id": 54,
+      "track": "C",
+      "date": "2026-03-07",
+      "start": "11:30",
+      "end": "11:50",
+      "duration": 20,
+      "title": "楽しく学ぼう！EC2・コンテナ 入門",
+      "speaker": "石原晶子(初心者支部)",
+      "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/b37fc500-d961-463b-8fbf-e67ae4235594",
+      "tags": [
+        "Level 200"
+      ]
+    },
+    {
+      "id": 55,
+      "track": "C",
+      "date": "2026-03-07",
+      "start": "11:50",
+      "end": "12:00",
+      "duration": 10,
+      "title": "休憩",
+      "speaker": "",
+      "proposalUrl": "",
+      "tags": []
+    },
+    {
+      "id": 56,
+      "track": "C",
+      "date": "2026-03-07",
+      "start": "12:00",
+      "end": "12:15",
+      "duration": 15,
+      "title": "「きっかけ作り」から始めるKiro定着の軌跡",
+      "speaker": "菊池 恵悟/岡田 直樹",
+      "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/2bc9de4f-ea35-4b72-98eb-3cb1a2fb154e",
+      "tags": []
+    },
+    {
+      "id": 57,
+      "track": "C",
+      "date": "2026-03-07",
+      "start": "12:15",
+      "end": "12:20",
+      "duration": 5,
+      "title": "休憩",
+      "speaker": "",
+      "proposalUrl": "",
+      "tags": []
+    },
+    {
+      "id": 58,
+      "track": "C",
+      "date": "2026-03-07",
+      "start": "12:20",
+      "end": "12:35",
+      "duration": 15,
+      "title": "AI で実現する AWS Well-Architected レビューの効率化 ～ ナレッジベースと生成AIを活用した設計レビュー実践 ～",
+      "speaker": "小島 陽介/棚橋 誠",
+      "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/23ef4e3c-c41c-45be-ace7-715281ff3224",
+      "tags": []
+    },
+    {
+      "id": 59,
+      "track": "C",
+      "date": "2026-03-07",
+      "start": "12:35",
+      "end": "12:40",
+      "duration": 5,
+      "title": "休憩",
+      "speaker": "",
+      "proposalUrl": "",
+      "tags": []
+    },
+    {
+      "id": 60,
+      "track": "C",
+      "date": "2026-03-07",
+      "start": "12:40",
+      "end": "13:10",
+      "duration": 30,
+      "title": "こたつから始まったプロダクトは、どう育ち続けているのか ── 技術・人・プロダクトの\"判断\"がつないできたもの",
+      "speaker": "波多野 謙介",
+      "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/5b7e689f-f24c-4815-a871-c8065df71d7d",
+      "tags": [
+        "Level 200",
+        "サポーター"
+      ]
+    },
+    {
+      "id": 61,
+      "track": "C",
+      "date": "2026-03-07",
+      "start": "13:10",
+      "end": "13:20",
+      "duration": 10,
+      "title": "休憩",
+      "speaker": "",
+      "proposalUrl": "",
+      "tags": []
+    },
+    {
+      "id": 62,
+      "track": "C",
+      "date": "2026-03-07",
+      "start": "13:20",
+      "end": "13:40",
+      "duration": 20,
+      "title": "楽しく学ぼう！データベース 入門",
+      "speaker": "丸本　健二郎",
+      "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/454a0be8-f6e8-4226-b05a-5048d96f8f7e",
+      "tags": [
+        "Level 200"
+      ]
+    },
+    {
+      "id": 63,
+      "track": "C",
+      "date": "2026-03-07",
+      "start": "13:40",
+      "end": "13:50",
+      "duration": 10,
+      "title": "休憩",
+      "speaker": "",
+      "proposalUrl": "",
+      "tags": []
+    },
+    {
+      "id": 64,
+      "track": "C",
+      "date": "2026-03-07",
+      "start": "13:50",
+      "end": "14:10",
+      "duration": 20,
+      "title": "セッション",
+      "speaker": "",
+      "proposalUrl": "",
+      "tags": []
+    },
+    {
+      "id": 65,
+      "track": "C",
+      "date": "2026-03-07",
+      "start": "14:10",
+      "end": "14:20",
+      "duration": 10,
+      "title": "休憩",
+      "speaker": "",
+      "proposalUrl": "",
+      "tags": []
+    },
+    {
+      "id": 66,
+      "track": "C",
+      "date": "2026-03-07",
+      "start": "14:20",
+      "end": "14:40",
+      "duration": 20,
+      "title": "楽しく学ぼう！ネットワーク 入門",
+      "speaker": "白鳥　翔太(NW-JAWS)",
+      "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/6f6e252c-d19f-4910-9386-594b78770fc0",
+      "tags": [
+        "Level 200"
+      ]
+    },
+    {
+      "id": 67,
+      "track": "C",
+      "date": "2026-03-07",
+      "start": "14:40",
+      "end": "14:50",
+      "duration": 10,
+      "title": "休憩",
+      "speaker": "",
+      "proposalUrl": "",
+      "tags": []
+    },
+    {
+      "id": 68,
+      "track": "C",
+      "date": "2026-03-07",
+      "start": "14:50",
+      "end": "15:10",
+      "duration": 20,
+      "title": "楽しく学ぼう！セキュリティ 入門",
+      "speaker": "臼田佳祐",
+      "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/24bd73e8-a64a-48ec-a7b1-407f85277f4e",
+      "tags": []
+    },
+    {
+      "id": 69,
+      "track": "C",
+      "date": "2026-03-07",
+      "start": "15:10",
+      "end": "15:20",
+      "duration": 10,
+      "title": "休憩",
+      "speaker": "",
+      "proposalUrl": "",
+      "tags": []
+    },
+    {
+      "id": 70,
+      "track": "C",
+      "date": "2026-03-07",
+      "start": "15:20",
+      "end": "15:40",
+      "duration": 20,
+      "title": "楽しく学ぼう！サーバレス 入門",
+      "speaker": "JAWS UG千葉支部",
+      "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/7d509a1b-15ae-488f-9529-938d20f81740",
+      "tags": [
+        "Level 200"
+      ]
+    },
+    {
+      "id": 71,
+      "track": "C",
+      "date": "2026-03-07",
+      "start": "15:40",
+      "end": "15:50",
+      "duration": 10,
+      "title": "休憩",
+      "speaker": "",
+      "proposalUrl": "",
+      "tags": []
+    },
+    {
+      "id": 72,
+      "track": "C",
+      "date": "2026-03-07",
+      "start": "15:50",
+      "end": "16:10",
+      "duration": 20,
+      "title": "楽しく学ぼう！認証認可 入門",
+      "speaker": "CLI専門支部",
+      "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/f6377e81-fb19-4dd0-827d-1abee0e98362",
+      "tags": [
+        "Level 200"
+      ]
+    },
+    {
+      "id": 73,
+      "track": "C",
+      "date": "2026-03-07",
+      "start": "16:10",
+      "end": "16:20",
+      "duration": 10,
+      "title": "休憩",
+      "speaker": "",
+      "proposalUrl": "",
+      "tags": []
+    },
+    {
+      "id": 74,
+      "track": "C",
+      "date": "2026-03-07",
+      "start": "16:20",
+      "end": "16:40",
+      "duration": 20,
+      "title": "セッション",
+      "speaker": "",
+      "proposalUrl": "",
+      "tags": []
+    },
+    {
+      "id": 75,
+      "track": "C",
+      "date": "2026-03-07",
+      "start": "16:40",
+      "end": "16:50",
+      "duration": 10,
+      "title": "休憩",
+      "speaker": "",
+      "proposalUrl": "",
+      "tags": []
+    },
+    {
+      "id": 76,
+      "track": "C",
+      "date": "2026-03-07",
+      "start": "16:50",
+      "end": "17:10",
+      "duration": 20,
+      "title": "楽しく学ぼう！コミュニティ入門 〜AWSと人がつむいできたストーリー〜",
+      "speaker": "Hiromi Ito (AWS Community Hero)",
+      "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/33fdc5fc-3d09-48d1-91e5-b304ce3e4df7",
+      "tags": []
+    },
+    {
+      "id": 77,
+      "track": "C",
+      "date": "2026-03-07",
+      "start": "17:10",
+      "end": "17:30",
+      "duration": 20,
+      "title": "会場レイアウト変更",
+      "speaker": "",
+      "proposalUrl": "",
+      "tags": []
+    },
+    {
+      "id": 78,
+      "track": "C",
+      "date": "2026-03-07",
+      "start": "17:30",
+      "end": "19:40",
+      "duration": 130,
+      "title": "懇親会",
+      "speaker": "",
+      "proposalUrl": "",
+      "tags": []
+    },
+    {
+      "id": 79,
+      "track": "D",
+      "date": "2026-03-07",
+      "start": "09:00",
+      "end": "09:50",
+      "duration": 50,
+      "title": "受付",
+      "speaker": "",
+      "proposalUrl": "",
+      "tags": []
+    },
+    {
+      "id": 80,
+      "track": "D",
+      "date": "2026-03-07",
+      "start": "09:50",
+      "end": "10:50",
+      "duration": 60,
+      "title": "休憩",
+      "speaker": "",
+      "proposalUrl": "",
+      "tags": []
+    },
+    {
+      "id": 81,
+      "track": "D",
+      "date": "2026-03-07",
+      "start": "10:50",
+      "end": "11:00",
+      "duration": 10,
+      "title": "休憩",
+      "speaker": "",
+      "proposalUrl": "",
+      "tags": []
+    },
+    {
+      "id": 82,
+      "track": "D",
+      "date": "2026-03-07",
+      "start": "11:00",
+      "end": "11:20",
+      "duration": 20,
+      "title": "実務経験なし、資格なしの学生が、AWSとAlexaをフルで活用し福岡の地域課題解決に挑んでみた話",
+      "speaker": "さどるふ",
+      "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/d64bb1ac-cb76-4f3c-9ddb-38c9c622d160",
+      "tags": [
+        "Level 200"
+      ]
+    },
+    {
+      "id": 83,
+      "track": "D",
+      "date": "2026-03-07",
+      "start": "11:20",
+      "end": "11:30",
+      "duration": 10,
+      "title": "休憩",
+      "speaker": "",
+      "proposalUrl": "",
+      "tags": []
+    },
+    {
+      "id": 84,
+      "track": "D",
+      "date": "2026-03-07",
+      "start": "11:30",
+      "end": "11:50",
+      "duration": 20,
+      "title": "Abuse report だけじゃない。AWS から緊急連絡が来る状況とは？昨今の攻撃や被害の事例の紹介と備えておきたい考え方について",
+      "speaker": "kazzpapa3(ICHINO Kazuaki)",
+      "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/3b3a803e-a264-4b9f-a3f0-45a085f98b7d",
+      "tags": [
+        "Level 200"
+      ]
+    },
+    {
+      "id": 85,
+      "track": "D",
+      "date": "2026-03-07",
+      "start": "11:50",
+      "end": "12:00",
+      "duration": 10,
+      "title": "休憩",
+      "speaker": "",
+      "proposalUrl": "",
+      "tags": []
+    },
+    {
+      "id": 86,
+      "track": "D",
+      "date": "2026-03-07",
+      "start": "12:00",
+      "end": "12:15",
+      "duration": 15,
+      "title": "Amazon Q Developerをクライアントワークで、チームで導入した話",
+      "speaker": "松本 祐樹/佐々木 慎也",
+      "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/d94c0b9e-a1b0-4043-b684-ac3716fd218d",
+      "tags": []
+    },
+    {
+      "id": 87,
+      "track": "D",
+      "date": "2026-03-07",
+      "start": "12:15",
+      "end": "12:20",
+      "duration": 5,
+      "title": "休憩",
+      "speaker": "",
+      "proposalUrl": "",
+      "tags": []
+    },
+    {
+      "id": 88,
+      "track": "D",
+      "date": "2026-03-07",
+      "start": "12:20",
+      "end": "12:35",
+      "duration": 15,
+      "title": "そのツール、全部使えて大丈夫？　～ランチ15分で学ぶ、Okta × Bedrock AgentCoreの認可制御レシピ～",
+      "speaker": "平林 徹",
+      "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/0e857de3-64b8-4dd6-bc57-52c4b0150fdc",
+      "tags": []
+    },
+    {
+      "id": 89,
+      "track": "D",
+      "date": "2026-03-07",
+      "start": "12:35",
+      "end": "12:40",
+      "duration": 5,
+      "title": "休憩",
+      "speaker": "",
+      "proposalUrl": "",
+      "tags": []
+    },
+    {
+      "id": 90,
+      "track": "D",
+      "date": "2026-03-07",
+      "start": "12:40",
+      "end": "13:10",
+      "duration": 30,
+      "title": "作りっぱなしで終わらせない！価値を出し続ける AI エージェントのための「信頼性」設計",
+      "speaker": "木村 健人",
+      "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/81fb6f2f-904d-4d00-9569-3180c54f79f6",
+      "tags": [
+        "Level 300",
+        "サポーター"
+      ]
+    },
+    {
+      "id": 91,
+      "track": "D",
+      "date": "2026-03-07",
+      "start": "13:10",
+      "end": "13:20",
+      "duration": 10,
+      "title": "休憩",
+      "speaker": "",
+      "proposalUrl": "",
+      "tags": []
+    },
+    {
+      "id": 92,
+      "track": "D",
+      "date": "2026-03-07",
+      "start": "13:20",
+      "end": "13:40",
+      "duration": 20,
+      "title": "オレ達はAWS管理をやりたいんじゃない！開発の生産性を爆アゲしたいんだ！！",
+      "speaker": "若松 剛志",
+      "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/a2377e25-53ee-4461-bb4c-423cf819752f",
+      "tags": [
+        "Level 300"
+      ]
+    },
+    {
+      "id": 93,
+      "track": "D",
+      "date": "2026-03-07",
+      "start": "13:40",
+      "end": "13:50",
+      "duration": 10,
+      "title": "休憩",
+      "speaker": "",
+      "proposalUrl": "",
+      "tags": []
+    },
+    {
+      "id": 94,
+      "track": "D",
+      "date": "2026-03-07",
+      "start": "13:50",
+      "end": "14:10",
+      "duration": 20,
+      "title": "その起票、愛が足りてますか？AWSサポートを味方につける、技術的「ラブレター」の書き方",
+      "speaker": "hirosys",
+      "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/d6a57628-b4ef-4587-8c71-bee73bdb467b",
+      "tags": [
+        "Level 200"
+      ]
+    },
+    {
+      "id": 95,
+      "track": "D",
+      "date": "2026-03-07",
+      "start": "14:10",
+      "end": "14:20",
+      "duration": 10,
+      "title": "休憩",
+      "speaker": "",
+      "proposalUrl": "",
+      "tags": []
+    },
+    {
+      "id": 96,
+      "track": "D",
+      "date": "2026-03-07",
+      "start": "14:20",
+      "end": "14:40",
+      "duration": 20,
+      "title": "タスク管理も1on1も、もう「管理」じゃない - KiroとBedrock AgentCoreで変わった\"判断の仕事\" -",
+      "speaker": "志水友輔",
+      "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/23de68e2-17df-4b00-a79e-46f5aa284b97",
+      "tags": [
+        "Level 300"
+      ]
+    },
+    {
+      "id": 97,
+      "track": "D",
+      "date": "2026-03-07",
+      "start": "14:40",
+      "end": "14:50",
+      "duration": 10,
+      "title": "休憩",
+      "speaker": "",
+      "proposalUrl": "",
+      "tags": []
+    },
+    {
+      "id": 98,
+      "track": "D",
+      "date": "2026-03-07",
+      "start": "14:50",
+      "end": "15:10",
+      "duration": 20,
+      "title": "us-east-1 に障害が起きた時に、ap-northeast-1 にどんな影響があるか説明できるようになろう！",
+      "speaker": "三浦一樹",
+      "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/73f0fad0-2b16-4cb8-a10f-7b2674ea3c6d",
+      "tags": [
+        "Level 300"
+      ]
+    },
+    {
+      "id": 99,
+      "track": "D",
+      "date": "2026-03-07",
+      "start": "15:10",
+      "end": "15:20",
+      "duration": 10,
+      "title": "休憩",
+      "speaker": "",
+      "proposalUrl": "",
+      "tags": []
+    },
+    {
+      "id": 100,
+      "track": "D",
+      "date": "2026-03-07",
+      "start": "15:20",
+      "end": "15:40",
+      "duration": 20,
+      "title": "JAWS Festa 2014をきっかけに生まれた東北発のクロスコミュニティ！～東北IT物産展の軌跡～",
+      "speaker": "武田一成",
+      "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/b7c83677-5df9-40e2-9997-2fd05503b952",
+      "tags": [
+        "Level 200"
+      ]
+    },
+    {
+      "id": 101,
+      "track": "D",
+      "date": "2026-03-07",
+      "start": "15:40",
+      "end": "15:50",
+      "duration": 10,
+      "title": "休憩",
+      "speaker": "",
+      "proposalUrl": "",
+      "tags": []
+    },
+    {
+      "id": 102,
+      "track": "D",
+      "date": "2026-03-07",
+      "start": "15:50",
+      "end": "16:10",
+      "duration": 20,
+      "title": "AWS DevOps Agentで実現する‼︎ AWS Well-Architected(W-A)を実現するシステム設計",
+      "speaker": "奥田 雅基",
+      "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/1a0bcae1-6f8d-4646-8de3-f3bf900cf3e6",
+      "tags": [
+        "Level 300"
+      ]
+    },
+    {
+      "id": 103,
+      "track": "D",
+      "date": "2026-03-07",
+      "start": "16:10",
+      "end": "16:20",
+      "duration": 10,
+      "title": "休憩",
+      "speaker": "",
+      "proposalUrl": "",
+      "tags": []
+    },
+    {
+      "id": 104,
+      "track": "D",
+      "date": "2026-03-07",
+      "start": "16:20",
+      "end": "16:40",
+      "duration": 20,
+      "title": "2025年で何が変わった？AWS新ベストプラクティス総まとめ",
+      "speaker": "大畑 一志",
+      "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/0e4276a8-24c6-4878-84bd-cfe0f5e1893b",
+      "tags": [
+        "Level 200"
+      ]
+    },
+    {
+      "id": 105,
+      "track": "D",
+      "date": "2026-03-07",
+      "start": "16:40",
+      "end": "16:50",
+      "duration": 10,
+      "title": "休憩",
+      "speaker": "",
+      "proposalUrl": "",
+      "tags": []
+    },
+    {
+      "id": 106,
+      "track": "D",
+      "date": "2026-03-07",
+      "start": "16:50",
+      "end": "17:10",
+      "duration": 20,
+      "title": "AIエージェント時代に備えるAWS Organizationsとアカウント設計 ― 権限とスコープの視点で「システム境界」を再考する",
+      "speaker": "Hajime KOSHIRO",
+      "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/f290167d-77b8-494e-9c98-8f761f8c8376",
+      "tags": [
+        "Level 300"
+      ]
+    },
+    {
+      "id": 107,
+      "track": "D",
+      "date": "2026-03-07",
+      "start": "17:10",
+      "end": "17:30",
+      "duration": 20,
+      "title": "会場レイアウト変更",
+      "speaker": "",
+      "proposalUrl": "",
+      "tags": []
+    },
+    {
+      "id": 108,
+      "track": "D",
+      "date": "2026-03-07",
+      "start": "17:30",
+      "end": "19:40",
+      "duration": 130,
+      "title": "懇親会",
+      "speaker": "",
+      "proposalUrl": "",
+      "tags": []
+    },
+    {
+      "id": 109,
+      "track": "E",
+      "date": "2026-03-07",
+      "start": "09:00",
+      "end": "09:50",
+      "duration": 50,
+      "title": "受付",
+      "speaker": "",
+      "proposalUrl": "",
+      "tags": []
+    },
+    {
+      "id": 110,
+      "track": "E",
+      "date": "2026-03-07",
+      "start": "09:50",
+      "end": "10:50",
+      "duration": 60,
+      "title": "休憩",
+      "speaker": "",
+      "proposalUrl": "",
+      "tags": []
+    },
+    {
+      "id": 111,
+      "track": "E",
+      "date": "2026-03-07",
+      "start": "10:50",
+      "end": "11:00",
+      "duration": 10,
+      "title": "休憩",
+      "speaker": "",
+      "proposalUrl": "",
+      "tags": []
+    },
+    {
+      "id": 112,
+      "track": "E",
+      "date": "2026-03-07",
+      "start": "11:00",
+      "end": "11:20",
+      "duration": 20,
+      "title": "CCoEはAI指揮官へ。Bedrock×MCPで構築するコスト・セキュリティ自律運用基盤",
+      "speaker": "石井拓也",
+      "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/965c03e3-380d-4faa-a1af-74b47fc29103",
+      "tags": [
+        "Level 300"
+      ]
+    },
+    {
+      "id": 113,
+      "track": "E",
+      "date": "2026-03-07",
+      "start": "11:20",
+      "end": "11:30",
+      "duration": 10,
+      "title": "休憩",
+      "speaker": "",
+      "proposalUrl": "",
+      "tags": []
+    },
+    {
+      "id": 114,
+      "track": "E",
+      "date": "2026-03-07",
+      "start": "11:30",
+      "end": "11:50",
+      "duration": 20,
+      "title": "AWS DevOps Agent vs SRE俺",
+      "speaker": "加我 貴志",
+      "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/8f8f1e95-1575-4b0c-b0bf-ead118f44b2d",
+      "tags": [
+        "Level 300"
+      ]
+    },
+    {
+      "id": 115,
+      "track": "E",
+      "date": "2026-03-07",
+      "start": "11:50",
+      "end": "12:00",
+      "duration": 10,
+      "title": "休憩",
+      "speaker": "",
+      "proposalUrl": "",
+      "tags": []
+    },
+    {
+      "id": 116,
+      "track": "E",
+      "date": "2026-03-07",
+      "start": "12:00",
+      "end": "12:15",
+      "duration": 15,
+      "title": "CloudWatchカスタムメトリクスで実現するコードカバレッジの継続的モニタリング",
+      "speaker": "常盤 匠",
+      "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/32c4b9e5-a1ba-403e-9da4-1f02b6170792",
+      "tags": []
+    },
+    {
+      "id": 117,
+      "track": "E",
+      "date": "2026-03-07",
+      "start": "12:15",
+      "end": "12:20",
+      "duration": 5,
+      "title": "休憩",
+      "speaker": "",
+      "proposalUrl": "",
+      "tags": []
+    },
+    {
+      "id": 118,
+      "track": "E",
+      "date": "2026-03-07",
+      "start": "12:20",
+      "end": "12:35",
+      "duration": 15,
+      "title": "Kiro CLI で変わる、AWS運用とコスト管理",
+      "speaker": "大嵩 洋喜",
+      "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/b4f86a49-2275-4bba-a7ec-87b5e91b6033",
+      "tags": []
+    },
+    {
+      "id": 119,
+      "track": "E",
+      "date": "2026-03-07",
+      "start": "12:35",
+      "end": "12:40",
+      "duration": 5,
+      "title": "休憩",
+      "speaker": "",
+      "proposalUrl": "",
+      "tags": []
+    },
+    {
+      "id": 120,
+      "track": "E",
+      "date": "2026-03-07",
+      "start": "12:40",
+      "end": "13:10",
+      "duration": 30,
+      "title": "ECS/Fargateでセキュアかつ信頼性の高いアーキテクチャを実現する",
+      "speaker": "井平 竣也/髙橋 洋樹",
+      "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/226ed90c-0902-4850-851e-40be246dd018",
+      "tags": [
+        "Level 300",
+        "サポーター"
+      ]
+    },
+    {
+      "id": 121,
+      "track": "E",
+      "date": "2026-03-07",
+      "start": "13:10",
+      "end": "13:20",
+      "duration": 10,
+      "title": "休憩",
+      "speaker": "",
+      "proposalUrl": "",
+      "tags": []
+    },
+    {
+      "id": 122,
+      "track": "E",
+      "date": "2026-03-07",
+      "start": "13:20",
+      "end": "13:40",
+      "duration": 20,
+      "title": "S3ストレージクラスの「見える」「ある」「使える」は全部違う ─ 体験から見た、仕様の深淵を覗く",
+      "speaker": "山本 光彦",
+      "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/e7a6519a-abc7-41d2-9b29-93a99d9aeb6a",
+      "tags": [
+        "Level 400"
+      ]
+    },
+    {
+      "id": 123,
+      "track": "E",
+      "date": "2026-03-07",
+      "start": "13:40",
+      "end": "13:50",
+      "duration": 10,
+      "title": "休憩",
+      "speaker": "",
+      "proposalUrl": "",
+      "tags": []
+    },
+    {
+      "id": 124,
+      "track": "E",
+      "date": "2026-03-07",
+      "start": "13:50",
+      "end": "14:10",
+      "duration": 20,
+      "title": "JAWS FESTA 2025でリリースしたほぼリアルタイム文字起こし/翻訳機能の構成について",
+      "speaker": "木村直紀",
+      "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/fb768121-8069-4ea2-874e-b9bddec85418",
+      "tags": [
+        "Level 300"
+      ]
+    },
+    {
+      "id": 125,
+      "track": "E",
+      "date": "2026-03-07",
+      "start": "14:10",
+      "end": "14:20",
+      "duration": 10,
+      "title": "休憩",
+      "speaker": "",
+      "proposalUrl": "",
+      "tags": []
+    },
+    {
+      "id": 126,
+      "track": "E",
+      "date": "2026-03-07",
+      "start": "14:20",
+      "end": "14:40",
+      "duration": 20,
+      "title": "マルチアカウント環境でSecurity Hubの運用！導入の苦労とポイント",
+      "speaker": "大澤 優貴",
+      "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/80627e84-7f04-4046-bab2-fbd5900eaee2",
+      "tags": [
+        "Level 300"
+      ]
+    },
+    {
+      "id": 127,
+      "track": "E",
+      "date": "2026-03-07",
+      "start": "14:40",
+      "end": "14:50",
+      "duration": 10,
+      "title": "休憩",
+      "speaker": "",
+      "proposalUrl": "",
+      "tags": []
+    },
+    {
+      "id": 128,
+      "track": "E",
+      "date": "2026-03-07",
+      "start": "14:50",
+      "end": "15:10",
+      "duration": 20,
+      "title": "IPv4とVPCエンドポイント依存からの卒業。AWSの最新アップデートとIPv6サポートを活用した次世代Web配信アーキテクチャ",
+      "speaker": "suzryo",
+      "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/01b34643-ecb4-4e01-abb0-03395e87e122",
+      "tags": [
+        "Level 300"
+      ]
+    },
+    {
+      "id": 129,
+      "track": "E",
+      "date": "2026-03-07",
+      "start": "15:10",
+      "end": "15:20",
+      "duration": 10,
+      "title": "休憩",
+      "speaker": "",
+      "proposalUrl": "",
+      "tags": []
+    },
+    {
+      "id": 130,
+      "track": "E",
+      "date": "2026-03-07",
+      "start": "15:20",
+      "end": "16:10",
+      "duration": 50,
+      "title": "AI ミステリー: この中で AI 使っていないのは誰だ",
+      "speaker": "Katz Ueno",
+      "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/a85e4703-b7eb-460b-83e9-8743b888a74e",
+      "tags": [
+        "Level 200",
+        "ゲームショー"
+      ]
+    },
+    {
+      "id": 131,
+      "track": "E",
+      "date": "2026-03-07",
+      "start": "16:10",
+      "end": "16:20",
+      "duration": 10,
+      "title": "休憩",
+      "speaker": "",
+      "proposalUrl": "",
+      "tags": []
+    },
+    {
+      "id": 132,
+      "track": "E",
+      "date": "2026-03-07",
+      "start": "16:20",
+      "end": "17:10",
+      "duration": 50,
+      "title": "恒例！AWSエンジニアたちの怒涛のLT",
+      "speaker": "大久保裕太",
+      "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/0e4f1434-39bb-43b4-b966-6b67a69f3b29",
+      "tags": [
+        "Level 300"
+      ]
+    },
+    {
+      "id": 133,
+      "track": "E",
+      "date": "2026-03-07",
+      "start": "17:10",
+      "end": "17:30",
+      "duration": 20,
+      "title": "会場レイアウト変更",
+      "speaker": "",
+      "proposalUrl": "",
+      "tags": []
+    },
+    {
+      "id": 134,
+      "track": "E",
+      "date": "2026-03-07",
+      "start": "17:30",
+      "end": "19:40",
+      "duration": 130,
+      "title": "懇親会",
+      "speaker": "",
+      "proposalUrl": "",
+      "tags": []
+    },
+    {
+      "id": 135,
+      "track": "F",
+      "date": "2026-03-07",
+      "start": "09:00",
+      "end": "09:50",
+      "duration": 50,
+      "title": "受付",
+      "speaker": "",
+      "proposalUrl": "",
+      "tags": []
+    },
+    {
+      "id": 136,
+      "track": "F",
+      "date": "2026-03-07",
+      "start": "09:50",
+      "end": "10:00",
+      "duration": 10,
+      "title": "休憩",
+      "speaker": "",
+      "proposalUrl": "",
+      "tags": []
+    },
+    {
+      "id": 137,
+      "track": "F",
+      "date": "2026-03-07",
+      "start": "10:00",
+      "end": "10:50",
+      "duration": 50,
+      "title": "チーム対抗提案コンペ 〜仮想RFPに提案してみよう！",
+      "speaker": "岡田行司",
+      "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/13c58998-c12a-4d03-863f-cc6ca1ecaf10",
+      "tags": [
+        "Level 200",
+        "コンテスト"
+      ]
+    },
+    {
+      "id": 138,
+      "track": "F",
+      "date": "2026-03-07",
+      "start": "10:50",
+      "end": "11:00",
+      "duration": 10,
+      "title": "休憩",
+      "speaker": "",
+      "proposalUrl": "",
+      "tags": []
+    },
+    {
+      "id": 139,
+      "track": "F",
+      "date": "2026-03-07",
+      "start": "11:00",
+      "end": "11:50",
+      "duration": 50,
+      "title": "AWSの知識・技術力を使って隠された旗をゲットせよ！〜出張版「ごーとんカップ」〜",
+      "speaker": "古屋 啓介",
+      "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/1d8df953-5b5b-4d55-92e8-dc5a55ebaaa2",
+      "tags": [
+        "Level 300",
+        "コンテスト"
+      ]
+    },
+    {
+      "id": 140,
+      "track": "F",
+      "date": "2026-03-07",
+      "start": "11:50",
+      "end": "12:00",
+      "duration": 10,
+      "title": "休憩",
+      "speaker": "",
+      "proposalUrl": "",
+      "tags": []
+    },
+    {
+      "id": 141,
+      "track": "F",
+      "date": "2026-03-07",
+      "start": "12:00",
+      "end": "12:15",
+      "duration": 15,
+      "title": "Dr. Werner Vogels の12年のキーノートから紐解くエンジニアリング組織への処方箋",
+      "speaker": "早川 裕志/須賀 功太",
+      "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/5f364bd1-1934-4dcc-96ce-7de80e2ae415",
+      "tags": []
+    },
+    {
+      "id": 142,
+      "track": "F",
+      "date": "2026-03-07",
+      "start": "12:15",
+      "end": "12:20",
+      "duration": 5,
+      "title": "休憩",
+      "speaker": "",
+      "proposalUrl": "",
+      "tags": []
+    },
+    {
+      "id": 143,
+      "track": "F",
+      "date": "2026-03-07",
+      "start": "12:20",
+      "end": "12:35",
+      "duration": 15,
+      "title": "IaC実行基盤を観点別に評価〜AWS環境での選択指針〜",
+      "speaker": "小山ちひろ",
+      "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/352a0c6c-4337-4751-a914-933ca4f5f2aa",
+      "tags": []
+    },
+    {
+      "id": 144,
+      "track": "F",
+      "date": "2026-03-07",
+      "start": "12:35",
+      "end": "12:40",
+      "duration": 5,
+      "title": "休憩",
+      "speaker": "",
+      "proposalUrl": "",
+      "tags": []
+    },
+    {
+      "id": 145,
+      "track": "F",
+      "date": "2026-03-07",
+      "start": "12:40",
+      "end": "13:10",
+      "duration": 30,
+      "title": "S3はフラットである — AWS公式SDKにも存在した、署名付きURLにおけるパストラバーサル脆弱性",
+      "speaker": "松井 遼太朗/Eui Chul Chung",
+      "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/13feafcd-7494-484c-9e96-f6ff42066fa2",
+      "tags": [
+        "Level 300",
+        "サポーター"
+      ]
+    },
+    {
+      "id": 146,
+      "track": "F",
+      "date": "2026-03-07",
+      "start": "13:10",
+      "end": "13:50",
+      "duration": 40,
+      "title": "会場レイアウト変更",
+      "speaker": "",
+      "proposalUrl": "",
+      "tags": []
+    },
+    {
+      "id": 147,
+      "track": "F",
+      "date": "2026-03-07",
+      "start": "13:50",
+      "end": "17:10",
+      "duration": 200,
+      "title": "GameDay",
+      "speaker": "川路義隆",
+      "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/a5731ba7-7d03-42da-bc3b-d504f97cefc6",
+      "tags": [
+        "Level 300"
+      ]
+    },
+    {
+      "id": 148,
+      "track": "F",
+      "date": "2026-03-07",
+      "start": "17:10",
+      "end": "17:30",
+      "duration": 20,
+      "title": "会場レイアウト変更",
+      "speaker": "",
+      "proposalUrl": "",
+      "tags": []
+    },
+    {
+      "id": 149,
+      "track": "F",
+      "date": "2026-03-07",
+      "start": "17:30",
+      "end": "19:40",
+      "duration": 130,
+      "title": "懇親会",
+      "speaker": "",
+      "proposalUrl": "",
+      "tags": []
+    },
+    {
+      "id": 150,
+      "track": "G",
+      "date": "2026-03-07",
+      "start": "09:00",
+      "end": "09:50",
+      "duration": 50,
+      "title": "受付",
+      "speaker": "",
+      "proposalUrl": "",
+      "tags": []
+    },
+    {
+      "id": 151,
+      "track": "G",
+      "date": "2026-03-07",
+      "start": "09:50",
+      "end": "10:00",
+      "duration": 10,
+      "title": "休憩",
+      "speaker": "",
+      "proposalUrl": "",
+      "tags": []
+    },
+    {
+      "id": 152,
+      "track": "G",
+      "date": "2026-03-07",
+      "start": "10:00",
+      "end": "11:50",
+      "duration": 110,
+      "title": "AIとMCPを活用したライブ配信アプリケーションのプロトタイピング",
+      "speaker": "Todd Sharp",
+      "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/e8d3ed23-254a-41a0-986a-07712525111c",
+      "tags": [
+        "Level 200",
+        "ワークショップ"
+      ]
+    },
+    {
+      "id": 153,
+      "track": "G",
+      "date": "2026-03-07",
+      "start": "11:50",
+      "end": "12:00",
+      "duration": 10,
+      "title": "休憩",
+      "speaker": "",
+      "proposalUrl": "",
+      "tags": []
+    },
+    {
+      "id": 154,
+      "track": "G",
+      "date": "2026-03-07",
+      "start": "12:00",
+      "end": "12:15",
+      "duration": 15,
+      "title": "巨大組織で四苦八苦！？ 三菱電機グループで進めるクラウド移行 ～大規模マイグレーションへの挑戦～",
+      "speaker": "齊藤 大樹/紅林 俊之",
+      "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/1b3f8e59-c815-4dca-9bbf-ce44441c1b2f",
+      "tags": []
+    },
+    {
+      "id": 155,
+      "track": "G",
+      "date": "2026-03-07",
+      "start": "12:15",
+      "end": "12:20",
+      "duration": 5,
+      "title": "休憩",
+      "speaker": "",
+      "proposalUrl": "",
+      "tags": []
+    },
+    {
+      "id": 156,
+      "track": "G",
+      "date": "2026-03-07",
+      "start": "12:20",
+      "end": "12:35",
+      "duration": 15,
+      "title": "データを知らずにインフラを組むな 〜RNA-Seq × Fargate 死亡日記〜",
+      "speaker": "一ノ瀬 美帆/井山 学",
+      "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/2a806fd3-8acf-4306-8878-65ab2e0e53d1",
+      "tags": []
+    },
+    {
+      "id": 157,
+      "track": "G",
+      "date": "2026-03-07",
+      "start": "12:35",
+      "end": "12:40",
+      "duration": 5,
+      "title": "休憩",
+      "speaker": "",
+      "proposalUrl": "",
+      "tags": []
+    },
+    {
+      "id": 158,
+      "track": "G",
+      "date": "2026-03-07",
+      "start": "12:40",
+      "end": "13:10",
+      "duration": 30,
+      "title": "安全にAIを活用してセキュリティ運用を効率化した実践談",
+      "speaker": "平木 佳介",
+      "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/f4221466-df8e-455d-8eeb-113665293d71",
+      "tags": [
+        "Level 200",
+        "サポーター"
+      ]
+    },
+    {
+      "id": 159,
+      "track": "G",
+      "date": "2026-03-07",
+      "start": "13:10",
+      "end": "13:50",
+      "duration": 40,
+      "title": "会場レイアウト変更",
+      "speaker": "",
+      "proposalUrl": "",
+      "tags": []
+    },
+    {
+      "id": 160,
+      "track": "G",
+      "date": "2026-03-07",
+      "start": "13:50",
+      "end": "15:20",
+      "duration": 90,
+      "title": "アーキテクチャ専門支部 presents 帰ってきた！CDP道場 〜サメシャイン水族館 事業停止の危機を救え！〜",
+      "speaker": "山﨑 奈緒美",
+      "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/aa8130ff-8c5f-4347-8458-c07ac52c26b0",
+      "tags": [
+        "Level 300",
+        "ワークショップ"
+      ]
+    },
+    {
+      "id": 161,
+      "track": "G",
+      "date": "2026-03-07",
+      "start": "15:20",
+      "end": "15:40",
+      "duration": 20,
+      "title": "休憩",
+      "speaker": "",
+      "proposalUrl": "",
+      "tags": []
+    },
+    {
+      "id": 162,
+      "track": "G",
+      "date": "2026-03-07",
+      "start": "15:40",
+      "end": "17:10",
+      "duration": 90,
+      "title": "ランサムウェア攻撃シミュレーション - チームで挑む机上訓練ゲーム",
+      "speaker": "吉田裕貴",
+      "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/6900cc9a-2f27-43e7-96be-0d045d315b48",
+      "tags": [
+        "Level 200",
+        "ワークショップ"
+      ]
+    },
+    {
+      "id": 163,
+      "track": "G",
+      "date": "2026-03-07",
+      "start": "17:10",
+      "end": "17:30",
+      "duration": 20,
+      "title": "会場レイアウト変更",
+      "speaker": "",
+      "proposalUrl": "",
+      "tags": []
+    },
+    {
+      "id": 164,
+      "track": "G",
+      "date": "2026-03-07",
+      "start": "17:30",
+      "end": "19:40",
+      "duration": 130,
+      "title": "懇親会",
+      "speaker": "",
+      "proposalUrl": "",
+      "tags": []
+    },
+    {
+      "id": 165,
+      "track": "H",
+      "date": "2026-03-07",
+      "start": "09:00",
+      "end": "09:50",
+      "duration": 50,
+      "title": "受付",
+      "speaker": "",
+      "proposalUrl": "",
+      "tags": []
+    },
+    {
+      "id": 166,
+      "track": "H",
+      "date": "2026-03-07",
+      "start": "09:50",
+      "end": "10:00",
+      "duration": 10,
+      "title": "休憩",
+      "speaker": "",
+      "proposalUrl": "",
+      "tags": []
+    },
+    {
+      "id": 167,
+      "track": "H",
+      "date": "2026-03-07",
+      "start": "10:00",
+      "end": "11:30",
+      "duration": 90,
+      "title": "親子で Mashup for the Future！しゃべって楽しむ 初手AI駆動でものづくり体験",
+      "speaker": "お祭り班",
+      "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/fcc45875-6652-4854-bb33-60d7228c799f",
+      "tags": []
+    },
+    {
+      "id": 168,
+      "track": "H",
+      "date": "2026-03-07",
+      "start": "11:30",
+      "end": "12:00",
+      "duration": 30,
+      "title": "サポーターブースツアー①",
+      "speaker": "お祭り班",
+      "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/af07013d-a740-491c-b102-a4b49bb3a1f2",
+      "tags": []
+    },
+    {
+      "id": 169,
+      "track": "H",
+      "date": "2026-03-07",
+      "start": "12:00",
+      "end": "13:30",
+      "duration": 90,
+      "title": "AWS BuilderCards バトル in JAWS DAYS 2026",
+      "speaker": "お祭り班",
+      "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/a3f7e5c4-c98e-4ea2-b4ad-bfa852a47a73",
+      "tags": []
+    },
+    {
+      "id": 170,
+      "track": "H",
+      "date": "2026-03-07",
+      "start": "13:30",
+      "end": "14:00",
+      "duration": 30,
+      "title": "サポーターブースツアー②",
+      "speaker": "お祭り班",
+      "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/c5582930-eac5-4afe-83d4-d74469241f4c",
+      "tags": []
+    },
+    {
+      "id": 171,
+      "track": "H",
+      "date": "2026-03-07",
+      "start": "14:00",
+      "end": "15:30",
+      "duration": 90,
+      "title": "JAWS DAYS お茶会テーブル「純喫茶 鮫」",
+      "speaker": "お祭り班",
+      "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/8c6c2eea-7aad-4336-a393-22dc56578bc5",
+      "tags": []
+    },
+    {
+      "id": 172,
+      "track": "H",
+      "date": "2026-03-07",
+      "start": "15:30",
+      "end": "16:00",
+      "duration": 30,
+      "title": "サポーターブースツアー③",
+      "speaker": "お祭り班",
+      "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/683f2971-06ee-4cff-af83-5b8031c293d2",
+      "tags": []
+    },
+    {
+      "id": 173,
+      "track": "H",
+      "date": "2026-03-07",
+      "start": "16:00",
+      "end": "17:00",
+      "duration": 60,
+      "title": "JAWS DAYS2026版！チーム対抗 AWS ウルトラクイズ",
+      "speaker": "お祭り班",
+      "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/582d5add-caa1-4b62-9a2e-a5c16d0daf69",
+      "tags": []
+    }
+  ]
+}
