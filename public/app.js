@@ -464,26 +464,18 @@
     renderTimetable();
   }
 
-  // --- Overlap detection ---
-  function sessionsOverlap(a, b) {
-    const aStart = timeToMinutes(a.start);
-    const aEnd = timeToMinutes(a.end);
-    const bStart = timeToMinutes(b.start);
-    const bEnd = timeToMinutes(b.end);
-    // Standard interval overlap: any shared time
-    return bStart < aEnd && bEnd > aStart;
-  }
-
   // --- Conflict detection for attendance planning ---
-  // Session B conflicts with checked session A if:
-  //   - they overlap in time, AND
-  //   - A ends at or after B ends (i.e., B will be over by the time A finishes)
-  // If A ends before B ends, you can join B after A finishes → no conflict.
+  // Target session B is blocked by checked session A if:
+  //   B's start time falls within A's running time [A.start, A.end).
+  // This allows selecting a session that starts BEFORE a checked session
+  // (e.g., 11:00-11:50 is selectable when only 11:30-11:50 is checked,
+  //  because 11:00-11:30 is free), but blocks sessions that start while
+  //  you are already in the checked session.
   function sessionConflicts(checked, target) {
-    if (!sessionsOverlap(checked, target)) return false;
+    const targetStart = timeToMinutes(target.start);
+    const checkedStart = timeToMinutes(checked.start);
     const checkedEnd = timeToMinutes(checked.end);
-    const targetEnd = timeToMinutes(target.end);
-    return checkedEnd >= targetEnd;
+    return checkedStart <= targetStart && targetStart < checkedEnd;
   }
 
   // --- Update blocked (un-checkable) sessions in edit mode ---
