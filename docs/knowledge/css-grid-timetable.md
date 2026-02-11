@@ -71,6 +71,46 @@ z-index 階層:
 }
 ```
 
+## row-height の調整（10分セッションの視認性）
+
+`SLOT_MINUTES = 5` のため、10分セッションは 2行 = `2 × --row-height` の高さになる。
+`--row-height` が小さいと 10分セッションがほぼ潰れて見えなくなる。
+
+| row-height | 10min セッション高 | 備考 |
+|---|---|---|
+| 20px | 40px | タイトルが 1〜2 行しか入らない |
+| 28px | 56px | タイトルが 2〜3 行入り視認可能（採用値） |
+
+```css
+:root {
+  --row-height: 28px; /* デスクトップ */
+}
+@media (max-width: 768px) {
+  :root {
+    --row-height: 22px; /* モバイル */
+  }
+}
+```
+
+## hour-mark の位置（区切り線の方向）
+
+時刻ラベルの毎時 `:00` に太い区切り線を引く。
+`border-bottom` だと「その行の下」に線が入り、次の行の上に見えてしまう。
+`border-top` にすると「その行の上 = 毎時の開始位置」に線が引かれ、視覚的に自然。
+
+```css
+/* 改善前: border-bottom では線が次の行に食い込む */
+.time-label.hour-mark { border-bottom: 2px solid #b0b8c4; }
+
+/* 改善後: border-top で毎時の区切りを明確に */
+.time-label.hour-mark {
+  border-top: 2px solid #b0b8c4;
+  border-bottom: 1px solid var(--color-border);
+}
+```
+
+---
+
 ## 注意点
 
 ### パフォーマンス
