@@ -503,7 +503,7 @@ body {
 }
 
 .session-cell .session-tag.lunch-tag {
-  background-color: #e8a000;
+  background-color: transparent;
   padding: 1px 4px;
 }
 
