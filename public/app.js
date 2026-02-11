@@ -474,6 +474,18 @@
     return bStart < aEnd && bEnd > aStart;
   }
 
+  // --- Conflict detection for attendance planning ---
+  // Session B conflicts with checked session A if:
+  //   - they overlap in time, AND
+  //   - A ends at or after B ends (i.e., B will be over by the time A finishes)
+  // If A ends before B ends, you can join B after A finishes → no conflict.
+  function sessionConflicts(checked, target) {
+    if (!sessionsOverlap(checked, target)) return false;
+    const checkedEnd = timeToMinutes(checked.end);
+    const targetEnd = timeToMinutes(target.end);
+    return checkedEnd >= targetEnd;
+  }
+
   // --- Update blocked (un-checkable) sessions in edit mode ---
   function updateBlockedSessions() {
     if (!timetableData) return;
@@ -492,7 +504,7 @@
         return;
       }
 
-      const isBlocked = checkedSessionObjects.some(checked => sessionsOverlap(checked, session));
+      const isBlocked = checkedSessionObjects.some(checked => sessionConflicts(checked, session));
 
       if (isBlocked) {
         cell.classList.add("blocked");
