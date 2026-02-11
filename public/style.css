@@ -86,6 +86,39 @@ body {
   text-decoration: none;
 }
 
+.event-status {
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 10px;
+  white-space: nowrap;
+}
+
+.event-status-before {
+  background: rgba(160, 170, 180, 0.2);
+  color: #a0aab4;
+}
+
+.event-status-current {
+  background: rgba(52, 199, 89, 0.2);
+  color: #34c759;
+}
+
+.event-status-after {
+  background: rgba(255, 153, 0, 0.2);
+  color: var(--color-accent);
+}
+
+.x-hashtag-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.x-hashtag-link:hover {
+  text-decoration: underline;
+}
+
 .venue-link {
   display: inline-flex;
   align-items: center;
@@ -259,6 +292,18 @@ body {
   font-weight: 400;
   color: #a0aab4;
   margin-top: 2px;
+}
+
+.track-header .track-hashtag a,
+.track-header-bottom .track-hashtag a {
+  color: #a0aab4;
+  text-decoration: none;
+}
+
+.track-header .track-hashtag a:hover,
+.track-header-bottom .track-hashtag a:hover {
+  color: var(--color-accent);
+  text-decoration: underline;
 }
 
 /* Track Headers (bottom row) */

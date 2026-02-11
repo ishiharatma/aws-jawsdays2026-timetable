@@ -94,6 +94,59 @@ Xのロゴ SVG + アカウント名でリンクするパターン。
 
 ---
 
+## イベント開催状態バッジ
+
+イベントの開催状態（開催前/開催中/開催終了）をヘッダーに表示するパターン。
+
+```html
+<span id="event-status" class="event-status"></span>
+```
+
+```javascript
+function getEventStatus() {
+  // JST時刻で判定
+  // 開催日前: 🗓️ 開催前
+  // 開催日当日 開始前: 🗓️ 開催前
+  // 開催日当日 開始〜終了: 🎉 開催中
+  // 開催日当日 終了後〜: ✅ 開催終了
+  // 開催日後: ✅ 開催終了
+}
+```
+
+```css
+.event-status { font-size: 0.8rem; font-weight: 600; padding: 2px 8px; border-radius: 10px; }
+.event-status-before  { background: rgba(160,170,180,0.2); color: #a0aab4; }
+.event-status-current { background: rgba(52,199,89,0.2);  color: #34c759; }
+.event-status-after   { background: rgba(255,153,0,0.2);  color: var(--color-accent); }
+```
+
+- JS の `setInterval` で定期更新（CURRENT_CHECK_INTERVAL と同じ間隔でよい）
+
+---
+
+## X ハッシュタグリンク（ポスト intent）
+
+ハッシュタグをクリックすると X のポスト画面を開くパターン。
+
+```html
+<a href="https://x.com/intent/post?text=%23jawsdays2026%20%23jawsug"
+   target="_blank" rel="noopener" class="x-hashtag-link">
+  <svg ...><!-- X icon --></svg>
+  #jawsdays2026
+</a>
+```
+
+タイムテーブルのトラックヘッダーハッシュタグへの応用:
+```javascript
+const hashtagXUrl = `https://x.com/intent/post?text=${encodeURIComponent(`#jawsdays2026 #jawsug ${track.hashtag}`)}`;
+th.innerHTML = `${track.name}<span class="track-hashtag"><a href="${hashtagXUrl}" target="_blank" rel="noopener">${track.hashtag}</a></span>`;
+```
+
+- `encodeURIComponent` で URL エンコードする
+- ハッシュタグは `#` を含む文字列で渡す
+
+---
+
 ## 外部リンクの共通ルール
 
 外部リンクは必ず以下を付ける:
