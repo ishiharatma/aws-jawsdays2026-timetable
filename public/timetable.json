@@ -254,32 +254,6 @@
       "speakerImage": "https://fortee.jp/files/jawsdays-2026/speaker/bceab030-3b88-4df7-aa92-ea7d79d7339d.jpg"
     },
     {
-      "id": 16,
-      "track": "A",
-      "date": "2026-03-07",
-      "start": "13:40",
-      "end": "13:50",
-      "duration": 10,
-      "title": "休憩",
-      "speaker": "",
-      "proposalUrl": "",
-      "tags": [],
-      "speakerImage": ""
-    },
-    {
-      "id": 17,
-      "track": "A",
-      "date": "2026-03-07",
-      "start": "13:50",
-      "end": "14:10",
-      "duration": 20,
-      "title": "セッション",
-      "speaker": "",
-      "proposalUrl": "",
-      "tags": [],
-      "speakerImage": ""
-    },
-    {
       "id": 18,
       "track": "A",
       "date": "2026-03-07",
