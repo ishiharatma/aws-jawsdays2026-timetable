@@ -74,6 +74,65 @@ timetableEl.addEventListener("change", (e) => {
 - `renderTimetable()` で DOM を再構築するため、個別の要素にリスナーを付けると毎回付け直しが必要
 - 親要素への委任なら一度だけ設定すればよい
 
+## 時間帯重複セッションのチェック制限
+
+### 概要
+
+チェック済みセッションと時間帯が重複するセッションはチェック不可にする機能。
+
+### 重複判定ロジック
+
+標準的な区間オーバーラップ検出を使用:
+
+```javascript
+function sessionsOverlap(a, b) {
+  const aStart = timeToMinutes(a.start);
+  const aEnd = timeToMinutes(a.end);
+  const bStart = timeToMinutes(b.start);
+  const bEnd = timeToMinutes(b.end);
+  return bStart < aEnd && bEnd > aStart;
+}
+```
+
+- B.start < A.end かつ B.end > A.start のとき「重複あり」
+- 端点が一致するだけ（例: A が 11:00 終了、B が 11:00 開始）は重複なし
+- B が A を完全に包含するケースも正しく検出される
+
+### 状態管理との統合
+
+```
+[編集モード開始]
+  → enterEditMode() で updateBlockedSessions() を呼ぶ
+  → 既存 checkedSessions に基づくブロックを即時反映
+
+[チェックボックス変更]
+  → pendingChecked を更新
+  → updateBlockedSessions() を呼ぶ
+  → 全セッションのブロック状態を再評価
+
+[編集モード終了]
+  → renderTimetable() で DOM 再構築 → blocked クラスが消える
+```
+
+### updateBlockedSessions() の動作
+
+1. `pendingChecked` に入っているセッションのオブジェクトを取得
+2. 全セッションを走査:
+   - `pendingChecked` に含まれる → blocked 解除（自身はブロックされない）
+   - いずれかのチェック済みセッションと重複 → `.blocked` クラス付与 + `checkbox.disabled = true`
+   - 重複なし → `.blocked` クラス除去 + `checkbox.disabled = false`
+
+### CSS
+
+```css
+.edit-mode .session-cell.blocked {
+  opacity: 0.45;
+  background: #e8eaed;
+  border-color: #c5cbd3;
+  cursor: not-allowed;
+}
+```
+
 ## Cookie サイズの制限
 
 Cookie の最大サイズは約 4KB。セッション ID が数値のため:
