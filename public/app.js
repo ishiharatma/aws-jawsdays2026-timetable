@@ -37,6 +37,8 @@
   const modalProposalBtn = document.getElementById("modal-proposal-btn");
   const modalXBtn = document.getElementById("modal-x-btn");
   const scrollTopBtn = document.getElementById("scroll-top-btn");
+  const hamburgerBtn = document.getElementById("hamburger-btn");
+  const headerNav = document.getElementById("header-nav");
 
   // --- Utility: Time ---
   function timeToMinutes(t) {
@@ -492,18 +494,50 @@
     });
   }
 
+  // --- Detect mobile layout (body scrolls instead of timetableContainer) ---
+  function isMobileLayout() {
+    return window.innerWidth <= 768;
+  }
+
   // --- Scroll to top button ---
   function setupScrollTopButton() {
-    timetableContainer.addEventListener("scroll", () => {
-      if (timetableContainer.scrollTop > SCROLL_TOP_THRESHOLD) {
+    // Listen to both timetableContainer (desktop) and window (mobile)
+    function onScroll() {
+      const scrolled = isMobileLayout()
+        ? window.scrollY
+        : timetableContainer.scrollTop;
+      if (scrolled > SCROLL_TOP_THRESHOLD) {
         scrollTopBtn.classList.remove("hidden");
       } else {
         scrollTopBtn.classList.add("hidden");
       }
-    });
+    }
+
+    timetableContainer.addEventListener("scroll", onScroll);
+    window.addEventListener("scroll", onScroll);
 
     scrollTopBtn.addEventListener("click", () => {
-      timetableContainer.scrollTo({ top: 0, behavior: "smooth" });
+      if (isMobileLayout()) {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      } else {
+        timetableContainer.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    });
+  }
+
+  // --- Hamburger menu toggle ---
+  function setupHamburgerMenu() {
+    if (!hamburgerBtn || !headerNav) return;
+
+    hamburgerBtn.addEventListener("click", () => {
+      const isOpen = headerNav.classList.toggle("open");
+      hamburgerBtn.setAttribute("aria-expanded", isOpen ? "true" : "false");
+      hamburgerBtn.setAttribute("aria-label", isOpen ? "メニューを閉じる" : "メニューを開く");
+
+      const hamburgerIcon = hamburgerBtn.querySelector(".hamburger-icon");
+      const closeIcon = hamburgerBtn.querySelector(".close-icon");
+      if (hamburgerIcon) hamburgerIcon.style.display = isOpen ? "none" : "";
+      if (closeIcon) closeIcon.style.display = isOpen ? "" : "none";
     });
   }
 
@@ -529,9 +563,17 @@
     setTimeout(() => {
       const targetLabel = timetableEl.querySelector(`[data-time="${targetTime}"]`);
       if (!targetLabel) return;
-      // offsetTop gives position relative to timetableEl (which is scrolled inside timetableContainer)
-      const labelTop = targetLabel.offsetTop;
-      timetableContainer.scrollTo({ top: Math.max(0, labelTop - 20), behavior: "smooth" });
+
+      if (isMobileLayout()) {
+        // On mobile, body scrolls: use getBoundingClientRect relative to viewport
+        const rect = targetLabel.getBoundingClientRect();
+        const scrollTop = window.scrollY + rect.top - 80; // 80px offset for sticky header
+        window.scrollTo({ top: Math.max(0, scrollTop), behavior: "smooth" });
+      } else {
+        // On desktop, timetableContainer scrolls
+        const labelTop = targetLabel.offsetTop;
+        timetableContainer.scrollTo({ top: Math.max(0, labelTop - 20), behavior: "smooth" });
+      }
     }, 100);
   }
 
@@ -551,6 +593,7 @@
   async function init() {
     loadCheckedSessions();
     setupScrollTopButton();
+    setupHamburgerMenu();
 
     try {
       const resp = await fetch("timetable.json");
