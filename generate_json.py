@@ -262,7 +262,7 @@ output = {
     "sessions": final_sessions
 }
 
-with open("/home/user/aws-jawsdays2026-timetable/docs/timetable.json", "w", encoding="utf-8") as f:
+with open("/home/user/aws-jawsdays2026-timetable-unofficial/docs/timetable.json", "w", encoding="utf-8") as f:
     json.dump(output, f, ensure_ascii=False, indent=2)
 
 print(f"Generated {len(final_sessions)} sessions")

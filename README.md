@@ -4,7 +4,7 @@ JAWS DAYS 2026 の参加セッションを管理できる、インタラクテ�
 
 ## GitHub Pages
 
-**https://ishiharatma.github.io/aws-jawsdays2026-timetable/**
+**https://ishiharatma.github.io/aws-jawsdays2026-timetable-unofficial/**
 
 ## イベント概要
 
