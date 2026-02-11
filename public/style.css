@@ -502,6 +502,11 @@ body {
   background-color: #ff8f00;
 }
 
+.session-cell .session-tag.lunch-tag {
+  background-color: #e8a000;
+  padding: 1px 4px;
+}
+
 /* Checked session (yellow/orange border) */
 .session-cell.checked {
   border: 3px solid var(--color-checked);
