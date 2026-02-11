@@ -224,9 +224,9 @@
     return "";
   }
 
-  // --- Utility: Group session (キーノート・懇親会 は全トラック連動) ---
+  // --- Utility: Group session (キーノート・懇親会・オープニング は全トラック連動) ---
   function isGroupSession(session) {
-    return session.title.includes("キーノート") || session.title.includes("懇親会");
+    return session.title.includes("キーノート") || session.title.includes("懇親会") || session.title.includes("オープニング");
   }
 
   // --- Utility: Lunch session (Track A-G, 12:00-12:15 または 12:20-12:35) ---
