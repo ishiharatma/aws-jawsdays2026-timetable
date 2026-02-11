@@ -1021,17 +1021,33 @@ body {
   right: 0;
   height: 2px;
   background: #ff3b30;
-  z-index: 8;
+  z-index: 9;
   pointer-events: none;
 }
 
 .current-time-line::before {
   content: "";
   position: absolute;
-  left: 0;
+  left: -1px;
   top: -4px;
   width: 10px;
   height: 10px;
   background: #ff3b30;
   border-radius: 50%;
+}
+
+/* Current time badge — shows exact time (e.g. "14:23") right of the dot */
+.current-time-badge {
+  position: absolute;
+  left: 13px;
+  top: -8px;
+  font-size: 0.6rem;
+  font-weight: 700;
+  color: #ff3b30;
+  background: rgba(255, 255, 255, 0.92);
+  padding: 0 3px;
+  border-radius: 2px;
+  line-height: 1.5;
+  white-space: nowrap;
+  letter-spacing: 0.02em;
 }

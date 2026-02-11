@@ -482,6 +482,7 @@
     }
     pendingChecked = new Set();
     renderTimetable();
+    updateCurrentTimeLine();
   }
 
   // --- Conflict detection for attendance planning ---
@@ -568,6 +569,56 @@
 
     updateBlockedSessions();
   });
+
+  // --- Current Time Line Indicator ---
+  function updateCurrentTimeLine() {
+    let line = timetableEl.querySelector(".current-time-line");
+
+    // Only show on event day, within event hours
+    if (!isEventDay()) {
+      if (line) line.remove();
+      return;
+    }
+
+    const currentMinutes = getCurrentJSTMinutes();
+    const startMin = timeToMinutes(TIME_START);
+    const endMin = timeToMinutes(TIME_END);
+
+    if (currentMinutes < startMin || currentMinutes >= endMin) {
+      if (line) line.remove();
+      return;
+    }
+
+    // Find the base 5-min slot at or before current time
+    const slotMinutes = Math.floor(currentMinutes / SLOT_MINUTES) * SLOT_MINUTES;
+    const slotTime = minutesToTime(slotMinutes);
+    const slotLabel = timetableEl.querySelector(`[data-time="${slotTime}"]`);
+
+    if (!slotLabel) {
+      if (line) line.remove();
+      return;
+    }
+
+    // Precise sub-slot position: fraction within the 5-minute row
+    const fraction = (currentMinutes % SLOT_MINUTES) / SLOT_MINUTES;
+    const topPx = slotLabel.offsetTop + fraction * slotLabel.offsetHeight;
+
+    const timeText = minutesToTime(currentMinutes);
+
+    if (!line) {
+      line = document.createElement("div");
+      line.className = "current-time-line";
+      line.setAttribute("aria-hidden", "true");
+      const badge = document.createElement("span");
+      badge.className = "current-time-badge";
+      line.appendChild(badge);
+      timetableEl.appendChild(line);
+    }
+
+    line.style.top = `${topPx}px`;
+    const badge = line.querySelector(".current-time-badge");
+    if (badge) badge.textContent = timeText;
+  }
 
   // --- Update "current" sessions periodically ---
   function updateCurrentSessions() {
@@ -697,12 +748,14 @@
 
     renderTimetable();
     updateCurrentSessions(); // apply current-session highlighting immediately on load
+    updateCurrentTimeLine(); // draw current time line immediately on load
     updateEventStatus();
     autoScrollToCurrentTime();
 
     // Periodically check for current sessions and event status
     setInterval(() => {
       updateCurrentSessions();
+      updateCurrentTimeLine();
       updateEventStatus();
     }, CURRENT_CHECK_INTERVAL);
   }

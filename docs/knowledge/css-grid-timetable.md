@@ -51,11 +51,62 @@ cell.style.gridRow = `${startRow} / span ${span}`;
 ```
 z-index 階層:
   100: サイトヘッダ (.site-header)
-  10:  トラックヘッダ (.track-header)
-  8:   現在時刻ライン (.current-time-line)
+  30:  コーナーセル上 (.track-header:first-child)
+  25:  コーナーセル下 (.track-header-bottom:first-of-type)
+  20:  トラックヘッダ (.track-header)
+  10:  トラックヘッダ下 (.track-header-bottom)
+  9:   現在時刻ライン (.current-time-line)  ← 時間ラベル (5) より上に表示
   6:   チェックボックス (.session-check)
+  5:   時間ラベル (.time-label, sticky)
   5:   ホバー中セル (.session-cell:hover)
 ```
+
+## 現在時刻ライン実装
+
+### 設計方針
+
+- 5分刻みグリッド上で **分単位の精密配置** を行う
+- イベント当日 (2026-03-07) かつ開催時間内 (09:00〜19:40) のみ表示
+- 1分ごとに位置・時刻バッジを更新
+
+### 位置計算ロジック
+
+```javascript
+// 現在時刻が属する 5分スロットの DOM 要素を取得
+const slotMinutes = Math.floor(currentMinutes / SLOT_MINUTES) * SLOT_MINUTES;
+const slotLabel = timetableEl.querySelector(`[data-time="${slotTime}"]`);
+
+// スロット内の小数位置で補間
+const fraction = (currentMinutes % SLOT_MINUTES) / SLOT_MINUTES;
+const topPx = slotLabel.offsetTop + fraction * slotLabel.offsetHeight;
+```
+
+`offsetTop` は DOM に挿入後に正確な値を返すため、`renderTimetable()` 直後に呼び出し可能。
+
+### UI 構成
+
+```
+[● 14:23]─────────────────────────────────────────
+ ↑          ↑
+ circle     badge + line (height: 2px, z-index: 9)
+(::before)  (.current-time-badge)
+```
+
+- **Circle**: `::before` 疑似要素, `10×10px`, `left: -1px, top: -4px` で中央揃え
+- **Badge**: `<span class="current-time-badge">` をJS で挿入。`left: 13px` (circle右)
+- **色**: `#ff3b30` — オレンジ (accent)・緑 (current session) と明確に区別
+
+### 呼び出しタイミング
+
+| タイミング | 場所 |
+|---|---|
+| 初期表示 | `init()` 内 `renderTimetable()` 直後 |
+| 1分毎更新 | `setInterval()` 内 |
+| 編集モード終了後 | `exitEditMode()` 内 `renderTimetable()` 直後 |
+
+`renderTimetable()` は `timetableEl.innerHTML = ""` でリセットするため、
+ライン要素が消えるので毎回再生成が必要。`updateCurrentTimeLine()` は既存要素を
+再利用（querySelector で取得、なければ createElement）。
 
 ## レスポンシブ対応
 
