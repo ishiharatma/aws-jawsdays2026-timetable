@@ -98,6 +98,27 @@ function sessionsOverlap(a, b) {
 - 端点が一致するだけ（例: A が 11:00 終了、B が 11:00 開始）は重複なし
 - B が A を完全に包含するケースも正しく検出される
 
+### 参加可否の判定ロジック（sessionConflicts）
+
+単純な時間重複だけでなく、「チェック済みセッション終了後に参加できるか」を考慮する:
+
+```javascript
+function sessionConflicts(checked, target) {
+  if (!sessionsOverlap(checked, target)) return false;
+  const checkedEnd = timeToMinutes(checked.end);
+  const targetEnd = timeToMinutes(target.end);
+  return checkedEnd >= targetEnd;
+}
+```
+
+**考え方**: チェック済みセッション A が終わったとき、対象セッション B がまだ開催中であれば参加できる。
+
+| チェック済み A | 対象 B | 重複 | A.end >= B.end | ブロック |
+|---|---|---|---|---|
+| 12:00-12:15 | 12:00-12:15 | あり | 12:15 >= 12:15 → YES | ブロック（終了済みで参加不可） |
+| 12:00-12:15 | 12:00-13:30 | あり | 12:15 >= 13:30 → NO | 可能（A終了時にBはまだ開催中） |
+| 13:20-13:40 | 12:00-13:30 | あり | 13:40 >= 13:30 → YES | ブロック（A終了時にBは終了済み） |
+
 ### 状態管理との統合
 
 ```
@@ -119,8 +140,8 @@ function sessionsOverlap(a, b) {
 1. `pendingChecked` に入っているセッションのオブジェクトを取得
 2. 全セッションを走査:
    - `pendingChecked` に含まれる → blocked 解除（自身はブロックされない）
-   - いずれかのチェック済みセッションと重複 → `.blocked` クラス付与 + `checkbox.disabled = true`
-   - 重複なし → `.blocked` クラス除去 + `checkbox.disabled = false`
+   - いずれかのチェック済みセッションと `sessionConflicts` が true → `.blocked` クラス付与 + `checkbox.disabled = true`
+   - 競合なし → `.blocked` クラス除去 + `checkbox.disabled = false`
 
 ### CSS
 
