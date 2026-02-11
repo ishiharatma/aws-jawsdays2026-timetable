@@ -112,3 +112,46 @@ id:17  track:A  13:50-14:10  「セッション」              ← 削除すべ
 
 - `timetable.json` を更新する際は、同一トラック・時間帯の重複エントリがないか確認する
 - 特に「タイトルが `セッション` のエントリ」は確定セッション追加後に削除漏れが起きやすい
+
+---
+
+## 参加予定機能の拡張（2026-02-11）
+
+### 変更内容
+
+**1. オープニング・キーノートを選択可能に**
+
+`isNonSession` 条件から `"オープニング"` と `"キーノート"` を除外。
+選択不可として残すのは「受付」「休憩」「会場レイアウト変更」のみ。
+
+```javascript
+const isNonSession =
+  !session.proposalUrl &&
+  (session.title.includes("休憩") ||
+    session.title.includes("受付") ||
+    session.title.includes("会場レイアウト変更"));
+```
+
+**2. グループセッション連動（キーノート・懇親会）**
+
+`isGroupSession()` を追加。チェックボックス変更時に同タイトルの全トラックを連動させる。
+
+```javascript
+function isGroupSession(session) {
+  return session.title.includes("キーノート") || session.title.includes("懇親会");
+}
+```
+
+checkbox `change` イベント内で、グループセッションの場合は
+`timetableData.sessions.filter(s => s.title === session.title)` で兄弟セッションを取得し、
+`pendingChecked` と DOM の両方を更新する。
+
+**3. タグ表示位置の変更**
+
+セル内の描画順を「時間 → タイトル → 登壇者 → タグ」から
+「時間 → タグ → タイトル → 登壇者」に変更。
+
+**4. ランチセッションに🍴タグを追加**
+
+`isLunchSession()` を追加。Track A-G の 12:00-12:15 / 12:20-12:35 に `lunch-tag` クラスの
+タグを最初に表示。CSS では `background-color: #e8a000`（オレンジ系）を設定。

@@ -224,6 +224,21 @@
     return "";
   }
 
+  // --- Utility: Group session (キーノート・懇親会 は全トラック連動) ---
+  function isGroupSession(session) {
+    return session.title.includes("キーノート") || session.title.includes("懇親会");
+  }
+
+  // --- Utility: Lunch session (Track A-G, 12:00-12:15 または 12:20-12:35) ---
+  function isLunchSession(session) {
+    const lunchTracks = ["A", "B", "C", "D", "E", "F", "G"];
+    return (
+      lunchTracks.includes(session.track) &&
+      ((session.start === "12:00" && session.end === "12:15") ||
+        (session.start === "12:20" && session.end === "12:35"))
+    );
+  }
+
   // --- Render Timetable ---
   function renderTimetable() {
     if (!timetableData) return;
@@ -296,13 +311,12 @@
       cell.style.gridRow = `${startRow} / span ${span}`;
 
       // Non-session check (breaks, registration, etc.)
+      // オープニング・キーノート・懇親会は選択可能なので除外
       const isNonSession =
         !session.proposalUrl &&
         (session.title.includes("休憩") ||
           session.title.includes("受付") ||
-          session.title.includes("会場レイアウト変更") ||
-          session.title.includes("オープニング") ||
-          session.title.includes("キーノート"));
+          session.title.includes("会場レイアウト変更"));
 
       if (isNonSession) {
         cell.classList.add("non-session");
@@ -318,14 +332,20 @@
         cell.classList.add("current");
       }
 
-      // Tags HTML with level-based CSS classes
-      const tagsHtml =
-        session.tags && session.tags.length > 0
-          ? `<span class="session-tags">${session.tags.map((t) => {
-              const cls = getTagClass(t);
-              return `<span class="session-tag${cls ? " " + cls : ""}">${escapeHtml(t)}</span>`;
-            }).join("")}</span>`
-          : "";
+      // Tags HTML: ランチタグを先頭に追加し、Level/サポーターなどのタグを続ける
+      const tagItems = [];
+      if (isLunchSession(session)) {
+        tagItems.push(`<span class="session-tag lunch-tag" aria-label="ランチセッション">🍴</span>`);
+      }
+      if (session.tags && session.tags.length > 0) {
+        session.tags.forEach((t) => {
+          const cls = getTagClass(t);
+          tagItems.push(`<span class="session-tag${cls ? " " + cls : ""}">${escapeHtml(t)}</span>`);
+        });
+      }
+      const tagsHtml = tagItems.length > 0
+        ? `<span class="session-tags">${tagItems.join("")}</span>`
+        : "";
 
       // Speaker with avatar
       let speakerHtml = "";
@@ -341,12 +361,12 @@
         ? `<input type="checkbox" class="session-check" ${checkedSessions.has(session.id) ? "checked" : ""} data-session-id="${session.id}">`
         : "";
 
-      // Content
+      // Content: 時間 → タグ → タイトル → 登壇者 の順
       cell.innerHTML = `
         <span class="session-time-label">${session.start}-${session.end}</span>
+        ${tagsHtml}
         <span class="session-title">${escapeHtml(session.title)}</span>
         ${speakerHtml}
-        ${tagsHtml}
         ${checkboxHtml}
       `;
 
@@ -516,6 +536,7 @@
     if (!e.target.classList.contains("session-check")) return;
     const id = Number(e.target.dataset.sessionId);
     const cell = e.target.closest(".session-cell");
+    const session = timetableData ? timetableData.sessions.find((s) => s.id === id) : null;
 
     if (e.target.checked) {
       pendingChecked.add(id);
@@ -524,6 +545,27 @@
       pendingChecked.delete(id);
       if (cell) cell.classList.remove("checked");
     }
+
+    // グループセッション (キーノート・懇親会) は全トラック連動で選択/解除
+    if (session && isGroupSession(session)) {
+      const siblings = timetableData.sessions.filter(
+        (s) => s.id !== id && s.title === session.title
+      );
+      siblings.forEach((s) => {
+        const sibCell = timetableEl.querySelector(`.session-cell[data-session-id="${s.id}"]`);
+        const sibCheckbox = sibCell ? sibCell.querySelector(".session-check") : null;
+        if (e.target.checked) {
+          pendingChecked.add(s.id);
+          if (sibCell) sibCell.classList.add("checked");
+          if (sibCheckbox) sibCheckbox.checked = true;
+        } else {
+          pendingChecked.delete(s.id);
+          if (sibCell) sibCell.classList.remove("checked");
+          if (sibCheckbox) sibCheckbox.checked = false;
+        }
+      });
+    }
+
     updateBlockedSessions();
   });
 
