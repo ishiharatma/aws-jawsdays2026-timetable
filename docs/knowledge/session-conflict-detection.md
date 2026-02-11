@@ -132,13 +132,13 @@ const isNonSession =
     session.title.includes("会場レイアウト変更"));
 ```
 
-**2. グループセッション連動（キーノート・懇親会）**
+**2. グループセッション連動（キーノート・懇親会・オープニング）**
 
 `isGroupSession()` を追加。チェックボックス変更時に同タイトルの全トラックを連動させる。
 
 ```javascript
 function isGroupSession(session) {
-  return session.title.includes("キーノート") || session.title.includes("懇親会");
+  return session.title.includes("キーノート") || session.title.includes("懇親会") || session.title.includes("オープニング");
 }
 ```
 
