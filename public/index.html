@@ -19,33 +19,60 @@
   <header class="site-header">
     <div class="header-content">
       <h1>JAWS DAYS 2026</h1>
-      <p class="event-meta">
-        2026/03/07 (Sat) 09:00-19:40
-        <span id="event-status" class="event-status"></span>
-        |
-        <a href="https://www.google.com/maps/search/サンシャインシティ+池袋" target="_blank" rel="noopener" class="venue-link">
-          池袋サンシャインシティ
-          <svg class="map-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-label="Google Mapで開く"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        </a>
-        |
-        <a href="https://jawsdays2026.jaws-ug.jp/" target="_blank" rel="noopener">公式HP</a>
-        |
-        <a href="https://fortee.jp/jawsdays-2026/timetable" target="_blank" rel="noopener">公式タイムテーブル</a>
-        |
-        <a href="https://x.com/intent/post?text=%23jawsdays2026%20%23jawsug" target="_blank" rel="noopener" class="x-hashtag-link">
+
+      <!-- Navigation: always visible on desktop, collapsible on mobile via hamburger -->
+      <nav class="header-nav" id="header-nav" aria-label="ナビゲーション">
+        <p class="event-meta">
+          2026/03/07 (Sat) 09:00-19:40
+          <span id="event-status" class="event-status"></span>
+          |
+          <a href="https://www.google.com/maps/search/サンシャインシティ+池袋" target="_blank" rel="noopener" class="venue-link">
+            池袋サンシャインシティ
+            <svg class="map-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-label="Google Mapで開く"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </a>
+          |
+          <a href="https://jawsdays2026.jaws-ug.jp/" target="_blank" rel="noopener">公式HP</a>
+          |
+          <a href="https://fortee.jp/jawsdays-2026/timetable" target="_blank" rel="noopener">公式タイムテーブル</a>
+          |
+          <a href="https://x.com/search?q=%23jawsug+%23jawsdays2026+%23jawsdays2026%E5%8B%95%E7%94%BB%E3%83%AA%E3%83%AC%E3%83%BC&f=live" target="_blank" rel="noopener" class="x-video-relay-link">
+            <svg class="x-icon" width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            jawsdays2026動画リレー
+          </a>
+          |
+          <a href="https://x.com/intent/post?text=%23jawsdays2026%20%23jawsug" target="_blank" rel="noopener" class="x-hashtag-link desktop-hashtag">
+            <svg class="x-icon" width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            #jawsdays2026
+          </a>
+          |
+          <a href="https://x.com/jawsdays" target="_blank" rel="noopener" class="x-account-link">
+            <svg class="x-icon" width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            @jawsdays
+          </a>
+        </p>
+      </nav>
+
+      <div class="header-actions">
+        <!-- Mobile only: #jawsdays2026 always visible outside hamburger -->
+        <a href="https://x.com/intent/post?text=%23jawsdays2026%20%23jawsug" target="_blank" rel="noopener" class="x-hashtag-link mobile-hashtag">
           <svg class="x-icon" width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
           #jawsdays2026
         </a>
-        |
-        <a href="https://x.com/jawsdays" target="_blank" rel="noopener" class="x-account-link">
-          <svg class="x-icon" width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-          @jawsdays
-        </a>
-      </p>
-      <div class="header-actions">
-        <button id="edit-check-btn" class="btn btn-edit" title="参加したいセッションをチェック">参加予定を編集</button>
+        <button id="edit-check-btn" class="btn btn-edit" title="参加したいセッションをチェック">参加予定</button>
         <button id="save-check-btn" class="btn btn-save hidden" title="チェックを保存">保存</button>
         <button id="cancel-check-btn" class="btn btn-cancel hidden" title="編集をキャンセル">キャンセル</button>
+        <!-- Hamburger button: mobile only -->
+        <button id="hamburger-btn" class="hamburger-btn" aria-label="メニューを開く" aria-expanded="false">
+          <svg class="hamburger-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
+            <line x1="3" y1="6" x2="21" y2="6"/>
+            <line x1="3" y1="12" x2="21" y2="12"/>
+            <line x1="3" y1="18" x2="21" y2="18"/>
+          </svg>
+          <svg class="close-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true" style="display:none">
+            <line x1="18" y1="6" x2="6" y2="18"/>
+            <line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
       </div>
     </div>
   </header>

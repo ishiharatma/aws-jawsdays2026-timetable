@@ -200,3 +200,186 @@ target="_blank" rel="noopener"
 - `target="_blank"`: 新しいタブで開く
 - `rel="noopener"`: セキュリティ対策（opener への参照を遮断）
 - `rel="noreferrer"` はリファラーも送らない場合に追加（より強い制限）
+
+---
+
+## X ハッシュタグ検索リンク（Latest/最新 タブ）
+
+ハッシュタグをクリックすると X の最新投稿検索画面を開くパターン。
+
+```html
+<a href="https://x.com/search?q=%23jawsug+%23jawsdays2026+%23jawsdays2026%E5%8B%95%E7%94%BB%E3%83%AA%E3%83%AC%E3%83%BC&f=live"
+   target="_blank" rel="noopener" class="x-video-relay-link">
+  <svg class="x-icon" ...><!-- X icon --></svg>
+  jawsdays2026動画リレー
+</a>
+```
+
+- `f=live` パラメータで「最新（Latest）」タブを指定
+- `q=` に複数ハッシュタグを URL エンコードして指定（スペースは `+` または `%20`）
+- 日本語ハッシュタグ: 例 `#jawsdays2026動画リレー` → `%23jawsdays2026%E5%8B%95%E7%94%BB%E3%83%AA%E3%83%AC%E3%83%BC`
+
+---
+
+## モバイル向けハンバーガーメニュー
+
+デスクトップでは全リンクを表示し、モバイルではハンバーガーに収納するパターン。
+
+### HTML 構造
+
+```html
+<header class="site-header">
+  <div class="header-content">
+    <h1>タイトル</h1>
+
+    <!-- ハンバーガーで格納されるナビゲーション -->
+    <nav class="header-nav" id="header-nav" aria-label="ナビゲーション">
+      <p class="event-meta">
+        <!-- 常時表示させたくないリンク群 -->
+        <!-- モバイルでは .desktop-hashtag を非表示 -->
+        <a class="x-hashtag-link desktop-hashtag">#jawsdays2026</a>
+      </p>
+    </nav>
+
+    <!-- 常時表示のアクション群 -->
+    <div class="header-actions">
+      <!-- モバイルのみ常時表示 -->
+      <a class="x-hashtag-link mobile-hashtag">#jawsdays2026</a>
+      <button id="edit-check-btn" class="btn btn-edit">参加予定</button>
+      <!-- ハンバーガーボタン (モバイルのみ表示) -->
+      <button id="hamburger-btn" class="hamburger-btn" aria-expanded="false">
+        <svg class="hamburger-icon"><!-- 3本線 --></svg>
+        <svg class="close-icon" style="display:none"><!-- X --></svg>
+      </button>
+    </div>
+  </div>
+</header>
+```
+
+### CSS のポイント
+
+```css
+/* デスクトップ */
+.mobile-hashtag { display: none; }
+.hamburger-btn  { display: none; }
+.header-nav     { flex: 1; }
+
+@media (max-width: 768px) {
+  .mobile-hashtag { display: inline-flex; }
+  .hamburger-btn  { display: flex; }
+
+  /* header-nav は order:10 + width:100% で flex 折り返しで下段に配置 */
+  .header-nav {
+    flex: none;
+    order: 10;
+    width: 100%;
+    display: none; /* デフォルト非表示 */
+  }
+  .header-nav.open { display: block; }
+
+  .desktop-hashtag { display: none; }
+
+  /* header-content は flex-wrap: wrap にして折り返しを許可 */
+  .header-content { flex-wrap: wrap; }
+}
+```
+
+### JS のポイント
+
+```javascript
+hamburgerBtn.addEventListener("click", () => {
+  const isOpen = headerNav.classList.toggle("open");
+  hamburgerBtn.setAttribute("aria-expanded", isOpen ? "true" : "false");
+  hamburgerBtn.querySelector(".hamburger-icon").style.display = isOpen ? "none" : "";
+  hamburgerBtn.querySelector(".close-icon").style.display    = isOpen ? "" : "none";
+});
+```
+
+---
+
+## モバイルでのプルツーリフレッシュ対応
+
+デスクトップでは `html, body { overflow: hidden }` + スクロール要素のみスクロール設計。
+モバイルでは body を自然スクロールに切り替えてブラウザのプルツーリフレッシュを有効にする。
+
+```css
+@media (max-width: 768px) {
+  html, body {
+    height: auto;
+    overflow: auto;
+    overscroll-behavior-y: auto; /* プルツーリフレッシュを許可 */
+  }
+  body {
+    min-height: 100vh;
+    display: block;
+  }
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .timetable-container {
+    overflow: visible;  /* body スクロールに委ねる */
+    flex: none;
+    height: auto;
+  }
+}
+```
+
+### JS での対応
+
+スクロールイベントリスナーを `timetableContainer` と `window` の両方に登録し、
+モバイルかどうかで振り分ける。
+
+```javascript
+function isMobileLayout() {
+  return window.innerWidth <= 768;
+}
+
+// スクロール量の取得
+const scrolled = isMobileLayout() ? window.scrollY : timetableContainer.scrollTop;
+
+// スクロールトップ
+if (isMobileLayout()) {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+} else {
+  timetableContainer.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+// 自動スクロール (イベント当日の現在時刻へ)
+if (isMobileLayout()) {
+  const rect = targetLabel.getBoundingClientRect();
+  const scrollTop = window.scrollY + rect.top - 80; // sticky header 分のオフセット
+  window.scrollTo({ top: Math.max(0, scrollTop), behavior: "smooth" });
+}
+```
+
+---
+
+## モバイルでの4トラック全幅表示
+
+CSS カスタムプロパティで track-width を動的計算し、4トラックを画面幅に収める。
+
+```css
+@media (max-width: 768px) {
+  :root {
+    --time-col-width: 44px;
+    /* 左右パディング合計 32px を除いた幅を 4 等分 */
+    --track-width: calc((100vw - 44px - 32px) / 4);
+  }
+  .timetable-wrapper {
+    padding: 8px 16px; /* 左右 16px = 合計 32px */
+    min-width: 0;
+    justify-content: flex-start;
+    min-height: auto;
+  }
+}
+```
+
+JS 側では `gridTemplateColumns` に CSS 変数参照を設定しているため、
+メディアクエリで変数を上書きするだけで自動的に反映される。
+
+```javascript
+timetableEl.style.gridTemplateColumns =
+  `var(--time-col-width) repeat(${numTracks}, var(--track-width))`;
+```

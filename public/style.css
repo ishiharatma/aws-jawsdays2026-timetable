@@ -71,10 +71,15 @@ body {
   white-space: nowrap;
 }
 
+/* Header nav wraps event-meta for collapsible behavior on mobile */
+.header-nav {
+  flex: 1;
+  min-width: 0;
+}
+
 .event-meta {
   font-size: 0.85rem;
   color: #a0aab4;
-  flex: 1;
   display: flex;
   align-items: center;
   gap: 6px;
@@ -145,14 +150,48 @@ body {
   text-decoration: underline;
 }
 
+.x-video-relay-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  color: var(--color-accent) !important;
+}
+
+.x-video-relay-link:hover {
+  text-decoration: underline;
+}
+
 .x-icon {
   vertical-align: middle;
   flex-shrink: 0;
 }
 
+/* Mobile only: #jawsdays2026 shown outside hamburger — hidden on desktop */
+.mobile-hashtag {
+  display: none;
+}
+
+/* Hamburger button — hidden on desktop */
+.hamburger-btn {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--color-header-text);
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  align-items: center;
+  justify-content: center;
+}
+
+.hamburger-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
 .header-actions {
   display: flex;
   gap: 8px;
+  align-items: center;
 }
 
 /* === Buttons === */
@@ -742,41 +781,166 @@ body {
   flex-shrink: 0;
 }
 
-/* === Responsive === */
+/* === Responsive (Mobile) === */
 @media (max-width: 768px) {
+  /* --- Mobile: allow natural body scroll for pull-to-refresh --- */
+  html, body {
+    height: auto;
+    overflow: auto;
+    overscroll-behavior-y: auto;
+  }
+
+  body {
+    min-height: 100vh;
+    display: block;
+  }
+
+  /* Header is sticky on mobile */
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    padding: 10px 16px;
+  }
+
+  /* Timetable container: no height constraint on mobile, expand to content */
+  .timetable-container {
+    flex: none;
+    overflow: visible;
+    min-height: auto;
+    height: auto;
+    -webkit-overflow-scrolling: auto;
+  }
+
+  /* Footer: normal flow on mobile */
+  .site-footer {
+    height: auto;
+    padding: 12px 16px;
+  }
+
+  /* --- Mobile: 4-track layout — fit all 4 tracks in viewport width --- */
   :root {
-    --track-width: 140px;
-    --time-col-width: 48px;
+    --time-col-width: 44px;
     --row-height: 22px;
+    /* Dynamic track width: fill remaining viewport divided by 4 tracks */
+    /* 16px left + 16px right padding = 32px total padding */
+    --track-width: calc((100vw - 44px - 32px) / 4);
   }
 
   .timetable-wrapper {
-    padding: 8px 12px;
+    padding: 8px 16px;
+    min-width: 0;
+    justify-content: flex-start;
+    min-height: auto;
   }
 
+  /* --- Mobile header layout --- */
   .header-content {
-    flex-direction: column;
-    align-items: flex-start;
+    flex-wrap: wrap; /* allow header-nav to wrap to next line */
+    align-items: center;
     gap: 8px;
+    padding: 0;
   }
 
   .header-content h1 {
-    font-size: 1.1rem;
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+
+  /* header-nav: collapsible, full-width below when open */
+  .header-nav {
+    flex: none;
+    order: 10; /* push below header-actions row */
+    width: 100%;
+    display: none; /* hidden by default */
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    padding-top: 10px;
+    margin-top: 4px;
+  }
+
+  /* Shown when hamburger is open */
+  .header-nav.open {
+    display: block;
   }
 
   .event-meta {
-    font-size: 0.75rem;
+    font-size: 0.8rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  /* Hide #jawsdays2026 from nav on mobile (shown separately in header-actions) */
+  .desktop-hashtag {
+    display: none;
+  }
+
+  /* Show mobile #jawsdays2026 in header-actions */
+  .mobile-hashtag {
+    display: inline-flex;
+    font-size: 0.8rem;
+    color: var(--color-accent);
+  }
+
+  /* Show hamburger button on mobile */
+  .hamburger-btn {
+    display: flex;
+    flex-shrink: 0;
+  }
+
+  /* header-actions stays in main row (order < 10) */
+  .header-actions {
+    margin-left: auto;
+    gap: 6px;
+    flex-shrink: 0;
+  }
+
+  .btn {
+    padding: 6px 10px;
+    font-size: 0.8rem;
+  }
+
+  /* --- Session cells on mobile --- */
+  .session-cell {
+    padding: 3px 4px;
+    margin: 1px;
+  }
+
+  .track-header,
+  .track-header-bottom {
+    font-size: 0.7rem;
+    padding: 6px 4px;
+  }
+
+  .track-header .track-hashtag,
+  .track-header-bottom .track-hashtag {
+    font-size: 0.6rem;
+  }
+
+  .time-label {
+    font-size: 0.65rem;
+    padding: 2px 4px;
   }
 
   .session-cell .session-title {
-    font-size: 0.65rem;
+    font-size: 0.6rem;
     -webkit-line-clamp: 3;
   }
 
   .session-cell .session-speaker {
-    font-size: 0.6rem;
+    font-size: 0.55rem;
   }
 
+  .session-cell .session-time-label {
+    font-size: 0.55rem;
+  }
+
+  .session-cell .session-tag {
+    font-size: 0.55rem;
+    padding: 1px 4px;
+  }
+
+  /* --- Modal: full-width bottom sheet on mobile --- */
   .modal-content {
     max-width: 100%;
     border-radius: 12px 12px 0 0;
@@ -796,8 +960,9 @@ body {
     justify-content: center;
   }
 
+  /* Scroll-to-top button */
   .scroll-top-btn {
-    bottom: 56px;
+    bottom: 16px;
     right: 16px;
     width: 40px;
     height: 40px;
