@@ -446,6 +446,7 @@
     editBtn.classList.add("hidden");
     saveBtn.classList.remove("hidden");
     cancelBtn.classList.remove("hidden");
+    updateBlockedSessions();
   }
 
   function exitEditMode(save) {
@@ -463,6 +464,47 @@
     renderTimetable();
   }
 
+  // --- Overlap detection ---
+  function sessionsOverlap(a, b) {
+    const aStart = timeToMinutes(a.start);
+    const aEnd = timeToMinutes(a.end);
+    const bStart = timeToMinutes(b.start);
+    const bEnd = timeToMinutes(b.end);
+    // Standard interval overlap: any shared time
+    return bStart < aEnd && bEnd > aStart;
+  }
+
+  // --- Update blocked (un-checkable) sessions in edit mode ---
+  function updateBlockedSessions() {
+    if (!timetableData) return;
+    const checkedSessionObjects = timetableData.sessions.filter(s => pendingChecked.has(s.id));
+
+    timetableData.sessions.forEach(session => {
+      const cell = timetableEl.querySelector(`.session-cell[data-session-id="${session.id}"]`);
+      if (!cell) return;
+      const checkbox = cell.querySelector(".session-check");
+      if (!checkbox) return;
+
+      // Already checked sessions are never blocked
+      if (pendingChecked.has(session.id)) {
+        cell.classList.remove("blocked");
+        checkbox.disabled = false;
+        return;
+      }
+
+      const isBlocked = checkedSessionObjects.some(checked => sessionsOverlap(checked, session));
+
+      if (isBlocked) {
+        cell.classList.add("blocked");
+        checkbox.disabled = true;
+        checkbox.checked = false;
+      } else {
+        cell.classList.remove("blocked");
+        checkbox.disabled = false;
+      }
+    });
+  }
+
   // --- Checkbox handler (delegated) ---
   timetableEl.addEventListener("change", (e) => {
     if (!e.target.classList.contains("session-check")) return;
@@ -476,6 +518,7 @@
       pendingChecked.delete(id);
       if (cell) cell.classList.remove("checked");
     }
+    updateBlockedSessions();
   });
 
   // --- Update "current" sessions periodically ---

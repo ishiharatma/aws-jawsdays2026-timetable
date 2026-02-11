@@ -522,6 +522,22 @@ body {
   box-shadow: 0 0 0 1px rgba(255, 153, 0, 0.3), inset 0 0 0 1px rgba(52, 199, 89, 0.3);
 }
 
+/* Blocked session (time slot conflicts with a checked session) */
+.edit-mode .session-cell.blocked {
+  opacity: 0.45;
+  background: #e8eaed;
+  border-color: #c5cbd3;
+  cursor: not-allowed;
+}
+
+.edit-mode .session-cell.blocked .session-check {
+  cursor: not-allowed;
+}
+
+.edit-mode .session-cell.blocked:hover {
+  box-shadow: none;
+}
+
 /* Non-session cells (breaks, etc.) */
 .session-cell.non-session {
   background: #f0f0f0;
