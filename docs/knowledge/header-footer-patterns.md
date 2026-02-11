@@ -147,6 +147,48 @@ th.innerHTML = `${track.name}<span class="track-hashtag"><a href="${hashtagXUrl}
 
 ---
 
+## フッターに GitHub / X リンクを追加する
+
+フッターに区切り `|` でリンクを並べるパターン。GitHub アイコン（SVG）と X アイコンを使用。
+
+```html
+<footer class="site-footer">
+  <p>
+    &copy; 2026 <a href="..." target="_blank" rel="noopener">issy</a>. ...
+    |
+    <a href="https://github.com/{user}/{repo}" target="_blank" rel="noopener" class="footer-link">
+      <svg class="footer-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.167 6.839 9.49..."/>
+      </svg>
+      GitHub
+    </a>
+    |
+    <a href="https://x.com/{account}" target="_blank" rel="noopener" class="footer-link">
+      <svg class="footer-icon" width="14" height="14" ...><!-- X icon --></svg>
+      @{account}
+    </a>
+  </p>
+</footer>
+```
+
+```css
+.footer-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.footer-icon {
+  vertical-align: middle;
+  flex-shrink: 0;
+}
+```
+
+- GitHub SVG: `viewBox="0 0 24 24"` の公式 Octicon パスを使用
+- フッターの高さ (`--footer-height: 40px`) はリンクが増えても inline なので変更不要
+- `aria-hidden="true"` をアイコン SVG に付け、テキストラベルで意味を伝える
+
+---
+
 ## 外部リンクの共通ルール
 
 外部リンクは必ず以下を付ける:
