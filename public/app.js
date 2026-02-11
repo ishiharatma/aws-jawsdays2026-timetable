@@ -465,20 +465,19 @@
   }
 
   // --- Conflict detection for attendance planning ---
-  // Target session B is blocked by checked session A if:
-  //   B's start time falls within A's running time [A.start, A.end)
-  //   AND B ends no later than A (i.e., B is contained within A).
-  // This allows selecting a session that starts BEFORE a checked session,
-  // and also allows selecting a session that starts at the same time but
-  // ends LATER than the checked session (e.g., 12:00-13:30 is selectable
-  // when 12:00-12:15 is checked, because the longer session extends beyond
-  // the checked one).
+  // Two sessions conflict if their time ranges overlap.
+  // Standard interval overlap: targetStart < checkedEnd && checkedStart < targetEnd
+  // This correctly handles all cases:
+  //   - checked contains target (e.g., checked=11:00-11:50, target=11:00-11:20)
+  //   - target contains checked (e.g., checked=11:00-11:20, target=11:00-11:50)
+  //   - partial overlap
+  //   - back-to-back sessions do NOT conflict (e.g., 11:00-11:20 and 11:20-11:40)
   function sessionConflicts(checked, target) {
     const targetStart = timeToMinutes(target.start);
     const targetEnd = timeToMinutes(target.end);
     const checkedStart = timeToMinutes(checked.start);
     const checkedEnd = timeToMinutes(checked.end);
-    return checkedStart <= targetStart && targetStart < checkedEnd && targetEnd <= checkedEnd;
+    return targetStart < checkedEnd && checkedStart < targetEnd;
   }
 
   // --- Update blocked (un-checkable) sessions in edit mode ---

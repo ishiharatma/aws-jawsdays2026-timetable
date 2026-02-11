@@ -8,11 +8,11 @@
 
 `public/app.js` — `sessionConflicts(checked, target)` 関数
 
-## 正しい競合判定ロジック
+## 正しい競合判定ロジック（第4世代・現行）
 
 ### 基本方針
 
-**「target の開始時刻が checked の実施中に該当し、かつ target が checked に包含される（target の終了 ≤ checked の終了）場合のみブロック」**
+**「target と checked の時間帯が1分でも重なる場合はブロック」**（標準的な区間重複判定）
 
 ```javascript
 function sessionConflicts(checked, target) {
@@ -20,63 +20,69 @@ function sessionConflicts(checked, target) {
   const targetEnd = timeToMinutes(target.end);
   const checkedStart = timeToMinutes(checked.start);
   const checkedEnd = timeToMinutes(checked.end);
-  return checkedStart <= targetStart && targetStart < checkedEnd && targetEnd <= checkedEnd;
+  return targetStart < checkedEnd && checkedStart < targetEnd;
 }
 ```
 
-判定式: `checked.start <= target.start < checked.end AND target.end <= checked.end`
+判定式: `target.start < checked.end AND checked.start < target.end`
 
 ### 判定例
 
 | checked（選択済み） | target（対象） | 結果 | 理由 |
 |---|---|---|---|
-| 11:30–11:50 | 11:00–11:50 | 許可 ✓ | target は 11:00 に開始→ 11:30 より前なのでチェック可 |
-| 11:00–11:20 | 11:00–11:50 | 許可 ✓ | target は checked より長い（11:50 > 11:20）→ チェック可 |
-| 11:00–11:50 | 11:30–11:50 | ブロック ✗ | target は 11:30 に開始、かつ checked に包含（11:50 ≤ 11:50） |
-| 11:00–11:50 | 11:00–11:20 | ブロック ✗ | target は同時開始、かつ checked に包含（11:20 ≤ 11:50） |
-| 12:00–12:15 | 12:00–13:30 | 許可 ✓ | target は checked より長い（13:30 > 12:15）→ チェック可 |
-| 12:00–13:30 | 12:00–12:15 | ブロック ✗ | target は同時開始、かつ checked に包含（12:15 ≤ 13:30） |
-| 11:00–11:20 | 11:30–11:50 | 許可 ✓ | target は 11:30 に開始→ checked は 11:20 に終了済み |
+| 11:00–11:20 | 11:00–11:50 | ブロック ✗ | 11:00〜11:20 が重複 |
+| 11:30–11:50 | 11:00–11:50 | ブロック ✗ | 11:30〜11:50 が重複 |
+| 11:00–11:50 | 11:30–11:50 | ブロック ✗ | 11:30〜11:50 が重複 |
+| 11:00–11:50 | 11:00–11:20 | ブロック ✗ | 11:00〜11:20 が重複 |
+| 12:00–12:15 | 12:00–13:30 | ブロック ✗ | 12:00〜12:15 が重複 |
+| 12:00–13:30 | 12:00–12:15 | ブロック ✗ | 12:00〜12:15 が重複 |
+| 11:00–11:20 | 11:30–11:50 | 許可 ✓ | 時間帯が連続するが重複なし |
+| 11:00–11:20 | 11:20–11:40 | 許可 ✓ | 隣接（11:20 == 11:20）は重複なし |
 
-## 旧ロジックの問題点（バグ履歴）
+### 複数選択時の重要なケース（バグ修正のきっかけ）
+
+| checked1 | checked2 | target | 結果 | 旧挙動 |
+|---|---|---|---|---|
+| 11:00–11:20 | 11:30–11:50 | 11:00–11:50 | ブロック ✗ | 許可（バグ）|
+
+①(11:00-11:20) と②(11:30-11:50) を選択済みの場合、③(11:00-11:50) は
+いずれか一方と重複するためブロックされる。
+
+## バグ履歴
+
+### 第3世代（直前の実装、バグあり）
+
+```javascript
+// target が checked に包含される場合のみブロック
+return checkedStart <= targetStart && targetStart < checkedEnd && targetEnd <= checkedEnd;
+```
+
+**問題**: checked が target を内包する方向のみ検出し、逆方向（target が checked より長い）を見逃す。
+
+| ケース | 旧ロジック | 正しい挙動 | 問題 |
+|---|---|---|---|
+| checked=11:00–11:20, target=11:00–11:50 | 許可（11:50 > 11:20） | ブロックすべき | **誤りで許可** |
+| checked=11:30–11:50, target=11:00–11:50 | 許可（11:00 < 11:30） | ブロックすべき | **誤りで許可** |
+
+**根本的な問題**: 複数の短いセッション（①②）が組み合わさって長いセッション（③）の
+時間帯を覆っていても、個々の checked が③を包含しないためブロックされなかった。
 
 ### 第1世代（誤り）
 
 ```javascript
-// 旧実装（誤り）
 function sessionConflicts(checked, target) {
   if (!sessionsOverlap(checked, target)) return false;
   return timeToMinutes(checked.end) >= timeToMinutes(target.end);
 }
 ```
 
-| ケース | 旧ロジック | 正しい挙動 | 問題 |
-|---|---|---|---|
-| checked=11:30–11:50, target=11:00–11:50 | ブロック（end同士が710=710） | 許可すべき | **誤りでブロック** |
-| checked=11:00–11:20, target=11:00–11:50 | 許可（680 < 710） | ブロックすべき | **誤りで許可** |
-
 ### 第2世代（開始時刻のみ判定、部分的に誤り）
 
 ```javascript
-// 開始時刻が checked の実施中ならブロック（終了時刻を考慮しない）
 return checkedStart <= targetStart && targetStart < checkedEnd;
 ```
 
 **問題**: 同じ開始時刻かつ target が checked より長い場合もブロックしてしまう。
-
-例: checked=12:00–12:15, target=12:00–13:30 → `720 <= 720 && 720 < 735` = true → **誤りでブロック** ❌
-
-## 設計の考え方
-
-「target（対象セッション）が checked（選択済みセッション）に時間的に包含されるかどうか」を基準にする。
-
-- target の開始時刻 < checked の開始時刻 → target が先に始まる → チェック可
-- target の開始時刻 >= checked の終了時刻 → checked が先に終わっている → チェック可
-- target の開始時刻が checked の実施中かつ target.end > checked.end → target は checked より長い → チェック可
-- target の開始時刻が checked の実施中かつ target.end ≤ checked.end → target は checked に包含 → **ブロック**
-
-この方針により、短いセッション（①）をチェック済みでも、それより長いセッション（②）は
-「よりスコープが広い選択肢」として選択可能になる。
 
 ---
 
