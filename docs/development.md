@@ -3,7 +3,7 @@
 ## プロジェクト構成
 
 ```
-aws-jawsdays2026-timetable/
+aws-jawsdays2026-timetable-unofficial/
 ├── public/                  # GitHub Pages デプロイ対象
 │   ├── index.html           # メインページ
 │   ├── style.css            # スタイルシート
