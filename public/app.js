@@ -466,16 +466,19 @@
 
   // --- Conflict detection for attendance planning ---
   // Target session B is blocked by checked session A if:
-  //   B's start time falls within A's running time [A.start, A.end).
-  // This allows selecting a session that starts BEFORE a checked session
-  // (e.g., 11:00-11:50 is selectable when only 11:30-11:50 is checked,
-  //  because 11:00-11:30 is free), but blocks sessions that start while
-  //  you are already in the checked session.
+  //   B's start time falls within A's running time [A.start, A.end)
+  //   AND B ends no later than A (i.e., B is contained within A).
+  // This allows selecting a session that starts BEFORE a checked session,
+  // and also allows selecting a session that starts at the same time but
+  // ends LATER than the checked session (e.g., 12:00-13:30 is selectable
+  // when 12:00-12:15 is checked, because the longer session extends beyond
+  // the checked one).
   function sessionConflicts(checked, target) {
     const targetStart = timeToMinutes(target.start);
+    const targetEnd = timeToMinutes(target.end);
     const checkedStart = timeToMinutes(checked.start);
     const checkedEnd = timeToMinutes(checked.end);
-    return checkedStart <= targetStart && targetStart < checkedEnd;
+    return checkedStart <= targetStart && targetStart < checkedEnd && targetEnd <= checkedEnd;
   }
 
   // --- Update blocked (un-checkable) sessions in edit mode ---
