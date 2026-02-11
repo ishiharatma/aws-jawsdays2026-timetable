@@ -61,3 +61,31 @@ https://fortee.jp/jawsdays-2026/proposal/{UUID}
 ### 動作
 - `target="_blank"` で新規タブに開く
 - `rel="noopener"` を指定してセキュリティ確保
+
+## Google Analytics (GA4)
+
+### タグの埋め込み方法
+
+```html
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
+</script>
+```
+
+- `<head>` 内に配置する
+- 計測 ID は `G-` で始まる形式（GA4）
+- `async` 属性でページ読み込みをブロックしない
+
+## Favicon（外部URL）
+
+```html
+<link rel="icon" href="https://example.com/favicon.png">
+```
+
+- 外部 URL を favicon に指定できる（ただし CORS に注意）
+- JAWS-UG 公式: `https://jaws-ug.jp/assets/images/cropped-favicon-1-32x32.png`

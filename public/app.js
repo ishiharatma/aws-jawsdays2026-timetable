@@ -173,6 +173,40 @@
     return jstDate === EVENT_DATE;
   }
 
+  // --- Utility: Get event status ---
+  function getEventStatus() {
+    const now = new Date();
+    const jstNow = new Date(
+      now.toLocaleString("en-US", { timeZone: "Asia/Tokyo" })
+    );
+    const jstDate = `${jstNow.getFullYear()}-${String(jstNow.getMonth() + 1).padStart(2, "0")}-${String(jstNow.getDate()).padStart(2, "0")}`;
+
+    if (jstDate < EVENT_DATE) {
+      return { emoji: "🗓️", text: "開催前", key: "before" };
+    } else if (jstDate > EVENT_DATE) {
+      return { emoji: "✅", text: "開催終了", key: "after" };
+    } else {
+      const nowMin = jstNow.getHours() * 60 + jstNow.getMinutes();
+      const startMin = timeToMinutes(TIME_START);
+      const endMin = timeToMinutes(TIME_END);
+      if (nowMin < startMin) {
+        return { emoji: "🗓️", text: "開催前", key: "before" };
+      } else if (nowMin >= endMin) {
+        return { emoji: "✅", text: "開催終了", key: "after" };
+      } else {
+        return { emoji: "🎉", text: "開催中", key: "current" };
+      }
+    }
+  }
+
+  function updateEventStatus() {
+    const statusEl = document.getElementById("event-status");
+    if (!statusEl) return;
+    const status = getEventStatus();
+    statusEl.textContent = `${status.emoji} ${status.text}`;
+    statusEl.className = `event-status event-status-${status.key}`;
+  }
+
   function escapeHtml(str) {
     const div = document.createElement("div");
     div.textContent = str;
@@ -221,7 +255,8 @@
       th.className = "track-header";
       th.style.gridColumn = `${i + 2}`;
       th.style.gridRow = "1";
-      th.innerHTML = `${track.name}<span class="track-hashtag">${track.hashtag}</span>`;
+      const hashtagXUrl = `https://x.com/intent/post?text=${encodeURIComponent(`#jawsdays2026 #jawsug ${track.hashtag}`)}`;
+      th.innerHTML = `${track.name}<span class="track-hashtag"><a href="${hashtagXUrl}" target="_blank" rel="noopener">${track.hashtag}</a></span>`;
       timetableEl.appendChild(th);
     });
 
@@ -342,7 +377,8 @@
       th.className = "track-header-bottom";
       th.style.gridColumn = `${i + 2}`;
       th.style.gridRow = `${bottomRow}`;
-      th.innerHTML = `${track.name}<span class="track-hashtag">${track.hashtag}</span>`;
+      const hashtagXUrl = `https://x.com/intent/post?text=${encodeURIComponent(`#jawsdays2026 #jawsug ${track.hashtag}`)}`;
+      th.innerHTML = `${track.name}<span class="track-hashtag"><a href="${hashtagXUrl}" target="_blank" rel="noopener">${track.hashtag}</a></span>`;
       timetableEl.appendChild(th);
     });
   }
@@ -478,10 +514,11 @@
     // On non-event days, don't scroll — show from the top (9:00)
     if (!isEventDay()) return;
 
-    // On event day, scroll to current time
-    const targetMinutes = getCurrentJSTMinutes();
+    // On event day, scroll to 30 minutes before current time (min: event start)
+    const currentMinutes = getCurrentJSTMinutes();
     const startMin = timeToMinutes(TIME_START);
     const endMin = timeToMinutes(TIME_END);
+    const targetMinutes = Math.max(startMin, currentMinutes - 30);
 
     // Clamp to event time range and round down to nearest slot
     const clampedMinutes = Math.max(startMin, Math.min(targetMinutes, endMin));
@@ -526,10 +563,14 @@
 
     renderTimetable();
     updateCurrentSessions(); // apply current-session highlighting immediately on load
+    updateEventStatus();
     autoScrollToCurrentTime();
 
-    // Periodically check for current sessions
-    setInterval(updateCurrentSessions, CURRENT_CHECK_INTERVAL);
+    // Periodically check for current sessions and event status
+    setInterval(() => {
+      updateCurrentSessions();
+      updateEventStatus();
+    }, CURRENT_CHECK_INTERVAL);
   }
 
   init();
