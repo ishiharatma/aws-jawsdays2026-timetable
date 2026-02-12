@@ -21,6 +21,8 @@
   // --- DOM refs ---
   const timetableEl = document.getElementById("timetable");
   const timetableContainer = document.getElementById("timetable-container");
+  const siteHeader = document.querySelector(".site-header");
+  const siteFooter = document.querySelector(".site-footer");
   const editBtn = document.getElementById("edit-check-btn");
   const saveBtn = document.getElementById("save-check-btn");
   const cancelBtn = document.getElementById("cancel-check-btn");
@@ -641,6 +643,24 @@
     return window.innerWidth <= 768;
   }
 
+  // --- Update CSS variables for fixed header/footer heights on mobile ---
+  // Called on init, resize, and hamburger toggle so sticky track headers adjust correctly.
+  function updateLayoutHeights() {
+    if (!isMobileLayout()) return;
+    if (siteHeader) {
+      document.documentElement.style.setProperty(
+        "--site-header-height",
+        siteHeader.offsetHeight + "px"
+      );
+    }
+    if (siteFooter) {
+      document.documentElement.style.setProperty(
+        "--site-footer-height",
+        siteFooter.offsetHeight + "px"
+      );
+    }
+  }
+
   // --- Scroll to top button ---
   function setupScrollTopButton() {
     // Listen to both timetableContainer (desktop) and window (mobile)
@@ -680,6 +700,10 @@
       const closeIcon = hamburgerBtn.querySelector(".close-icon");
       if (hamburgerIcon) hamburgerIcon.style.display = isOpen ? "none" : "";
       if (closeIcon) closeIcon.style.display = isOpen ? "" : "none";
+
+      // Header height changes when menu opens/closes — update CSS variables
+      // so that sticky track headers and body padding adjust accordingly.
+      requestAnimationFrame(updateLayoutHeights);
     });
   }
 
@@ -709,7 +733,8 @@
       if (isMobileLayout()) {
         // On mobile, body scrolls: use getBoundingClientRect relative to viewport
         const rect = targetLabel.getBoundingClientRect();
-        const scrollTop = window.scrollY + rect.top - 80; // 80px offset for sticky header
+        const headerOffset = siteHeader ? siteHeader.offsetHeight + 8 : 60;
+        const scrollTop = window.scrollY + rect.top - headerOffset;
         window.scrollTo({ top: Math.max(0, scrollTop), behavior: "smooth" });
       } else {
         // On desktop, timetableContainer scrolls
@@ -731,11 +756,15 @@
     if (e.key === "Escape") closeModal();
   });
 
+  // --- Window resize: re-measure header/footer heights for CSS variables ---
+  window.addEventListener("resize", updateLayoutHeights);
+
   // --- Init ---
   async function init() {
     loadCheckedSessions();
     setupScrollTopButton();
     setupHamburgerMenu();
+    updateLayoutHeights();
 
     try {
       const resp = await fetch("timetable.json");

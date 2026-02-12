@@ -828,13 +828,20 @@ body {
   body {
     min-height: 100vh;
     display: block;
+    /* Compensate for fixed header and footer */
+    padding-top: var(--site-header-height, 52px);
+    padding-bottom: var(--site-footer-height, 42px);
   }
 
-  /* Header is sticky on mobile */
+  /* Header: fixed on mobile to always span full viewport width
+     (sticky causes visual cutoff when content overflows horizontally) */
   .site-header {
-    position: sticky;
+    position: fixed;
     top: 0;
-    z-index: 100;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 200;
     padding: 10px 16px;
   }
 
@@ -847,10 +854,16 @@ body {
     -webkit-overflow-scrolling: auto;
   }
 
-  /* Footer: normal flow on mobile */
+  /* Footer: fixed on mobile to always span full viewport width */
   .site-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
     height: auto;
-    padding: 12px 16px;
+    padding: 10px 16px;
+    z-index: 200;
   }
 
   /* --- Mobile: 4-track layout — fit all 4 tracks in viewport width --- */
@@ -951,6 +964,24 @@ body {
     margin: 1px;
   }
 
+  /* Track headers: sticky below the fixed page header */
+  .track-header {
+    top: var(--site-header-height, 52px);
+  }
+
+  .track-header:first-child {
+    top: var(--site-header-height, 52px);
+  }
+
+  /* Bottom track headers: sticky above the fixed footer */
+  .track-header-bottom {
+    bottom: var(--site-footer-height, 42px);
+  }
+
+  .track-header-bottom:first-of-type {
+    bottom: var(--site-footer-height, 42px);
+  }
+
   .track-header,
   .track-header-bottom {
     font-size: 0.7rem;
@@ -1005,9 +1036,9 @@ body {
     justify-content: center;
   }
 
-  /* Scroll-to-top button */
+  /* Scroll-to-top button: above the fixed footer */
   .scroll-top-btn {
-    bottom: 16px;
+    bottom: calc(var(--site-footer-height, 42px) + 12px);
     right: 16px;
     width: 40px;
     height: 40px;
