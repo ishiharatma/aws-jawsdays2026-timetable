@@ -121,7 +121,7 @@
     return url.toString();
   }
 
-  // Returns true if share param was loaded from URL
+  // Returns true if share param was present in URL (even if not applied)
   function loadFromShareUrl() {
     const params = new URLSearchParams(window.location.search);
     const shareParam = params.get("share");
@@ -133,7 +133,11 @@
         .map(Number)
         .filter((n) => !isNaN(n) && n > 0);
       if (ids.length > 0) {
-        checkedSessions = new Set(ids);
+        // 自分の保存データがない場合のみ共有データを使用する
+        // If user has no saved data of their own, use shared sessions
+        if (checkedSessions.size === 0) {
+          checkedSessions = new Set(ids);
+        }
         // Remove share param from URL to keep it clean
         const cleanUrl = new URL(window.location.href);
         cleanUrl.searchParams.delete("share");
@@ -891,7 +895,7 @@
   async function init() {
     setupDebugPanel();
     loadCheckedSessions();
-    // Share URL overrides cookie if ?share= param is present
+    // Share URL is used only when user has no saved data (cookie)
     loadFromShareUrl();
     setupScrollTopButton();
     setupHamburgerMenu();
