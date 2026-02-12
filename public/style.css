@@ -1081,6 +1081,89 @@ body {
   border-radius: 50%;
 }
 
+/* === Debug Panel === */
+.debug-panel {
+  background: #fff3cd;
+  border-bottom: 2px solid #ffc107;
+  padding: 8px 24px;
+  flex-shrink: 0;
+  z-index: 90;
+}
+
+.debug-panel-inner {
+  max-width: 1600px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.debug-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #856404;
+  white-space: nowrap;
+}
+
+.debug-datetime-label {
+  font-size: 0.8rem;
+  color: #856404;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+#debug-datetime {
+  font-size: 0.8rem;
+  padding: 3px 6px;
+  border: 1px solid #ffc107;
+  border-radius: 4px;
+  background: #fffdf0;
+  color: #232f3e;
+}
+
+.debug-presets {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.debug-presets-label {
+  font-size: 0.75rem;
+  color: #856404;
+  white-space: nowrap;
+}
+
+.debug-preset-btn {
+  font-size: 0.75rem;
+  padding: 3px 8px;
+  border: 1px solid #ffc107;
+  border-radius: 4px;
+  background: #fff;
+  color: #856404;
+  cursor: pointer;
+  transition: background 0.15s;
+  white-space: nowrap;
+}
+
+.debug-preset-btn:hover {
+  background: #ffc107;
+  color: #232f3e;
+}
+
+.debug-preset-reset {
+  border-color: #6c757d;
+  color: #6c757d;
+}
+
+.debug-preset-reset:hover {
+  background: #6c757d;
+  color: #fff;
+}
+
 /* Current time badge — shows exact time (e.g. "14:23") right of the dot */
 .current-time-badge {
   position: absolute;
