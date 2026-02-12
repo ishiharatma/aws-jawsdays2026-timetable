@@ -2,6 +2,13 @@
 
 JAWS DAYS 2026 の参加セッションを管理できる、インタラクティブなカスタムタイムテーブルです。
 
+## イベント概要
+
+- **日時**: 2026年3月7日 (土) 09:00 - 19:40
+- **会場**: 池袋サンシャインシティ
+- **公式サイト**: [JAWS DAYS 2026 - fortee.jp](https://fortee.jp/jawsdays-2026/timetable)
+- **ハッシュタグ**: [#jawsdays2026](https://x.com/search?q=%23jawsdays2026)
+
 ## GitHub Pages
 
 **https://ishiharatma.github.io/aws-jawsdays2026-timetable-unofficial/**
@@ -36,13 +43,6 @@ JAWS DAYS 2026 の参加セッションを管理できる、インタラクテ�
 
 ![参加セッション共有機能X](docs/screenshots/screenshot-pc-share-url-x.jpg)
 
-## イベント概要
-
-- **日時**: 2026年3月7日 (土) 09:00 - 19:40
-- **会場**: 池袋サンシャインシティ
-- **公式サイト**: [JAWS DAYS 2026 - fortee.jp](https://fortee.jp/jawsdays-2026/timetable)
-- **ハッシュタグ**: [#jawsdays2026](https://x.com/search?q=%23jawsdays2026)
-
 ## 機能
 
 ### タイムテーブル表示
@@ -59,6 +59,7 @@ JAWS DAYS 2026 の参加セッションを管理できる、インタラクテ�
 - チェックしたセッションはオレンジ枠でハイライト表示
 - 休憩・受付などの非セッション枠はチェック不可
 - チェック状態はブラウザのクッキーに90日間保存
+- 自分のセッションをURLで共有
 
 ### セッション詳細
 
