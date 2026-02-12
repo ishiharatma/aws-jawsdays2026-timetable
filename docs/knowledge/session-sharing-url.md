@@ -43,7 +43,9 @@ function loadFromShareUrl() {
   if (!shareParam) return false;
   const ids = shareParam.split(",").map(Number).filter(n => !isNaN(n) && n > 0);
   if (ids.length > 0) {
+    // 共有URLがある場合は常に共有データを表示する
     checkedSessions = new Set(ids);
+    isViewingShared = true;
     // URLをきれいにする（share パラメータ除去）
     const cleanUrl = new URL(window.location.href);
     cleanUrl.searchParams.delete("share");
@@ -55,36 +57,47 @@ function loadFromShareUrl() {
 ```
 
 - `init()` 内で `loadCheckedSessions()`（Cookie）の **直後** に呼び出す
-- **自分の保存データ（Cookie）がある場合は共有データを無視**、ない場合のみ共有データを使用
+- 共有 URL がある場合は **常に共有データを表示する**（自分のデータの有無に関わらず）
+- `isViewingShared = true` フラグをセットし、編集モード開始時に自分のデータへ切り替える
 - ロード後は `history.replaceState()` で URL を清潔に保つ（ブックマーク汚染防止）
 
-### ロード優先順位
+### ロード優先順位と状態遷移
 
 ```
-Cookie → Share URL（Cookie が空の場合のみ適用）→ renderTimetable()
+Cookie ロード → Share URL（常に適用、isViewingShared=true）→ renderTimetable()
+                    ↓
+             編集ボタン押下時に isViewingShared=true なら
+             loadCheckedSessions() で Cookie から自分データを再ロード
+             isViewingShared=false にリセット → renderTimetable()
 ```
 
-#### バグ修正履歴: 自分のデータが共有データに上書きされる問題 (2026-02)
+#### バグ修正履歴 1: 自分のデータが共有データに上書きされる問題 (2026-02)
 
-**症状**: 共有 URL を開いた後に「参加予定」ボタンを押すと、自分の保存した予定ではなく共有された予定が表示される。
+**症状**: 共有 URL を開いた後に編集ボタンを押すと、自分の保存した予定ではなく共有された予定が編集モードに引き継がれる。
 
-**原因**: `loadFromShareUrl()` が `checkedSessions.size` を確認せずに常に上書きしていた。
+**原因**: `loadFromShareUrl()` が常に `checkedSessions` を上書きしていたため。
+
+**最初の修正（不完全）**: `checkedSessions.size === 0` の条件を追加。
+→ 副作用: 自分のデータがある場合に共有 URL 自体が見られなくなった。
+
+#### バグ修正履歴 2: 共有URLを開いても共有内容が見えない問題 (2026-02)
+
+**症状**: 共有 URL を開いても共有内容が表示されない（自分のデータが優先されて見えない）。
+
+**原因**: 修正履歴1の `if (checkedSessions.size === 0)` 条件が厳しすぎた。
+自分のデータ（Cookie）がある場合に共有データを一切無視してしまっていた。
+
+**解決策**: 共有 URL は常に表示する（`isViewingShared` フラグで管理）。自分のデータは Cookie に保持されており、編集ボタンを押したときに `loadCheckedSessions()` で再ロードして切り替える。
 
 ```javascript
-// 修正前（問題のあるコード）
-if (ids.length > 0) {
-  checkedSessions = new Set(ids); // 自分のデータを無条件で上書き
+// enterEditMode() での切り替え
+if (isViewingShared) {
+  loadCheckedSessions(); // Cookieから自分のデータを再ロード
+  isViewingShared = false;
+  renderTimetable();     // 自分のデータで再描画
 }
-
-// 修正後
-if (ids.length > 0) {
-  if (checkedSessions.size === 0) { // 自分のデータがない場合のみ適用
-    checkedSessions = new Set(ids);
-  }
-}
+pendingChecked = new Set(checkedSessions);
 ```
-
-**解決策**: `checkedSessions.size === 0` の条件を追加して、自分の保存データがある場合は共有データを無視するよう変更。
 
 ### 編集モードとの共存
 
@@ -118,7 +131,8 @@ shareUrlBtn.addEventListener("click", () => {
 ## セキュリティ考慮
 
 - Share URL の ID は数値フィルタ（`!isNaN(n) && n > 0`）で不正値を除去
-- 自分の保存データ（Cookie）がある場合は共有 URL のデータを無視する（自分のデータを守る）
+- 共有データは Cookie に書き込まない（`isViewingShared` フラグで表示のみ管理）
+- 編集モード開始時に Cookie から自分のデータを再ロードするため、意図せず共有データが保存されることはない
 - `window.open` には必ず `"noopener"` を指定する
 
 ## UX 設計

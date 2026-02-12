@@ -21,6 +21,7 @@
   let pendingChecked = new Set();
   let editMode = false;
   let debugDate = null; // Debug mode: virtual current date (null = use real time)
+  let isViewingShared = false; // True when showing shared URL content (not own cookie data)
 
   // --- DOM refs ---
   const timetableEl = document.getElementById("timetable");
@@ -121,7 +122,7 @@
     return url.toString();
   }
 
-  // Returns true if share param was present in URL (even if not applied)
+  // Returns true if share param was present in URL and applied
   function loadFromShareUrl() {
     const params = new URLSearchParams(window.location.search);
     const shareParam = params.get("share");
@@ -133,11 +134,10 @@
         .map(Number)
         .filter((n) => !isNaN(n) && n > 0);
       if (ids.length > 0) {
-        // 自分の保存データがない場合のみ共有データを使用する
-        // If user has no saved data of their own, use shared sessions
-        if (checkedSessions.size === 0) {
-          checkedSessions = new Set(ids);
-        }
+        // 共有URLがある場合は常に共有データを表示する
+        // 自分のデータはCookieに保持されており、編集モード開始時に復元する
+        checkedSessions = new Set(ids);
+        isViewingShared = true;
         // Remove share param from URL to keep it clean
         const cleanUrl = new URL(window.location.href);
         cleanUrl.searchParams.delete("share");
@@ -514,6 +514,12 @@
   // --- Edit Mode ---
   function enterEditMode() {
     editMode = true;
+    // 共有URLを表示中の場合は、編集モード開始時に自分のCookieデータに切り替える
+    if (isViewingShared) {
+      loadCheckedSessions(); // Cookieから自分のデータを再ロード
+      isViewingShared = false;
+      renderTimetable(); // 自分のデータで再描画してからedit-modeクラスを付ける
+    }
     pendingChecked = new Set(checkedSessions);
     timetableEl.classList.add("edit-mode");
     editBtn.classList.add("hidden");
