@@ -55,14 +55,36 @@ function loadFromShareUrl() {
 ```
 
 - `init()` 内で `loadCheckedSessions()`（Cookie）の **直後** に呼び出す
-- Share URL が存在すれば Cookie の状態を上書きする（share URL が優先）
+- **自分の保存データ（Cookie）がある場合は共有データを無視**、ない場合のみ共有データを使用
 - ロード後は `history.replaceState()` で URL を清潔に保つ（ブックマーク汚染防止）
 
 ### ロード優先順位
 
 ```
-Cookie → Share URL（上書き）→ renderTimetable()
+Cookie → Share URL（Cookie が空の場合のみ適用）→ renderTimetable()
 ```
+
+#### バグ修正履歴: 自分のデータが共有データに上書きされる問題 (2026-02)
+
+**症状**: 共有 URL を開いた後に「参加予定」ボタンを押すと、自分の保存した予定ではなく共有された予定が表示される。
+
+**原因**: `loadFromShareUrl()` が `checkedSessions.size` を確認せずに常に上書きしていた。
+
+```javascript
+// 修正前（問題のあるコード）
+if (ids.length > 0) {
+  checkedSessions = new Set(ids); // 自分のデータを無条件で上書き
+}
+
+// 修正後
+if (ids.length > 0) {
+  if (checkedSessions.size === 0) { // 自分のデータがない場合のみ適用
+    checkedSessions = new Set(ids);
+  }
+}
+```
+
+**解決策**: `checkedSessions.size === 0` の条件を追加して、自分の保存データがある場合は共有データを無視するよう変更。
 
 ### 編集モードとの共存
 
@@ -96,7 +118,7 @@ shareUrlBtn.addEventListener("click", () => {
 ## セキュリティ考慮
 
 - Share URL の ID は数値フィルタ（`!isNaN(n) && n > 0`）で不正値を除去
-- Cookie の上書きは意図的な動作（共有 URL の方が明示的な意図を持つ）
+- 自分の保存データ（Cookie）がある場合は共有 URL のデータを無視する（自分のデータを守る）
 - `window.open` には必ず `"noopener"` を指定する
 
 ## UX 設計
