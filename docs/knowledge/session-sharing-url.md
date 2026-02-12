@@ -32,7 +32,7 @@ function buildShareUrl() {
 ```
 
 - 既存のクエリパラメータをリセットしてから再構築する（余計なパラメータを除去）
-- debug モードの `mode=debug` は保持する
+- デバッグモードの `mode=debug` は意図的に含めない（X に投稿するURLにデバッグパラメータを乗せない）
 
 ### `loadFromShareUrl()` — URL 読み込み
 
@@ -69,22 +69,39 @@ Cookie → Share URL（上書き）→ renderTimetable()
 - 編集モード開始時にシェアボタンを `hidden` にする（操作の混乱を防ぐ）
 - 編集モード終了時に再表示する
 
-### クリップボード API
+### X (Twitter) 投稿連携
+
+クリップボードコピーから X への直接投稿に変更。
 
 ```javascript
-await navigator.clipboard.writeText(url);
+shareUrlBtn.addEventListener("click", () => {
+  const url = buildShareUrl();
+  const text = `参加予定のセッションです！\n${url}\n#jawsdays2026 #jawsug`;
+  const tweetUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`;
+  window.open(tweetUrl, "_blank", "noopener");
+});
 ```
 
-- HTTPS または localhost でのみ動作（GitHub Pages は HTTPS なので問題なし）
-- `try/catch` でフォールバックとして `prompt()` を使用
+- `twitter.com/intent/tweet?text=` に `encodeURIComponent` でエンコードしたテキストを渡す
+- `window.open` の第3引数に `"noopener"` を指定（セキュリティ）
+- ツイート本文: 「参加予定のセッションです！\n{share URL}\n#jawsdays2026 #jawsug」
+- `buildShareUrl()` が生成する URL はそのままツイートに含まれるため、受け取った人がアクセスすると共有セッションが反映される
+
+#### Twitter Web Intent 仕様
+
+- URL: `https://twitter.com/intent/tweet`
+- パラメータ: `text` (URL エンコードしたツイート本文)
+- ログイン済みならそのままポスト画面へ、未ログインならログイン後にポスト画面へ遷移
 
 ## セキュリティ考慮
 
 - Share URL の ID は数値フィルタ（`!isNaN(n) && n > 0`）で不正値を除去
 - Cookie の上書きは意図的な動作（共有 URL の方が明示的な意図を持つ）
+- `window.open` には必ず `"noopener"` を指定する
 
 ## UX 設計
 
-- ボタンラベルは「共有」、クリック後 2 秒間「コピー完了!」に変化してフィードバック
+- ボタンラベルは「Xに投稿」、X ロゴアイコン付き
+- クリックすると X の投稿画面が新規タブで開く
 - 編集モード中は非表示（保存/キャンセル中の誤操作防止）
-- セッション未選択時でもボタンは押せる（ベース URL がコピーされる）
+- セッション未選択時でもボタンは押せる（ベース URL が含まれたツイート画面が開く）
