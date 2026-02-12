@@ -441,6 +441,47 @@ window.addEventListener("resize", updateLayoutHeights);
 
 ---
 
+## ヘッダータイトルの2段表示
+
+タイトルが長くなった場合にメインタイトルとサブラベルを縦並びで表示するパターン。
+
+```html
+<h1>
+  <span>JAWS DAYS 2026</span>
+  <span class="unofficial-label">(非公式)</span>
+</h1>
+```
+
+```css
+.header-content h1 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  white-space: nowrap;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  line-height: 1.2;
+}
+
+.unofficial-label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #a0aab4;
+}
+
+@media (max-width: 768px) {
+  .unofficial-label {
+    font-size: 0.65rem;
+  }
+}
+```
+
+- `display: flex; flex-direction: column` で縦並びを実現（`white-space: nowrap` は維持可能）
+- サブラベルは小さめフォント + グレー色でメインタイトルを邪魔しない
+- モバイル時もフォントサイズをスケールダウン
+
+---
+
 ## モバイルでの4トラック全幅表示
 
 CSS カスタムプロパティで track-width を動的計算し、4トラックを画面幅に収める。
