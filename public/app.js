@@ -45,6 +45,7 @@
   const scrollTopBtn = document.getElementById("scroll-top-btn");
   const hamburgerBtn = document.getElementById("hamburger-btn");
   const headerNav = document.getElementById("header-nav");
+  const shareUrlBtn = document.getElementById("share-url-btn");
 
   // --- Utility: Current date (debug-aware) ---
   // Returns the "current" Date. In debug mode, returns the virtual time set via UI.
@@ -107,6 +108,43 @@
   function saveCheckedSessions() {
     const arr = Array.from(checkedSessions);
     setCookie(COOKIE_NAME, JSON.stringify(arr), COOKIE_DAYS);
+  }
+
+  // --- Utility: Share URL ---
+  function buildShareUrl() {
+    const ids = Array.from(checkedSessions).sort((a, b) => a - b);
+    const url = new URL(window.location.href);
+    url.search = "";
+    if (isDebugMode) url.searchParams.set("mode", "debug");
+    if (ids.length > 0) {
+      url.searchParams.set("share", ids.join(","));
+    }
+    return url.toString();
+  }
+
+  // Returns true if share param was loaded from URL
+  function loadFromShareUrl() {
+    const params = new URLSearchParams(window.location.search);
+    const shareParam = params.get("share");
+    if (!shareParam) return false;
+
+    try {
+      const ids = shareParam
+        .split(",")
+        .map(Number)
+        .filter((n) => !isNaN(n) && n > 0);
+      if (ids.length > 0) {
+        checkedSessions = new Set(ids);
+        // Remove share param from URL to keep it clean
+        const cleanUrl = new URL(window.location.href);
+        cleanUrl.searchParams.delete("share");
+        history.replaceState(null, "", cleanUrl.toString());
+        return true;
+      }
+    } catch (e) {
+      // ignore malformed params
+    }
+    return false;
   }
 
   // --- Utility: Google Calendar ---
@@ -478,6 +516,7 @@
     editBtn.classList.add("hidden");
     saveBtn.classList.remove("hidden");
     cancelBtn.classList.remove("hidden");
+    if (shareUrlBtn) shareUrlBtn.classList.add("hidden");
     updateBlockedSessions();
   }
 
@@ -493,6 +532,7 @@
       saveCheckedSessions();
     }
     pendingChecked = new Set();
+    if (shareUrlBtn) shareUrlBtn.classList.remove("hidden");
     renderTimetable();
     updateCurrentTimeLine();
   }
@@ -758,6 +798,24 @@
   editBtn.addEventListener("click", enterEditMode);
   saveBtn.addEventListener("click", () => exitEditMode(true));
   cancelBtn.addEventListener("click", () => exitEditMode(false));
+
+  if (shareUrlBtn) {
+    shareUrlBtn.addEventListener("click", async () => {
+      const url = buildShareUrl();
+      const originalText = shareUrlBtn.textContent;
+      try {
+        await navigator.clipboard.writeText(url);
+        shareUrlBtn.textContent = "コピー完了!";
+      } catch (e) {
+        // Fallback for environments where clipboard API is unavailable
+        prompt("URLをコピーしてください:", url);
+        return;
+      }
+      setTimeout(() => {
+        shareUrlBtn.textContent = originalText;
+      }, 2000);
+    });
+  }
   modalCloseBtn.addEventListener("click", closeModal);
   modalOverlay.addEventListener("click", (e) => {
     if (e.target === modalOverlay) closeModal();
@@ -843,6 +901,8 @@
   async function init() {
     setupDebugPanel();
     loadCheckedSessions();
+    // Share URL overrides cookie if ?share= param is present
+    loadFromShareUrl();
     setupScrollTopButton();
     setupHamburgerMenu();
     updateLayoutHeights();
