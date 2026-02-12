@@ -312,11 +312,9 @@ hamburgerBtn.addEventListener("click", () => {
   body {
     min-height: 100vh;
     display: block;
-  }
-  .site-header {
-    position: sticky;
-    top: 0;
-    z-index: 100;
+    /* 固定ヘッダー・フッター分のパディング（JS で実測値に更新） */
+    padding-top: var(--site-header-height, 52px);
+    padding-bottom: var(--site-footer-height, 42px);
   }
   .timetable-container {
     overflow: visible;  /* body スクロールに委ねる */
@@ -349,9 +347,96 @@ if (isMobileLayout()) {
 // 自動スクロール (イベント当日の現在時刻へ)
 if (isMobileLayout()) {
   const rect = targetLabel.getBoundingClientRect();
-  const scrollTop = window.scrollY + rect.top - 80; // sticky header 分のオフセット
+  // siteHeader.offsetHeight で実際のヘッダー高さを取得
+  const headerOffset = siteHeader ? siteHeader.offsetHeight + 8 : 60;
+  const scrollTop = window.scrollY + rect.top - headerOffset;
   window.scrollTo({ top: Math.max(0, scrollTop), behavior: "smooth" });
 }
+```
+
+---
+
+## モバイルでのヘッダー・フッター固定（position: fixed）
+
+### 問題: sticky ヘッダーの水平スクロール時の切れ
+
+`position: sticky` はドキュメントの水平オーバーフローを考慮しない。
+タイムテーブルが横に長く（8トラック × `--track-width`）水平スクロールが発生すると、
+sticky ヘッダーはビューポート内に留まるが、幅がビューポート幅に制限されるため
+右端が「途切れて」見える。
+
+### 解決策: position: fixed + body パディング
+
+```css
+@media (max-width: 768px) {
+  /* fixed は常にビューポート全幅に広がるため水平スクロールで切れない */
+  .site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 200;
+  }
+  .site-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 200;
+  }
+  body {
+    /* fixed 要素の分だけボディをオフセット */
+    padding-top: var(--site-header-height, 52px);
+    padding-bottom: var(--site-footer-height, 42px);
+  }
+
+  /* テーブルヘッダーを fixed ページヘッダーの直下に sticky */
+  .track-header {
+    top: var(--site-header-height, 52px);
+  }
+  /* テーブルフッターを fixed ページフッターの直上に sticky */
+  .track-header-bottom {
+    bottom: var(--site-footer-height, 42px);
+  }
+  /* スクロールトップボタンも fixed フッターの上に */
+  .scroll-top-btn {
+    bottom: calc(var(--site-footer-height, 42px) + 12px);
+  }
+}
+```
+
+### JS: ヘッダー高さを CSS 変数に設定
+
+ハンバーガーを開くとヘッダー高さが変わるため、JS で実測して CSS 変数を更新する。
+
+```javascript
+function updateLayoutHeights() {
+  if (!isMobileLayout()) return;
+  if (siteHeader) {
+    document.documentElement.style.setProperty(
+      "--site-header-height",
+      siteHeader.offsetHeight + "px"
+    );
+  }
+  if (siteFooter) {
+    document.documentElement.style.setProperty(
+      "--site-footer-height",
+      siteFooter.offsetHeight + "px"
+    );
+  }
+}
+
+// 呼び出しタイミング:
+// 1. init() 時 (初回計測)
+// 2. window.resize イベント
+// 3. ハンバーガー toggle 後 (requestAnimationFrame でレンダリング後に計測)
+hamburgerBtn.addEventListener("click", () => {
+  // ...toggle処理...
+  requestAnimationFrame(updateLayoutHeights);
+});
+window.addEventListener("resize", updateLayoutHeights);
 ```
 
 ---
