@@ -69,6 +69,16 @@ body {
   font-size: 1.4rem;
   font-weight: 700;
   white-space: nowrap;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  line-height: 1.2;
+}
+
+.unofficial-label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #a0aab4;
 }
 
 /* Header nav wraps event-meta for collapsible behavior on mobile */
@@ -893,6 +903,10 @@ body {
   .header-content h1 {
     font-size: 1rem;
     flex-shrink: 0;
+  }
+
+  .unofficial-label {
+    font-size: 0.65rem;
   }
 
   /* header-nav: collapsible, full-width below when open */
