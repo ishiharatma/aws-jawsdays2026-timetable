@@ -887,7 +887,7 @@ body {
 
   .timetable-wrapper {
     padding: 8px 16px;
-    min-width: 0;
+    min-width: fit-content; /* enable horizontal scroll on narrow screens */
     justify-content: flex-start;
     min-height: auto;
   }

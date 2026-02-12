@@ -198,3 +198,66 @@ function autoScrollToCurrentTime() {
   // ...
 }
 ```
+
+---
+
+## モバイル: 横スクロールが消える問題
+
+### 問題
+
+`@media (max-width: 768px)` で `.timetable-wrapper { min-width: 0 }` を設定すると、
+8 トラックのタイムテーブルが viewport 幅を超えても横スクロールバーが表示されない。
+
+**原因**: `min-width: 0` でラッパーが収縮し、body がオーバーフロー量を検知できない。
+`html, body { overflow: auto }` は設定済みでも、body の scrollWidth が viewport 幅と
+同じになるため横スクロールが発生しない。
+
+### 解決策
+
+```css
+@media (max-width: 768px) {
+  .timetable-wrapper {
+    min-width: fit-content; /* 0 ではなく fit-content で横スクロールを有効化 */
+  }
+}
+```
+
+`fit-content` にすることで:
+1. ラッパーがタイムテーブルの実際の幅まで拡張される
+2. body がオーバーフロー幅を検知してスクロールバーを表示する
+
+---
+
+## モバイル: 9:00 が隠れる / 19:40 が見えない問題
+
+### 問題
+
+`updateLayoutHeights()` の呼び出しタイミングが早すぎると、
+ヘッダー・フッターの `offsetHeight` が正しく計測できない場合がある。
+
+- DOMContentLoaded 直後: フォントが未適用で高さが違う場合がある
+- `renderTimetable()` 前の呼び出し: レンダリング後にレイアウトが変わる可能性
+
+### 解決策
+
+複数のタイミングで `updateLayoutHeights()` を呼ぶ:
+
+```js
+// 1. init() 内: 同期的に即時実行（既存）
+updateLayoutHeights();
+
+// 2. renderTimetable() 直後: レンダリング後に再計測
+renderTimetable();
+requestAnimationFrame(updateLayoutHeights); // ← 追加
+
+// 3. window.load: フォント・画像ロード後に再計測
+window.addEventListener("load", updateLayoutHeights); // ← 追加
+
+// 4. resize: 既存
+window.addEventListener("resize", updateLayoutHeights);
+
+// 5. ハンバーガーメニュー open/close 後: 既存
+requestAnimationFrame(updateLayoutHeights);
+```
+
+これにより、どのタイミングでもヘッダー/フッターの高さを正確に反映できる。
