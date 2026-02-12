@@ -759,6 +759,10 @@
   // --- Window resize: re-measure header/footer heights for CSS variables ---
   window.addEventListener("resize", updateLayoutHeights);
 
+  // --- Window load: re-measure after fonts/images are fully loaded ---
+  // (offsetHeight at DOMContentLoaded may be off if fonts affect layout)
+  window.addEventListener("load", updateLayoutHeights);
+
   // --- Init ---
   async function init() {
     loadCheckedSessions();
@@ -776,6 +780,8 @@
     }
 
     renderTimetable();
+    // Re-measure header/footer heights after render in case layout changed
+    requestAnimationFrame(updateLayoutHeights);
     updateCurrentSessions(); // apply current-session highlighting immediately on load
     updateCurrentTimeLine(); // draw current time line immediately on load
     updateEventStatus();
