@@ -32,7 +32,7 @@ function buildShareUrl() {
 ```
 
 - 既存のクエリパラメータをリセットしてから再構築する（余計なパラメータを除去）
-- debug モードの `mode=debug` は保持する
+- デバッグモードの `mode=debug` は意図的に含めない（X に投稿するURLにデバッグパラメータを乗せない）
 
 ### `loadFromShareUrl()` — URL 読み込み
 

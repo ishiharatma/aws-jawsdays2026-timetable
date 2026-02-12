@@ -115,7 +115,6 @@
     const ids = Array.from(checkedSessions).sort((a, b) => a - b);
     const url = new URL(window.location.href);
     url.search = "";
-    if (isDebugMode) url.searchParams.set("mode", "debug");
     if (ids.length > 0) {
       url.searchParams.set("share", ids.join(","));
     }
