@@ -28,6 +28,14 @@ JAWS DAYS 2026 の参加セッションを管理できる、インタラクテ�
 
 ![参加予定の編集](docs/screenshots/screenshot-pc-edit.jpg)
 
+### 参加セッション共有機能
+
+自分の参加予定をURLで共有できます。
+
+![参加セッション共有機能](docs/screenshots/screenshot-pc-share-url.jpg)
+
+![参加セッション共有機能X](docs/screenshots/screenshot-pc-share-url-x.jpg)
+
 ## イベント概要
 
 - **日時**: 2026年3月7日 (土) 09:00 - 19:40
