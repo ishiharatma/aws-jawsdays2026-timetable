@@ -12,11 +12,15 @@
   const CURRENT_CHECK_INTERVAL = 60000; // 1 minute
   const SCROLL_TOP_THRESHOLD = 400; // px scrolled before showing button
 
+  // --- Debug Mode ---
+  const isDebugMode = new URLSearchParams(window.location.search).get("mode") === "debug";
+
   // --- State ---
   let timetableData = null;
   let checkedSessions = new Set();
   let pendingChecked = new Set();
   let editMode = false;
+  let debugDate = null; // Debug mode: virtual current date (null = use real time)
 
   // --- DOM refs ---
   const timetableEl = document.getElementById("timetable");
@@ -41,6 +45,12 @@
   const scrollTopBtn = document.getElementById("scroll-top-btn");
   const hamburgerBtn = document.getElementById("hamburger-btn");
   const headerNav = document.getElementById("header-nav");
+
+  // --- Utility: Current date (debug-aware) ---
+  // Returns the "current" Date. In debug mode, returns the virtual time set via UI.
+  function getCurrentDate() {
+    return debugDate !== null ? debugDate : new Date();
+  }
 
   // --- Utility: Time ---
   function timeToMinutes(t) {
@@ -142,7 +152,7 @@
 
   // --- Utility: Current time check ---
   function isSessionCurrent(session) {
-    const now = new Date();
+    const now = getCurrentDate();
 
     // Check if today is the event day (in JST)
     const jstNow = new Date(
@@ -160,7 +170,7 @@
 
   // --- Utility: Get current JST time in minutes from midnight ---
   function getCurrentJSTMinutes() {
-    const now = new Date();
+    const now = getCurrentDate();
     const jstNow = new Date(
       now.toLocaleString("en-US", { timeZone: "Asia/Tokyo" })
     );
@@ -169,7 +179,7 @@
 
   // --- Utility: Check if today is event day ---
   function isEventDay() {
-    const now = new Date();
+    const now = getCurrentDate();
     const jstNow = new Date(
       now.toLocaleString("en-US", { timeZone: "Asia/Tokyo" })
     );
@@ -179,7 +189,7 @@
 
   // --- Utility: Get event status ---
   function getEventStatus() {
-    const now = new Date();
+    const now = getCurrentDate();
     const jstNow = new Date(
       now.toLocaleString("en-US", { timeZone: "Asia/Tokyo" })
     );
@@ -763,8 +773,75 @@
   // (offsetHeight at DOMContentLoaded may be off if fonts affect layout)
   window.addEventListener("load", updateLayoutHeights);
 
+  // --- Debug Panel ---
+  function setupDebugPanel() {
+    if (!isDebugMode) return;
+
+    const panel = document.createElement("div");
+    panel.id = "debug-panel";
+    panel.className = "debug-panel";
+    panel.innerHTML = `
+      <div class="debug-panel-inner">
+        <span class="debug-label">🐛 デバッグモード</span>
+        <label class="debug-datetime-label">
+          仮想日時 (JST):
+          <input type="datetime-local" id="debug-datetime" step="300">
+        </label>
+        <div class="debug-presets">
+          <span class="debug-presets-label">プリセット:</span>
+          <button class="debug-preset-btn" data-datetime="${EVENT_DATE}T08:50">開催前</button>
+          <button class="debug-preset-btn" data-datetime="${EVENT_DATE}T09:05">開会直後</button>
+          <button class="debug-preset-btn" data-datetime="${EVENT_DATE}T11:00">午前中</button>
+          <button class="debug-preset-btn" data-datetime="${EVENT_DATE}T12:10">昼休み</button>
+          <button class="debug-preset-btn" data-datetime="${EVENT_DATE}T14:00">午後</button>
+          <button class="debug-preset-btn" data-datetime="${EVENT_DATE}T17:00">夕方</button>
+          <button class="debug-preset-btn" data-datetime="${EVENT_DATE}T19:50">終了後</button>
+          <button class="debug-preset-btn debug-preset-reset" data-datetime="">リセット (実時刻)</button>
+        </div>
+      </div>
+    `;
+    document.querySelector(".site-header").insertAdjacentElement("afterend", panel);
+
+    const datetimeInput = document.getElementById("debug-datetime");
+
+    function applyDebugTime(datetimeStr) {
+      if (!datetimeStr) {
+        debugDate = null;
+        datetimeInput.value = "";
+      } else {
+        // datetime-local value を JST として解釈し UTC の Date に変換
+        // 例: "2026-03-07T09:00" (JST) → Date.UTC(2026, 2, 7, 0, 0) (UTC+9 offset)
+        const [datePart, timePart] = datetimeStr.split("T");
+        const [y, mo, d] = datePart.split("-").map(Number);
+        const [h, min] = timePart.split(":").map(Number);
+        debugDate = new Date(Date.UTC(y, mo - 1, d, h - 9, min));
+      }
+      updateCurrentSessions();
+      updateCurrentTimeLine();
+      updateEventStatus();
+      autoScrollToCurrentTime();
+    }
+
+    datetimeInput.addEventListener("change", () => {
+      applyDebugTime(datetimeInput.value);
+    });
+
+    panel.querySelectorAll(".debug-preset-btn").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const dt = btn.dataset.datetime;
+        if (dt) datetimeInput.value = dt;
+        applyDebugTime(dt);
+      });
+    });
+
+    // デフォルト: イベント当日 09:00 JST
+    datetimeInput.value = `${EVENT_DATE}T09:00`;
+    applyDebugTime(`${EVENT_DATE}T09:00`);
+  }
+
   // --- Init ---
   async function init() {
+    setupDebugPanel();
     loadCheckedSessions();
     setupScrollTopButton();
     setupHamburgerMenu();
