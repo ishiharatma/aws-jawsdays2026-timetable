@@ -6,6 +6,24 @@ JAWS DAYS 2026 の参加セッションを管理できる、インタラクテ�
 
 **https://ishiharatma.github.io/aws-jawsdays2026-timetable-unofficial/**
 
+## スクリーンショット
+
+### 初期表示
+
+![初期表示](docs/screenshots/screenshot-pc-initial.png)
+
+### 開催中セッションの表示
+
+イベント当日は、現在進行中のセッションが緑色でハイライト表示されます。
+
+![開催中セッションの表示](docs/screenshots/screenshot-pc-live.png)
+
+### 参加予定の編集
+
+「参加予定を編集」ボタンでチェックモードに切り替え、参加したいセッションにチェックを付けられます。
+
+![参加予定の編集](docs/screenshots/screenshot-pc-edit.png)
+
 ## イベント概要
 
 - **日時**: 2026年3月7日 (土) 09:00 - 19:40
