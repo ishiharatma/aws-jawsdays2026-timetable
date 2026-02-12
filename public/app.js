@@ -800,20 +800,11 @@
   cancelBtn.addEventListener("click", () => exitEditMode(false));
 
   if (shareUrlBtn) {
-    shareUrlBtn.addEventListener("click", async () => {
+    shareUrlBtn.addEventListener("click", () => {
       const url = buildShareUrl();
-      const originalText = shareUrlBtn.textContent;
-      try {
-        await navigator.clipboard.writeText(url);
-        shareUrlBtn.textContent = "コピー完了!";
-      } catch (e) {
-        // Fallback for environments where clipboard API is unavailable
-        prompt("URLをコピーしてください:", url);
-        return;
-      }
-      setTimeout(() => {
-        shareUrlBtn.textContent = originalText;
-      }, 2000);
+      const text = `参加予定のセッションです！\n${url}\n#jawsdays2026 #jawsug`;
+      const tweetUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`;
+      window.open(tweetUrl, "_blank", "noopener");
     });
   }
   modalCloseBtn.addEventListener("click", closeModal);
