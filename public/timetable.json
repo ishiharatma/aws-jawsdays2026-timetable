@@ -898,11 +898,13 @@
       "start": "13:50",
       "end": "14:10",
       "duration": 20,
-      "title": "セッション",
-      "speaker": "",
-      "proposalUrl": "",
-      "tags": [],
-      "speakerImage": ""
+      "title": "楽しく学ぼう！ストレージ 入門",
+      "speaker": "藤原 善基(Storage-JAWS)",
+      "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/2663c90f-dca5-4159-b403-fa9e8fe91d53",
+      "tags": [
+        "Level 200"
+      ],
+      "speakerImage": "https://fortee.jp/files/jawsdays-2026/speaker/67a4e42c-c31d-4222-b80e-d2e1b759d3cd.jpg"
     },
     {
       "id": 66,
@@ -955,7 +957,9 @@
       "title": "楽しく学ぼう！セキュリティ 入門",
       "speaker": "臼田 佳祐(Security-JAWS)",
       "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/24bd73e8-a64a-48ec-a7b1-407f85277f4e",
-      "tags": [],
+      "tags": [
+        "Level 200"
+      ],
       "speakerImage": "https://fortee.jp/files/jawsdays-2026/speaker/d8380b7b-f0ca-4413-acea-d79b1b369130.png"
     },
     {
@@ -1034,10 +1038,12 @@
       "start": "16:20",
       "end": "16:40",
       "duration": 20,
-      "title": "セッション",
-      "speaker": "",
-      "proposalUrl": "",
-      "tags": [],
+      "title": "楽しく学ぼう！AI・ML 入門",
+      "speaker": "深江健士（AI/ML支部）",
+      "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/270eb4e2-e124-4c94-aa21-965399a3a081",
+      "tags": [
+        "Level 200"
+      ],
       "speakerImage": ""
     },
     {
@@ -1063,7 +1069,9 @@
       "title": "楽しく学ぼう！コミュニティ入門 〜AWSと人がつむいできたストーリー〜",
       "speaker": "Hiromi Ito (AWS Community Hero)",
       "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/33fdc5fc-3d09-48d1-91e5-b304ce3e4df7",
-      "tags": [],
+      "tags": [
+        "Level 200"
+      ],
       "speakerImage": "https://fortee.jp/files/jawsdays-2026/speaker/ff7d439a-a699-4084-b73a-90448ac25623.jpg"
     },
     {
