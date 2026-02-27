@@ -1,0 +1,16 @@
+{
+  "name": "timetable-recorder",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "record": "npx ts-node record.ts"
+  },
+  "dependencies": {
+    "playwright": "^1.49.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.3"
+  }
+}
