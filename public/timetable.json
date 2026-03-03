@@ -422,11 +422,13 @@
       "start": "11:00",
       "end": "11:20",
       "duration": 20,
-      "title": "セッション",
-      "speaker": "",
-      "proposalUrl": "",
-      "tags": [],
-      "speakerImage": ""
+      "title": "Local Roots, Global Reach",
+      "speaker": "jawsdays2026",
+      "proposalUrl": "https://fortee.jp/jawsdays-2026/proposal/b97db054-2ff7-49a4-896b-cc65395995aa",
+      "tags": [
+        "Level2000"
+      ],
+      "speakerImage": "https://fortee.jp/files/jawsdays-2026/speaker/e6163abe-1c03-4de9-985f-92e877941253.png"
     },
     {
       "id": 31,
