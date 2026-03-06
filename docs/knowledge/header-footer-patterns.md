@@ -302,18 +302,29 @@ hamburgerBtn.addEventListener("click", () => {
 デスクトップでは `html, body { overflow: hidden }` + スクロール要素のみスクロール設計。
 モバイルでは body を自然スクロールに切り替えてブラウザのプルツーリフレッシュを有効にする。
 
+### ⚠️ 重要: html には overflow: auto を設定しない
+
+`html` に `overflow: auto` を設定すると、`html` 要素がスクロールコンテナになり、
+多くのモバイルブラウザで `position: fixed` が正しく機能しなくなる。
+ヘッダー・フッターがタイムテーブルより下に見える問題が発生する原因になる。
+
+**正しい設定: `body` のみ `overflow: auto` にする。**
+
 ```css
 @media (max-width: 768px) {
-  html, body {
+  /* html は overflow: visible のまま (position: fixed を正しく動かすため) */
+  html {
     height: auto;
-    overflow: auto;
-    overscroll-behavior-y: auto; /* プルツーリフレッシュを許可 */
+    overflow: visible;
   }
   body {
     min-height: 100vh;
     display: block;
+    height: auto;
+    overflow: auto;
+    overscroll-behavior-y: auto; /* プルツーリフレッシュを許可 */
     /* 固定ヘッダー・フッター分のパディング（JS で実測値に更新） */
-    padding-top: var(--site-header-height, 52px);
+    padding-top: var(--site-header-height, 80px);
     padding-bottom: var(--site-footer-height, 42px);
   }
   .timetable-container {
@@ -323,6 +334,11 @@ hamburgerBtn.addEventListener("click", () => {
   }
 }
 ```
+
+### デフォルト値について
+
+`--site-header-height` の JS 更新が間に合わない初期描画のフラッシュを最小化するため、
+デフォルト値はモバイルの実際のヘッダー高さに近い `80px` を使用する（旧: 52px）。
 
 ### JS での対応
 
