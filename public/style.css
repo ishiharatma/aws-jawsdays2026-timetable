@@ -851,7 +851,8 @@ body {
     min-height: 100vh;
     display: block;
     height: auto;
-    overflow: auto;
+    overflow-x: hidden; /* prevent body from scrolling horizontally */
+    overflow-y: auto;
     overscroll-behavior-y: auto;
     /* Compensate for fixed header and footer */
     padding-top: var(--site-header-height, 80px);
@@ -870,13 +871,14 @@ body {
     padding: 10px 16px;
   }
 
-  /* Timetable container: no height constraint on mobile, expand to content */
+  /* Timetable container: expand to content vertically, scroll horizontally */
   .timetable-container {
     flex: none;
-    overflow: visible;
+    overflow-x: auto;   /* horizontal scroll within this container */
+    overflow-y: visible; /* expand vertically to content (computed as auto) */
     min-height: auto;
     height: auto;
-    -webkit-overflow-scrolling: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
   /* Footer: fixed on mobile to always span full viewport width */
