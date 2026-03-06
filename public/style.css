@@ -837,19 +837,25 @@ body {
 
 /* === Responsive (Mobile) === */
 @media (max-width: 768px) {
-  /* --- Mobile: allow natural body scroll for pull-to-refresh --- */
-  html, body {
+  /* --- Mobile: allow natural body scroll for pull-to-refresh ---
+     html must NOT have overflow: auto/scroll — that would make html the scroll
+     container and break position: fixed on many mobile browsers.
+     Only body is set to overflow: auto so the page scroll is handled at body level,
+     keeping the fixed header/footer correctly anchored to the viewport. */
+  html {
     height: auto;
-    overflow: auto;
-    overscroll-behavior-y: auto;
+    overflow: visible;
   }
 
   body {
     min-height: 100vh;
     display: block;
+    height: auto;
+    overflow: auto;
+    overscroll-behavior-y: auto;
     /* Compensate for fixed header and footer */
-    padding-top: var(--site-header-height, 52px);
-    padding-bottom: var(--site-footer-height, 42px);
+    padding-top: var(--site-header-height, 80px);
+    padding-bottom: var(--site-footer-height, 56px);
   }
 
   /* Header: fixed on mobile to always span full viewport width
@@ -989,20 +995,20 @@ body {
 
   /* Track headers: sticky below the fixed page header */
   .track-header {
-    top: var(--site-header-height, 52px);
+    top: var(--site-header-height, 80px);
   }
 
   .track-header:first-child {
-    top: var(--site-header-height, 52px);
+    top: var(--site-header-height, 80px);
   }
 
   /* Bottom track headers: sticky above the fixed footer */
   .track-header-bottom {
-    bottom: var(--site-footer-height, 42px);
+    bottom: var(--site-footer-height, 56px);
   }
 
   .track-header-bottom:first-of-type {
-    bottom: var(--site-footer-height, 42px);
+    bottom: var(--site-footer-height, 56px);
   }
 
   .track-header,
@@ -1061,7 +1067,7 @@ body {
 
   /* Scroll-to-top button: above the fixed footer */
   .scroll-top-btn {
-    bottom: calc(var(--site-footer-height, 42px) + 12px);
+    bottom: calc(var(--site-footer-height, 56px) + 12px);
     right: 16px;
     width: 40px;
     height: 40px;
