@@ -175,20 +175,21 @@
   // --- Utility: X (Twitter) post URL ---
   function buildXPostUrl(session) {
     const trackData = timetableData.tracks.find((t) => t.id === session.track);
-    const trackHashtag = trackData ? trackData.hashtag : "";
-    const hashtags = `#jawsdays2026 #jawsug ${trackHashtag}`.trim();
+    const trackHashtag = trackData ? trackData.hashtag.replace(/^#/, "") : "";
+    const hashtagList = ["jawsdays2026", "jawsug", trackHashtag]
+      .filter(Boolean)
+      .join(",");
 
     let text = `${session.title}`;
     if (session.speaker) {
       text += ` by ${session.speaker}`;
     }
-    text += `\n${hashtags}`;
-    if (session.proposalUrl) {
-      text += `\n${session.proposalUrl}`;
-    }
 
-    const params = new URLSearchParams({ text });
-    return `https://x.com/intent/post?${params.toString()}`;
+    const params = new URLSearchParams({ hashtags: hashtagList, text });
+    if (session.proposalUrl) {
+      params.set("url", session.proposalUrl);
+    }
+    return `https://twitter.com/intent/tweet?${params.toString()}`;
   }
 
   // --- Utility: Current time check ---
@@ -325,7 +326,8 @@
       th.className = "track-header";
       th.style.gridColumn = `${i + 2}`;
       th.style.gridRow = "1";
-      const hashtagXUrl = `https://x.com/intent/post?text=${encodeURIComponent(`#jawsdays2026 #jawsug ${track.hashtag}`)}`;
+      const trackHashtagList = ["jawsdays2026", "jawsug", track.hashtag.replace(/^#/, "")].filter(Boolean).join(",");
+      const hashtagXUrl = `https://twitter.com/intent/tweet?hashtags=${encodeURIComponent(trackHashtagList)}`;
       th.innerHTML = `${track.name}<span class="track-hashtag"><a href="${hashtagXUrl}" target="_blank" rel="noopener">${track.hashtag}</a></span>`;
       timetableEl.appendChild(th);
     });
@@ -452,7 +454,8 @@
       th.className = "track-header-bottom";
       th.style.gridColumn = `${i + 2}`;
       th.style.gridRow = `${bottomRow}`;
-      const hashtagXUrl = `https://x.com/intent/post?text=${encodeURIComponent(`#jawsdays2026 #jawsug ${track.hashtag}`)}`;
+      const trackHashtagList = ["jawsdays2026", "jawsug", track.hashtag.replace(/^#/, "")].filter(Boolean).join(",");
+      const hashtagXUrl = `https://twitter.com/intent/tweet?hashtags=${encodeURIComponent(trackHashtagList)}`;
       th.innerHTML = `${track.name}<span class="track-hashtag"><a href="${hashtagXUrl}" target="_blank" rel="noopener">${track.hashtag}</a></span>`;
       timetableEl.appendChild(th);
     });
@@ -811,8 +814,12 @@
   if (shareUrlBtn) {
     shareUrlBtn.addEventListener("click", () => {
       const url = buildShareUrl();
-      const text = `参加予定のセッションです！\n${url}\n#jawsdays2026 #jawsug`;
-      const tweetUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`;
+      const shareParams = new URLSearchParams({
+        hashtags: "jawsdays2026,jawsug",
+        text: "参加予定のセッションです！",
+        url: url,
+      });
+      const tweetUrl = `https://twitter.com/intent/tweet?${shareParams.toString()}`;
       window.open(tweetUrl, "_blank", "noopener");
     });
   }
