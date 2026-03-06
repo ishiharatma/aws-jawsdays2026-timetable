@@ -855,7 +855,7 @@ body {
     overscroll-behavior-y: auto;
     /* Compensate for fixed header and footer */
     padding-top: var(--site-header-height, 80px);
-    padding-bottom: var(--site-footer-height, 42px);
+    padding-bottom: var(--site-footer-height, 56px);
   }
 
   /* Header: fixed on mobile to always span full viewport width
@@ -1004,11 +1004,11 @@ body {
 
   /* Bottom track headers: sticky above the fixed footer */
   .track-header-bottom {
-    bottom: var(--site-footer-height, 42px);
+    bottom: var(--site-footer-height, 56px);
   }
 
   .track-header-bottom:first-of-type {
-    bottom: var(--site-footer-height, 42px);
+    bottom: var(--site-footer-height, 56px);
   }
 
   .track-header,
@@ -1067,7 +1067,7 @@ body {
 
   /* Scroll-to-top button: above the fixed footer */
   .scroll-top-btn {
-    bottom: calc(var(--site-footer-height, 42px) + 12px);
+    bottom: calc(var(--site-footer-height, 56px) + 12px);
     right: 16px;
     width: 40px;
     height: 40px;
