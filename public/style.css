@@ -837,39 +837,66 @@ body {
 
 /* === Responsive (Mobile) === */
 @media (max-width: 768px) {
-  /* --- Mobile: same flex-column layout as desktop ---
-     html/body keep height: 100% + overflow: hidden so timetable-container
-     is the single scroll container for both axes.  This avoids the circular
-     problem where overflow-x: auto on the container forces overflow-y: visible
-     to compute as auto, which creates a nested scroll container that breaks
-     position: sticky on track headers. */
+  /* --- Mobile: body scrolls vertically (enables pull-to-refresh) ---
+     overflow-y: clip on timetable-container is the key:
+     - CSS spec excludes `clip` from sticky scroll container detection,
+       so position:sticky on track headers references body (not the container).
+     - overflow-x: auto handles horizontal scroll within the container.
+     - overflow-y: clip does NOT trigger the "visible→auto" computation rule
+       (that rule only fires when one side is `visible`), so the container
+       does NOT become a vertical scroll container.
+     Result: body handles vertical scroll + PTR, container handles horizontal
+     scroll, and sticky track headers work correctly. */
   html {
-    height: 100%;
-    overflow: hidden;
+    height: auto;
+    overflow: visible;
   }
 
   body {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    /* no padding-top/bottom — header/footer are flex items in the column */
+    min-height: 100vh;
+    display: block;
+    height: auto;
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior-y: auto;
+    /* Compensate for fixed header and footer */
+    padding-top: var(--site-header-height, 80px);
+    padding-bottom: var(--site-footer-height, 56px);
   }
 
+  /* Header: fixed to always span full viewport width */
   .site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 200;
     padding: 10px 16px;
   }
 
-  /* Timetable container: fill remaining height, scroll both axes */
+  /* Timetable container: expand vertically (body scrolls), scroll horizontally.
+     overflow-y: clip keeps it out of sticky's scroll-container chain so that
+     track headers stick relative to the body scroll, not this container. */
   .timetable-container {
-    flex: 1;
-    overflow: auto;
-    min-height: 0; /* critical for flex child to shrink */
+    flex: none;
+    overflow-x: auto;
+    overflow-y: clip;
+    min-height: auto;
+    height: auto;
     -webkit-overflow-scrolling: touch;
   }
 
+  /* Footer: fixed to always span full viewport width */
   .site-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: auto;
     padding: 10px 16px;
+    z-index: 200;
   }
 
   /* --- Mobile: 4-track layout — fit all 4 tracks in viewport width --- */
@@ -974,22 +1001,22 @@ body {
     margin: 1px;
   }
 
-  /* Track headers: sticky at top of timetable-container (header is in flex flow, not fixed) */
+  /* Track headers: sticky below the fixed page header (body is the scroll container) */
   .track-header {
-    top: 0;
+    top: var(--site-header-height, 80px);
   }
 
   .track-header:first-child {
-    top: 0;
+    top: var(--site-header-height, 80px);
   }
 
-  /* Bottom track headers: sticky at bottom of timetable-container */
+  /* Bottom track headers: sticky above the fixed footer */
   .track-header-bottom {
-    bottom: 0;
+    bottom: var(--site-footer-height, 56px);
   }
 
   .track-header-bottom:first-of-type {
-    bottom: 0;
+    bottom: var(--site-footer-height, 56px);
   }
 
   .track-header,
@@ -1046,9 +1073,9 @@ body {
     justify-content: center;
   }
 
-  /* Scroll-to-top button: above the in-flow footer (footer height = --footer-height = 40px) */
+  /* Scroll-to-top button: above the fixed footer */
   .scroll-top-btn {
-    bottom: calc(var(--footer-height) + 12px);
+    bottom: calc(var(--site-footer-height, 56px) + 12px);
     right: 16px;
     width: 40px;
     height: 40px;
