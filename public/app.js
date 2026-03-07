@@ -725,9 +725,12 @@
 
   // --- Scroll to top button ---
   function setupScrollTopButton() {
-    // timetable-container handles scroll on both mobile and desktop
+    // On mobile body scrolls (window); on desktop timetableContainer scrolls.
     function onScroll() {
-      if (timetableContainer.scrollTop > SCROLL_TOP_THRESHOLD) {
+      const scrolled = isMobileLayout()
+        ? window.scrollY
+        : timetableContainer.scrollTop;
+      if (scrolled > SCROLL_TOP_THRESHOLD) {
         scrollTopBtn.classList.remove("hidden");
       } else {
         scrollTopBtn.classList.add("hidden");
@@ -735,9 +738,14 @@
     }
 
     timetableContainer.addEventListener("scroll", onScroll);
+    window.addEventListener("scroll", onScroll);
 
     scrollTopBtn.addEventListener("click", () => {
-      timetableContainer.scrollTo({ top: 0, behavior: "smooth" });
+      if (isMobileLayout()) {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      } else {
+        timetableContainer.scrollTo({ top: 0, behavior: "smooth" });
+      }
     });
   }
 
@@ -784,9 +792,17 @@
       const targetLabel = timetableEl.querySelector(`[data-time="${targetTime}"]`);
       if (!targetLabel) return;
 
-      // timetableContainer handles scroll on both mobile and desktop
-      const labelTop = targetLabel.offsetTop;
-      timetableContainer.scrollTo({ top: Math.max(0, labelTop - 20), behavior: "smooth" });
+      if (isMobileLayout()) {
+        // On mobile, body scrolls: use getBoundingClientRect relative to viewport
+        const rect = targetLabel.getBoundingClientRect();
+        const headerOffset = siteHeader ? siteHeader.offsetHeight + 8 : 60;
+        const scrollTop = window.scrollY + rect.top - headerOffset;
+        window.scrollTo({ top: Math.max(0, scrollTop), behavior: "smooth" });
+      } else {
+        // On desktop, timetableContainer scrolls
+        const labelTop = targetLabel.offsetTop;
+        timetableContainer.scrollTo({ top: Math.max(0, labelTop - 20), behavior: "smooth" });
+      }
     }, 100);
   }
 
