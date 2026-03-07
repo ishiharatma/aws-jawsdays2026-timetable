@@ -837,60 +837,39 @@ body {
 
 /* === Responsive (Mobile) === */
 @media (max-width: 768px) {
-  /* --- Mobile: allow natural body scroll for pull-to-refresh ---
-     html must NOT have overflow: auto/scroll — that would make html the scroll
-     container and break position: fixed on many mobile browsers.
-     Only body is set to overflow: auto so the page scroll is handled at body level,
-     keeping the fixed header/footer correctly anchored to the viewport. */
+  /* --- Mobile: same flex-column layout as desktop ---
+     html/body keep height: 100% + overflow: hidden so timetable-container
+     is the single scroll container for both axes.  This avoids the circular
+     problem where overflow-x: auto on the container forces overflow-y: visible
+     to compute as auto, which creates a nested scroll container that breaks
+     position: sticky on track headers. */
   html {
-    height: auto;
-    overflow: visible;
+    height: 100%;
+    overflow: hidden;
   }
 
   body {
-    min-height: 100vh;
-    display: block;
-    height: auto;
-    overflow-x: hidden; /* prevent body from scrolling horizontally */
-    overflow-y: auto;
-    overscroll-behavior-y: auto;
-    /* Compensate for fixed header and footer */
-    padding-top: var(--site-header-height, 80px);
-    padding-bottom: var(--site-footer-height, 56px);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    /* no padding-top/bottom — header/footer are flex items in the column */
   }
 
-  /* Header: fixed on mobile to always span full viewport width
-     (sticky causes visual cutoff when content overflows horizontally) */
   .site-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    width: 100%;
-    z-index: 200;
     padding: 10px 16px;
   }
 
-  /* Timetable container: expand to content vertically, scroll horizontally */
+  /* Timetable container: fill remaining height, scroll both axes */
   .timetable-container {
-    flex: none;
-    overflow-x: auto;   /* horizontal scroll within this container */
-    overflow-y: visible; /* expand vertically to content (computed as auto) */
-    min-height: auto;
-    height: auto;
+    flex: 1;
+    overflow: auto;
+    min-height: 0; /* critical for flex child to shrink */
     -webkit-overflow-scrolling: touch;
   }
 
-  /* Footer: fixed on mobile to always span full viewport width */
   .site-footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    width: 100%;
-    height: auto;
     padding: 10px 16px;
-    z-index: 200;
   }
 
   /* --- Mobile: 4-track layout — fit all 4 tracks in viewport width --- */
@@ -995,22 +974,22 @@ body {
     margin: 1px;
   }
 
-  /* Track headers: sticky below the fixed page header */
+  /* Track headers: sticky at top of timetable-container (header is in flex flow, not fixed) */
   .track-header {
-    top: var(--site-header-height, 80px);
+    top: 0;
   }
 
   .track-header:first-child {
-    top: var(--site-header-height, 80px);
+    top: 0;
   }
 
-  /* Bottom track headers: sticky above the fixed footer */
+  /* Bottom track headers: sticky at bottom of timetable-container */
   .track-header-bottom {
-    bottom: var(--site-footer-height, 56px);
+    bottom: 0;
   }
 
   .track-header-bottom:first-of-type {
-    bottom: var(--site-footer-height, 56px);
+    bottom: 0;
   }
 
   .track-header,
@@ -1067,9 +1046,9 @@ body {
     justify-content: center;
   }
 
-  /* Scroll-to-top button: above the fixed footer */
+  /* Scroll-to-top button: above the in-flow footer (footer height = --footer-height = 40px) */
   .scroll-top-btn {
-    bottom: calc(var(--site-footer-height, 56px) + 12px);
+    bottom: calc(var(--footer-height) + 12px);
     right: 16px;
     width: 40px;
     height: 40px;

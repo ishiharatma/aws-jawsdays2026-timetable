@@ -725,12 +725,9 @@
 
   // --- Scroll to top button ---
   function setupScrollTopButton() {
-    // Listen to both timetableContainer (desktop) and window (mobile)
+    // timetable-container handles scroll on both mobile and desktop
     function onScroll() {
-      const scrolled = isMobileLayout()
-        ? window.scrollY
-        : timetableContainer.scrollTop;
-      if (scrolled > SCROLL_TOP_THRESHOLD) {
+      if (timetableContainer.scrollTop > SCROLL_TOP_THRESHOLD) {
         scrollTopBtn.classList.remove("hidden");
       } else {
         scrollTopBtn.classList.add("hidden");
@@ -738,14 +735,9 @@
     }
 
     timetableContainer.addEventListener("scroll", onScroll);
-    window.addEventListener("scroll", onScroll);
 
     scrollTopBtn.addEventListener("click", () => {
-      if (isMobileLayout()) {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      } else {
-        timetableContainer.scrollTo({ top: 0, behavior: "smooth" });
-      }
+      timetableContainer.scrollTo({ top: 0, behavior: "smooth" });
     });
   }
 
@@ -792,17 +784,9 @@
       const targetLabel = timetableEl.querySelector(`[data-time="${targetTime}"]`);
       if (!targetLabel) return;
 
-      if (isMobileLayout()) {
-        // On mobile, body scrolls: use getBoundingClientRect relative to viewport
-        const rect = targetLabel.getBoundingClientRect();
-        const headerOffset = siteHeader ? siteHeader.offsetHeight + 8 : 60;
-        const scrollTop = window.scrollY + rect.top - headerOffset;
-        window.scrollTo({ top: Math.max(0, scrollTop), behavior: "smooth" });
-      } else {
-        // On desktop, timetableContainer scrolls
-        const labelTop = targetLabel.offsetTop;
-        timetableContainer.scrollTo({ top: Math.max(0, labelTop - 20), behavior: "smooth" });
-      }
+      // timetableContainer handles scroll on both mobile and desktop
+      const labelTop = targetLabel.offsetTop;
+      timetableContainer.scrollTo({ top: Math.max(0, labelTop - 20), behavior: "smooth" });
     }, 100);
   }
 
